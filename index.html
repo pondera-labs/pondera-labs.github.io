@@ -469,6 +469,74 @@
     .feature h3 { margin: 0 0 8px; font-size: 17px; }
     .feature p { margin: 0; color: var(--ink-soft); font-size: 14px; }
 
+    .graph-scale {
+      margin: 34px 0 18px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      padding: 24px;
+    }
+    .graph-scale-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: end;
+      margin-bottom: 20px;
+    }
+    .graph-scale-head h3 {
+      margin: 0;
+      font-size: 20px;
+    }
+    .graph-scale-head p {
+      margin: 0;
+      max-width: 52ch;
+      color: var(--ink-soft);
+      font-size: 14px;
+    }
+    .strand-map {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .strand {
+      min-height: 150px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background:
+        radial-gradient(circle at 28px 34px, rgba(60, 122, 92, 0.18), transparent 18px),
+        linear-gradient(180deg, #fffdf8, #f8f2e7);
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .strand strong {
+      display: block;
+      font-size: 13px;
+      line-height: 1.25;
+    }
+    .strand span {
+      color: var(--ink-soft);
+      font-size: 11px;
+      line-height: 1.35;
+    }
+    .strand-dots {
+      display: grid;
+      grid-template-columns: repeat(4, 8px);
+      gap: 5px;
+    }
+    .strand-dots i {
+      width: 8px;
+      height: 8px;
+      border-radius: 99px;
+      background: var(--moss);
+      opacity: 0.72;
+    }
+    .strand:nth-child(2n) .strand-dots i { background: var(--clay); }
+    .strand:nth-child(3n) .strand-dots i { background: var(--ink-soft); }
+
     .alpha-box {
       background: var(--card);
       border: 1px solid var(--line);
@@ -516,6 +584,8 @@
       .panel-grid,
       .feature-grid,
       .alpha-box { grid-template-columns: 1fr; display: grid; }
+      .graph-scale-head { display: grid; align-items: start; }
+      .strand-map { grid-template-columns: repeat(2, 1fr); }
       .loop { grid-template-columns: repeat(2, 1fr); }
       .tab-list { grid-template-columns: 1fr; }
       .fraction-bars { grid-template-columns: 1fr; }
@@ -561,7 +631,7 @@
             <a class="button primary" href="#demo">See the fraction example</a>
             <a class="button" href="#contact">Request early access</a>
           </div>
-          <p class="hero-note">Early alpha: the fraction example is small, but the adaptive loop is real.</p>
+          <p class="hero-note">Early alpha: the fraction example is small, but it runs on a broader K-12 maths graph so ready students can move quickly.</p>
         </div>
 
         <article class="learning-card reveal" aria-label="Interactive fraction addition card">
@@ -685,20 +755,35 @@
     <section id="map">
       <div class="wrap reveal">
         <span class="eyebrow">The map underneath</span>
-        <h2>Every card sits somewhere in a map of maths knowledge.</h2>
-        <p class="deck">This fraction example is small on purpose. The broader idea is a connected curriculum map: skills, prerequisites, misconceptions, cards, checkers, and evidence.</p>
+        <h2>A student should be able to move quickly through the maths they are ready for.</h2>
+        <p class="deck">The fraction card is only the visible edge. Underneath it is a growing graph that spans school maths from early number through algebra, geometry, statistics, probability, functions, and calculus. Pondera uses that map to skip what is secure, repair what is shaky, and choose the next useful step.</p>
+        <div class="graph-scale" aria-label="Pondera maths graph coverage">
+          <div class="graph-scale-head">
+            <h3>One connected maths map, not a pile of worksheets.</h3>
+            <p>Each dot stands for clusters of teachable skills, prerequisites, misconceptions, representations, tasks, and evidence links. The public demo shows fractions because it is easy to inspect; the graph is built for traversal across the whole path.</p>
+          </div>
+          <div class="strand-map">
+            <div class="strand"><div><strong>Number</strong><span>counting, place value, operations, fractions, decimals</span></div><div class="strand-dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+            <div class="strand"><div><strong>Algebra</strong><span>patterns, expressions, equations, linear relationships</span></div><div class="strand-dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+            <div class="strand"><div><strong>Measurement</strong><span>length, area, volume, time, units, angles</span></div><div class="strand-dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+            <div class="strand"><div><strong>Space</strong><span>shapes, transformations, coordinates, trigonometry</span></div><div class="strand-dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+            <div class="strand"><div><strong>Statistics</strong><span>displays, summary statistics, variation, inference</span></div><div class="strand-dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+            <div class="strand"><div><strong>Probability</strong><span>chance, compound events, conditional probability</span></div><div class="strand-dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+            <div class="strand"><div><strong>Senior maths</strong><span>functions, modelling, calculus, advanced pathways</span></div><div class="strand-dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+          </div>
+        </div>
         <div class="feature-grid">
           <div class="feature">
-            <h3>Cards map to skills</h3>
-            <p>A task is not just a question. It is tied to the knowledge it is meant to practise or diagnose.</p>
+            <h3>Cards map to exact skills</h3>
+            <p>A task is not just a question. It is tied to the knowledge it is meant to practise, diagnose, or repair.</p>
           </div>
           <div class="feature">
-            <h3>Mistakes can be specific</h3>
-            <p>3/8 is not merely wrong. It points to a likely denominator-addition misconception.</p>
+            <h3>Progress can be fast</h3>
+            <p>When connected skills look strong, the sequencer can move ahead instead of forcing a learner through every worksheet.</p>
           </div>
           <div class="feature">
             <h3>Progress is evidence-based</h3>
-            <p>The learner model changes because checked answers produced evidence, not because a chat model guessed.</p>
+            <p>Wrong answers, correct answers, hints, and repair cards all update where the learner should go next.</p>
           </div>
         </div>
       </div>
@@ -708,7 +793,7 @@
       <div class="wrap reveal">
         <span class="eyebrow">Placement by evidence</span>
         <h2>Not just age. Not just grade. The edge of readiness.</h2>
-        <p class="deck">Pondera should place the learner where the evidence says they are: move ahead when connected skills look strong, review when knowledge is fading, and rebuild ideas when a misconception appears.</p>
+        <p class="deck">Pondera should place the learner where the evidence says they are: move ahead when connected skills look strong, review when knowledge is fading, and rebuild ideas when a misconception appears. That matters most when the map is broad enough for a learner to jump from secure foundations toward harder work without waiting for a calendar.</p>
         <div class="feature-grid">
           <div class="feature">
             <h3>Different strengths can coexist</h3>
@@ -719,8 +804,8 @@
             <p>Strong downstream performance can count as evidence that earlier skills are probably solid.</p>
           </div>
           <div class="feature">
-            <h3>Review and frontier are balanced</h3>
-            <p>Like spaced repetition, but over a curriculum graph rather than isolated flashcards.</p>
+            <h3>The path can accelerate</h3>
+            <p>The goal is not to finish a worksheet. The goal is to choose the best next piece of maths, even when that means moving ahead quickly.</p>
           </div>
         </div>
       </div>
@@ -731,8 +816,8 @@
         <div class="alpha-box">
           <div>
             <span class="eyebrow">Status</span>
-            <h2>Early alpha, built from a real working loop.</h2>
-            <p>The current example is fraction addition because it shows the whole shape clearly: a learner card, a checked answer, a likely misconception, an evidence trail, and a recommended next step. Pondera is being built outward from there.</p>
+            <h2>Early alpha, built from a real working loop and a broad maths graph.</h2>
+            <p>The current example is fraction addition because it shows the whole shape clearly: a learner card, a checked answer, a likely misconception, an evidence trail, and a recommended next step. Behind it is a K-12 maths graph being expanded across the path to senior high-school topics.</p>
           </div>
           <a class="button primary" href="mailto:hello@pondera.dev?subject=Pondera%20early%20access">Get in touch</a>
         </div>
