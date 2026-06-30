@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Pondera - adaptive maths practice that treats mistakes as clues</title>
-  <meta name="description" content="Pondera is early alpha adaptive maths practice that uses each answer to choose the next step: move forward, practise shaky skills, or repair misconceptions.">
-  <meta property="og:title" content="Pondera - adaptive maths practice that treats mistakes as clues">
-  <meta property="og:description" content="Structured maths practice with a curriculum graph, explicit answer checks, evidence trails, and misconception-specific next steps.">
+  <title>Pondera - curriculum as a navigable knowledge constellation</title>
+  <meta name="description" content="Pondera maps K-12 maths as an inspectable knowledge graph so learners can move quickly through what they know and repair the exact gaps that block them.">
+  <meta property="og:title" content="Pondera - curriculum as a navigable knowledge constellation">
+  <meta property="og:description" content="A graph-first learning-systems product for curriculum structure, diagnostic evidence, mastery state, and AI-assisted review.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://pondera-labs.github.io/assets/og-image.svg">
   <meta property="og:image:type" content="image/svg+xml">
@@ -14,29 +14,28 @@
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://pondera-labs.github.io/assets/og-image.svg">
-  <meta name="theme-color" content="#F7F0DF">
+  <meta name="theme-color" content="#091522">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --paper: #f7f0df;
-      --paper-deep: #e8dcc4;
-      --card: #fff9ea;
-      --ink: #17251e;
-      --ink-soft: #3a5147;
-      --muted: #7d735f;
-      --line: #d8cbae;
-      --line-strong: #9c8f73;
-      --clay: #b86436;
-      --clay-deep: #743b20;
-      --clay-soft: #f5dfcd;
-      --moss: #2f6b4f;
-      --moss-deep: #1e4936;
-      --moss-soft: #dcebdc;
-      --blue-soft: #dce9ec;
-      --risk: #d6606f;
-      --shadow: 10px 10px 0 rgba(23, 37, 30, 0.12);
+      --night: #091522;
+      --night-2: #0f2131;
+      --night-3: #172f42;
+      --star: #fff5dc;
+      --star-soft: #d8eef7;
+      --text: #f7efe1;
+      --muted: #a9b7bc;
+      --line: rgba(216, 238, 247, 0.2);
+      --line-strong: rgba(216, 238, 247, 0.42);
+      --aqua: #7dd7e8;
+      --violet: #b9a1ff;
+      --coral: #ff9b73;
+      --green: #8ee0b0;
+      --panel: rgba(11, 30, 45, 0.78);
+      --panel-solid: #101f2f;
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.32);
       --serif: "Source Serif 4", Georgia, serif;
       --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       --mono: "JetBrains Mono", Consolas, monospace;
@@ -48,44 +47,65 @@
     body {
       margin: 0;
       background:
-        linear-gradient(90deg, rgba(23, 37, 30, 0.055) 1px, transparent 1px) 0 0 / 42px 42px,
-        linear-gradient(rgba(184, 100, 54, 0.035) 1px, transparent 1px) 0 0 / 100% 28px,
-        linear-gradient(var(--paper), var(--paper));
-      color: var(--ink);
+        radial-gradient(circle at 18% 12%, rgba(125, 215, 232, 0.16), transparent 28%),
+        radial-gradient(circle at 82% 18%, rgba(185, 161, 255, 0.14), transparent 30%),
+        radial-gradient(circle at 70% 76%, rgba(142, 224, 176, 0.08), transparent 34%),
+        linear-gradient(180deg, var(--night), #06101a 54%, #080f16);
+      color: var(--text);
       font-family: var(--sans);
       font-size: 16px;
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
     }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        radial-gradient(circle, rgba(255, 245, 220, 0.86) 0 1px, transparent 1.6px),
+        radial-gradient(circle, rgba(216, 238, 247, 0.52) 0 1px, transparent 1.5px);
+      background-size: 130px 130px, 210px 210px;
+      background-position: 18px 28px, 70px 90px;
+      opacity: 0.45;
+      mix-blend-mode: screen;
+    }
 
     a { color: inherit; }
     .wrap {
-      width: min(1120px, calc(100% - 44px));
+      width: min(1160px, calc(100% - 44px));
       margin: 0 auto;
+      position: relative;
+      z-index: 1;
     }
-    .narrow { width: min(820px, calc(100% - 44px)); }
-    .tag {
+    .tag,
+    .eyebrow,
+    nav,
+    .field-note,
+    .specimen-code,
+    .stat-label {
       font-family: var(--mono);
-      font-size: 11px;
-      color: var(--muted);
-      letter-spacing: 0;
       text-transform: uppercase;
+    }
+    .tag {
+      color: var(--star-soft);
+      font-size: 11px;
+      opacity: 0.78;
     }
     .eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 9px;
-      font-family: var(--mono);
+      gap: 10px;
+      color: var(--aqua);
       font-size: 12px;
-      color: var(--clay-deep);
-      margin-bottom: 14px;
+      margin-bottom: 18px;
     }
     .eyebrow::before {
       content: "";
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--clay);
+      width: 34px;
+      height: 1px;
+      background: currentColor;
+      box-shadow: 12px 0 18px currentColor;
     }
     .button-row {
       display: flex;
@@ -97,23 +117,31 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 44px;
-      padding: 10px 18px;
-      border-radius: 4px;
+      min-height: 46px;
+      padding: 11px 18px;
+      border: 1px solid var(--line-strong);
+      background: rgba(255, 245, 220, 0.05);
+      color: var(--text);
+      text-decoration: none;
       font-weight: 700;
       font-size: 14px;
-      text-decoration: none;
-      border: 2px solid var(--ink);
-      background: var(--card);
-      color: var(--ink);
-      transition: transform 0.16s var(--ease), border-color 0.16s var(--ease), background 0.16s var(--ease);
+      transition: transform 0.16s var(--ease), background 0.16s var(--ease), border-color 0.16s var(--ease);
     }
-    .button:hover { transform: translate(-2px, -2px); border-color: var(--ink); box-shadow: 4px 4px 0 var(--paper-deep); }
-    .button.primary { background: var(--ink); color: white; border-color: var(--ink); }
-    .button.primary:hover { background: var(--ink-soft); }
+    .button:hover {
+      transform: translateY(-2px);
+      background: rgba(125, 215, 232, 0.12);
+      border-color: var(--aqua);
+    }
+    .button.primary {
+      background: var(--aqua);
+      color: #07101a;
+      border-color: var(--aqua);
+    }
+    .button.primary:hover { background: var(--star-soft); }
     .button:focus-visible,
-    button:focus-visible {
-      outline: 3px solid rgba(201, 122, 61, 0.35);
+    button:focus-visible,
+    a:focus-visible {
+      outline: 3px solid rgba(125, 215, 232, 0.42);
       outline-offset: 3px;
     }
 
@@ -121,504 +149,348 @@
       position: sticky;
       top: 0;
       z-index: 20;
-      background: rgba(247, 240, 223, 0.92);
-      backdrop-filter: blur(8px);
-      border-bottom: 2px solid var(--ink);
+      background: rgba(9, 21, 34, 0.82);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
     }
     header .wrap {
-      min-height: 64px;
+      min-height: 68px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 18px;
     }
     .brand {
-      font-family: var(--serif);
-      font-weight: 600;
-      font-size: 24px;
-      letter-spacing: 0;
       display: inline-flex;
       align-items: center;
-      gap: 10px;
+      gap: 11px;
+      font-family: var(--serif);
+      font-size: 25px;
+      font-weight: 600;
     }
     .brand-mark {
-      width: 34px;
-      height: 34px;
-      border: 2px solid var(--ink);
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--aqua);
       display: grid;
       place-items: center;
+      color: var(--aqua);
       font-family: var(--mono);
       font-size: 12px;
-      color: var(--moss-deep);
-      background: var(--moss-soft);
-      box-shadow: 4px 4px 0 var(--paper-deep);
+      background: rgba(125, 215, 232, 0.08);
+      box-shadow: 0 0 22px rgba(125, 215, 232, 0.22);
     }
     nav {
       display: flex;
-      gap: 22px;
       align-items: center;
-      font-family: var(--mono);
+      gap: 24px;
+      color: var(--muted);
       font-size: 11px;
-      text-transform: uppercase;
-      color: var(--ink-soft);
     }
     nav a { text-decoration: none; }
-    nav a:hover { color: var(--ink); }
+    nav a:hover { color: var(--star); }
 
-    section { padding: 82px 0; border-top: 2px solid var(--ink); }
+    section {
+      padding: 92px 0;
+      border-top: 1px solid var(--line);
+      position: relative;
+    }
     .hero {
       border-top: 0;
-      padding: 58px 0 74px;
+      padding: 78px 0 96px;
+      min-height: calc(100vh - 68px);
+      display: grid;
+      align-items: center;
     }
     .hero-grid {
       display: grid;
-      grid-template-columns: minmax(360px, 0.92fr) minmax(500px, 1.08fr);
-      gap: 56px;
+      grid-template-columns: minmax(380px, 0.9fr) minmax(500px, 1.1fr);
+      gap: 58px;
       align-items: center;
     }
     h1 {
       font-family: var(--serif);
-      font-size: clamp(42px, 5.1vw, 66px);
-      line-height: 1.02;
-      letter-spacing: 0;
+      font-size: clamp(48px, 6vw, 82px);
+      line-height: 0.98;
       font-weight: 500;
       margin: 0 0 24px;
     }
-    .accent {
-      position: relative;
-      white-space: nowrap;
+    h1 .glow {
+      color: var(--star);
+      text-shadow: 0 0 34px rgba(255, 245, 220, 0.24);
     }
-    .accent::after {
-      content: "";
-      position: absolute;
-      left: -2px;
-      right: -2px;
-      bottom: 9px;
-      height: 14px;
-      background: var(--clay-soft);
-      z-index: -1;
+    h2 {
+      font-family: var(--serif);
+      font-size: clamp(32px, 4.5vw, 56px);
+      line-height: 1.08;
+      font-weight: 500;
+      margin: 0 0 16px;
+    }
+    h3 {
+      margin: 0 0 8px;
+      font-size: 17px;
     }
     .lede {
       margin: 0 0 30px;
-      max-width: 58ch;
+      max-width: 60ch;
+      color: var(--muted);
       font-size: 18px;
-      line-height: 1.65;
-      color: var(--ink-soft);
+      line-height: 1.72;
     }
     .hero-note {
       margin-top: 22px;
-      color: var(--muted);
+      max-width: 62ch;
+      color: rgba(247, 239, 225, 0.58);
       font-size: 13px;
-      max-width: 54ch;
     }
     .field-strip {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 10px;
-      margin-top: 22px;
-      max-width: 560px;
+      margin-top: 24px;
+      max-width: 590px;
     }
     .field-note {
-      border-left: 3px solid var(--ink);
-      background: rgba(255, 249, 234, 0.74);
-      padding: 10px 12px;
-      font-family: var(--mono);
-      font-size: 11px;
-      color: var(--ink-soft);
-      text-transform: uppercase;
+      border: 1px solid var(--line);
+      border-left-color: var(--aqua);
+      background: rgba(255, 245, 220, 0.035);
+      padding: 12px;
+      color: var(--muted);
+      font-size: 10px;
     }
     .field-note strong {
       display: block;
-      color: var(--ink);
+      color: var(--star);
       font-family: var(--sans);
-      font-size: 16px;
-      margin-bottom: 2px;
+      font-size: 18px;
       text-transform: none;
+      margin-bottom: 2px;
     }
 
-    .learning-card {
-      background: var(--card);
-      border: 2px solid var(--ink);
-      border-radius: 8px;
+    .constellation-card {
+      border: 1px solid var(--line-strong);
+      background:
+        radial-gradient(circle at 50% 50%, rgba(125, 215, 232, 0.08), transparent 44%),
+        linear-gradient(180deg, rgba(16, 40, 58, 0.86), rgba(8, 20, 32, 0.92));
       box-shadow: var(--shadow);
+      position: relative;
       overflow: hidden;
-      transform: rotate(-0.35deg);
+      min-height: 590px;
     }
-    .card-top {
+    .constellation-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(216, 238, 247, 0.04) 1px, transparent 1px) 0 0 / 44px 44px,
+        linear-gradient(rgba(216, 238, 247, 0.04) 1px, transparent 1px) 0 0 / 44px 44px;
+      mask-image: radial-gradient(circle at center, black, transparent 78%);
+    }
+    .constellation-top {
+      min-height: 54px;
+      border-bottom: 1px solid var(--line);
       display: flex;
+      align-items: center;
       justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      padding: 14px 18px;
-      border-bottom: 2px solid var(--ink);
+      gap: 18px;
+      padding: 0 18px;
       color: var(--muted);
-      font-size: 13px;
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      position: relative;
+      z-index: 1;
     }
-    .card-top strong { color: var(--ink); }
-    .progress {
-      display: inline-grid;
-      grid-template-columns: repeat(5, 18px);
-      gap: 4px;
-      align-items: center;
+    .constellation {
+      width: 100%;
+      height: auto;
+      display: block;
+      position: relative;
+      z-index: 1;
     }
-    .progress span {
-      height: 6px;
-      border-radius: 99px;
-      background: var(--line);
+    .star-node { filter: drop-shadow(0 0 12px rgba(125, 215, 232, 0.32)); }
+    .star-label {
+      font-family: var(--mono);
+      font-size: 12px;
+      fill: var(--star-soft);
+      text-transform: uppercase;
     }
-    .progress span.done { background: var(--moss); }
-    .card-main {
-      padding: 34px;
+    .orbit {
+      fill: none;
+      stroke: rgba(216, 238, 247, 0.18);
+      stroke-width: 1;
+      stroke-dasharray: 4 8;
     }
-    .question {
-      text-align: center;
-      font-size: clamp(26px, 4vw, 42px);
-      line-height: 1.2;
-      font-weight: 700;
-      margin-bottom: 28px;
+    .edge-line {
+      fill: none;
+      stroke: rgba(125, 215, 232, 0.42);
+      stroke-width: 1.4;
     }
-    .fraction-bars {
-      display: grid;
-      grid-template-columns: 1fr auto 1fr auto 1fr;
-      gap: 14px;
-      align-items: center;
-      margin: 0 0 26px;
-    }
-    .bar {
+    .edge-line.hot { stroke: rgba(255, 155, 115, 0.65); }
+    .constellation-legend {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      min-height: 66px;
-      border: 2px solid var(--ink);
-      border-radius: 6px;
-      overflow: hidden;
-      background: #fffaf0;
+      border-top: 1px solid var(--line);
+      position: relative;
+      z-index: 1;
     }
-    .bar span { border-right: 1px solid var(--line-strong); }
-    .bar span:last-child { border-right: 0; }
-    .bar .green { background: #a9d99c; }
-    .bar .blue { background: #91c8ee; }
-    .bar.empty { border-style: dashed; opacity: 0.75; }
-    .bar.result {
-      transition: border-color 0.18s var(--ease), background 0.18s var(--ease), opacity 0.18s var(--ease);
-    }
-    .bar.result span {
-      transition: background 0.18s var(--ease);
-    }
-    .bar.result[data-answer="right"] {
-      border-style: solid;
-      border-color: var(--moss);
-      background: var(--moss-soft);
-      opacity: 1;
-    }
-    .bar.result[data-answer="wrong"],
-    .bar.result[data-answer="other"] {
-      border-style: solid;
-      border-color: var(--clay);
-      background: var(--clay-soft);
-      opacity: 1;
-    }
-    .bar.result .fill-green { background: #a9d99c; }
-    .bar.result .fill-clay { background: #e9b58b; }
-    .operator {
-      font-family: var(--serif);
-      font-size: 34px;
-      color: var(--ink-soft);
-    }
-    .choices {
+    .constellation-legend span {
+      min-height: 62px;
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      margin-bottom: 24px;
+      place-items: center;
+      border-right: 1px solid var(--line);
+      color: var(--star-soft);
+      font-family: var(--mono);
+      font-size: 10px;
+      text-align: center;
+      text-transform: uppercase;
+      padding: 10px;
     }
-    .choice {
-      min-height: 66px;
-      border: 2px solid var(--line-strong);
-      border-radius: 5px;
-      background: white;
-      color: var(--ink);
-      font-family: var(--serif);
-      font-size: 26px;
-      cursor: pointer;
-      transition: transform 0.16s var(--ease), border-color 0.16s var(--ease), background 0.16s var(--ease), box-shadow 0.16s var(--ease);
-    }
-    .choice:hover { transform: translateY(-2px); border-color: var(--ink); }
-    .choice.selected-right {
-      border-color: var(--moss);
-      background: var(--moss-soft);
-      color: var(--moss-deep);
-      box-shadow: 0 0 0 5px rgba(60, 122, 92, 0.13);
-    }
-    .choice.selected-wrong {
-      border-color: var(--clay);
-      background: var(--clay-soft);
-      color: var(--clay-deep);
-      box-shadow: 0 0 0 5px rgba(201, 122, 61, 0.13);
-    }
-    .feedback {
-      min-height: 84px;
-      border-radius: 5px;
-      padding: 14px 16px;
-      border: 1px dashed var(--line-strong);
-      background: #f5f1e8;
-      color: var(--ink-soft);
-      display: grid;
-      gap: 6px;
-      font-size: 14px;
-    }
-    .feedback strong { color: var(--ink); }
-    .feedback[data-state="right"] { background: var(--moss-soft); color: var(--moss-deep); }
-    .feedback[data-state="wrong"] { background: var(--clay-soft); color: var(--clay-deep); }
-    .feedback .small { font-family: var(--mono); font-size: 11px; opacity: 0.8; }
+    .constellation-legend span:last-child { border-right: 0; }
 
-    h2 {
-      font-family: var(--serif);
-      font-size: clamp(30px, 4vw, 48px);
-      line-height: 1.12;
-      font-weight: 500;
-      letter-spacing: 0;
-      margin: 0 0 14px;
-    }
     .deck {
+      max-width: 76ch;
       margin: 0 0 30px;
-      max-width: 70ch;
-      color: var(--ink-soft);
-      font-size: 17px;
-      line-height: 1.65;
-    }
-
-    .tabs {
-      background: var(--card);
-      border: 2px solid var(--ink);
-      border-radius: 8px;
-      box-shadow: var(--shadow);
-      overflow: hidden;
-      min-height: 440px;
-    }
-    .tab-list {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      background: var(--line);
-      gap: 1px;
-      border-bottom: 2px solid var(--ink);
-    }
-    .tab {
-      border: 0;
-      background: #f8f3e8;
-      text-align: left;
-      padding: 16px 18px;
-      color: var(--ink-soft);
-      font-weight: 700;
-      cursor: pointer;
-      font-family: var(--sans);
-      font-size: 14px;
-    }
-    .tab span {
-      display: block;
-      margin-top: 4px;
       color: var(--muted);
-      font-weight: 400;
-      font-size: 12px;
+      font-size: 17px;
+      line-height: 1.7;
     }
-    .tab[aria-selected="true"] {
-      background: white;
-      color: var(--ink);
-      box-shadow: inset 0 4px 0 var(--clay);
+    .two-col {
+      display: grid;
+      grid-template-columns: 0.92fr 1.08fr;
+      gap: 34px;
+      align-items: start;
     }
     .panel {
-      display: none;
-      padding: 28px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      padding: 24px;
     }
-    .panel.active { display: block; }
-    .panel-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 22px;
-      align-items: stretch;
-    }
-    .plain-card {
-      background: #fff;
-      border: 2px solid var(--line);
-      border-radius: 6px;
-      padding: 20px;
-    }
-    .plain-card h3 {
-      margin: 0 0 10px;
-      font-size: 16px;
-    }
-    .plain-card p,
-    .plain-card li {
-      color: var(--ink-soft);
+    .panel p,
+    .panel li {
+      color: var(--muted);
       font-size: 14px;
     }
-    .plain-card ul {
+    .panel ul {
       margin: 0;
       padding: 0;
       list-style: none;
       display: grid;
-      gap: 10px;
+      gap: 12px;
     }
-    .plain-card strong { color: var(--ink); }
-    .next-step {
-      background: var(--moss-soft);
-      color: var(--moss-deep);
-      border-left: 4px solid var(--moss);
-      padding: 14px;
-      border-radius: 4px;
-      font-size: 14px;
-      margin-top: 14px;
-    }
-    .mini-graph {
-      min-height: 300px;
-      background: #fbf7ef;
-      border: 2px solid var(--line);
-      border-radius: 6px;
-      overflow: hidden;
-    }
-    .mini-graph svg {
-      display: block;
-      width: 100%;
-      height: 100%;
-      min-height: 300px;
-    }
-    .code-card {
-      background: #13283d;
-      color: #fff8ec;
-      border-radius: 6px;
-      padding: 18px;
-      font-family: var(--mono);
+    .panel strong { color: var(--star); }
+    .specimen-code {
+      background: rgba(3, 10, 18, 0.72);
+      border: 1px solid var(--line);
+      padding: 20px;
+      color: var(--star-soft);
       font-size: 12px;
-      line-height: 1.6;
+      line-height: 1.75;
+      overflow: auto;
     }
-    .code-card .muted { color: rgba(255, 248, 236, 0.62); }
-
-    .loop {
+    .specimen-code .muted { color: rgba(216, 238, 247, 0.46); }
+    .route {
       display: grid;
-      grid-template-columns: repeat(6, 1fr);
+      grid-template-columns: repeat(5, 1fr);
       gap: 10px;
+      margin-top: 28px;
     }
-    .loop-step {
-      background: var(--card);
-      border: 2px solid var(--line);
-      border-radius: 6px;
+    .route-step {
+      border: 1px solid var(--line);
+      background: rgba(255, 245, 220, 0.035);
       padding: 16px;
-      min-height: 132px;
-    }
-    .loop-step .tag { color: var(--clay-deep); display: block; margin-bottom: 8px; }
-    .loop-step h3 { margin: 0 0 6px; font-size: 15px; }
-    .loop-step p { margin: 0; font-size: 13px; color: var(--ink-soft); }
-
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-    .feature {
-      background: var(--card);
-      border: 2px solid var(--line);
-      border-radius: 6px;
-      padding: 22px;
-    }
-    .feature h3 { margin: 0 0 8px; font-size: 17px; }
-    .feature p { margin: 0; color: var(--ink-soft); font-size: 14px; }
-
-    .graph-scale {
-      margin: 34px 0 18px;
-      background: var(--card);
-      border: 2px solid var(--ink);
-      border-radius: 8px;
-      box-shadow: var(--shadow);
-      padding: 24px;
+      min-height: 136px;
       position: relative;
-      overflow: hidden;
     }
-    .graph-scale::before {
-      content: "curriculum map";
+    .route-step::after {
+      content: "";
       position: absolute;
-      right: 18px;
-      top: 14px;
-      font-family: var(--mono);
-      font-size: 10px;
-      text-transform: uppercase;
-      color: var(--muted);
+      right: -10px;
+      top: 50%;
+      width: 10px;
+      height: 1px;
+      background: var(--line-strong);
     }
-    .graph-scale-head {
-      display: flex;
-      justify-content: space-between;
-      gap: 18px;
-      align-items: end;
-      margin-bottom: 20px;
-    }
-    .graph-scale-head h3 {
-      margin: 0;
-      font-size: 20px;
-    }
-    .graph-scale-head p {
-      margin: 0;
-      max-width: 52ch;
-      color: var(--ink-soft);
-      font-size: 14px;
-    }
+    .route-step:last-child::after { display: none; }
+    .route-step .tag { color: var(--aqua); display: block; margin-bottom: 8px; }
+    .route-step p { margin: 0; color: var(--muted); font-size: 13px; }
+
     .strand-map {
       display: grid;
       grid-template-columns: repeat(7, minmax(0, 1fr));
       gap: 10px;
+      margin-top: 30px;
     }
     .strand {
-      min-height: 150px;
-      border: 2px solid var(--line);
-      border-radius: 6px;
+      min-height: 168px;
+      border: 1px solid var(--line);
       background:
-        radial-gradient(circle at 28px 34px, rgba(60, 122, 92, 0.18), transparent 18px),
-        linear-gradient(180deg, #fffdf8, #f8f2e7);
-      padding: 12px;
+        radial-gradient(circle at 26px 30px, rgba(125, 215, 232, 0.28), transparent 18px),
+        rgba(255, 245, 220, 0.035);
+      padding: 14px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 12px;
+      gap: 16px;
     }
     .strand strong {
       display: block;
-      font-size: 13px;
-      line-height: 1.25;
+      color: var(--star);
+      font-size: 14px;
+      margin-bottom: 5px;
     }
     .strand span {
-      color: var(--ink-soft);
-      font-size: 11px;
-      line-height: 1.35;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.4;
     }
     .strand-dots {
       display: grid;
       grid-template-columns: repeat(4, 8px);
-      gap: 5px;
+      gap: 6px;
     }
     .strand-dots i {
       width: 8px;
       height: 8px;
       border-radius: 99px;
-      background: var(--moss);
-      opacity: 0.72;
+      background: var(--aqua);
+      box-shadow: 0 0 10px rgba(125, 215, 232, 0.48);
     }
 
+    .specimen-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    .specimen {
+      border: 1px solid var(--line);
+      background: rgba(255, 245, 220, 0.035);
+      padding: 22px;
+      min-height: 190px;
+    }
+    .specimen p { color: var(--muted); margin: 0; font-size: 14px; }
+    .specimen .tag { color: var(--coral); display: block; margin-bottom: 10px; }
+
     .alpha-box {
-      background: var(--card);
-      border: 2px solid var(--ink);
-      border-radius: 8px;
+      border: 1px solid var(--line-strong);
+      background: linear-gradient(135deg, rgba(125, 215, 232, 0.1), rgba(185, 161, 255, 0.08));
       box-shadow: var(--shadow);
-      padding: 30px;
+      padding: 32px;
       display: flex;
       justify-content: space-between;
-      gap: 24px;
       align-items: center;
+      gap: 24px;
     }
     .alpha-box p {
       margin: 0;
-      color: var(--ink-soft);
-      max-width: 68ch;
+      color: var(--muted);
+      max-width: 74ch;
     }
     footer {
-      padding: 32px 0 44px;
+      padding: 34px 0 46px;
       border-top: 1px solid var(--line);
-      color: var(--muted);
+      color: rgba(216, 238, 247, 0.55);
       font-size: 13px;
     }
     footer .wrap {
@@ -627,8 +499,8 @@
       gap: 18px;
       flex-wrap: wrap;
     }
-    footer a { text-decoration: none; color: var(--muted); margin-left: 18px; }
-    footer a:hover { color: var(--ink); }
+    footer a { text-decoration: none; color: rgba(216, 238, 247, 0.62); margin-left: 18px; }
+    footer a:hover { color: var(--star); }
 
     .reveal {
       opacity: 0;
@@ -636,36 +508,37 @@
       transition: opacity 0.65s var(--ease), transform 0.65s var(--ease);
     }
     .reveal.in { opacity: 1; transform: translateY(0); }
+
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       *, .reveal { animation: none !important; transition: none !important; opacity: 1 !important; transform: none !important; }
     }
-    @media (max-width: 900px) {
+    @media (max-width: 980px) {
       nav { display: none; }
+      .hero { min-height: auto; }
       .hero-grid,
-      .panel-grid,
-      .feature-grid,
-      .alpha-box { grid-template-columns: 1fr; display: grid; }
-      .graph-scale-head { display: grid; align-items: start; }
+      .two-col,
+      .specimen-grid,
+      .alpha-box {
+        grid-template-columns: 1fr;
+        display: grid;
+      }
+      .route { grid-template-columns: repeat(2, 1fr); }
+      .route-step::after { display: none; }
       .strand-map { grid-template-columns: repeat(2, 1fr); }
-      .loop { grid-template-columns: repeat(2, 1fr); }
-      .tab-list { grid-template-columns: 1fr; }
-      .fraction-bars { grid-template-columns: 1fr; }
-      .operator { text-align: center; }
-      .choices { grid-template-columns: 1fr; }
-      .alpha-box { align-items: start; }
     }
     @media (max-width: 560px) {
-      .wrap, .narrow { width: min(100% - 28px, 1120px); }
-      section { padding: 58px 0; }
-      .hero { padding: 34px 0 48px; }
-      .hero-grid { gap: 30px; }
-      .hero-note { display: none; }
-      .field-strip { display: none; }
-      .card-main { padding: 22px; }
-      .panel { padding: 18px; }
-      .loop { grid-template-columns: 1fr; }
-      .bar { min-height: 52px; }
+      .wrap { width: min(100% - 28px, 1160px); }
+      section { padding: 62px 0; }
+      .hero { padding: 42px 0 60px; }
+      .hero-grid { gap: 32px; }
+      h1 { font-size: clamp(42px, 13vw, 58px); }
+      .field-strip { grid-template-columns: 1fr; }
+      .constellation-card { min-height: auto; }
+      .constellation-legend { grid-template-columns: repeat(2, 1fr); }
+      .route,
+      .strand-map { grid-template-columns: 1fr; }
+      .alpha-box { align-items: start; }
     }
   </style>
 </head>
@@ -674,226 +547,136 @@
     <div class="wrap">
       <div class="brand"><span class="brand-mark">P</span>Pondera</div>
       <nav aria-label="Main navigation">
-        <a href="#demo">Example</a>
-        <a href="#loop">How it works</a>
-        <a href="#map">Graph</a>
-        <a href="#contact">Early access</a>
+        <a href="#constellation">Constellation</a>
+        <a href="#route">Traversal</a>
+        <a href="#evidence">Evidence</a>
+        <a href="#contact">Access</a>
       </nav>
-      <span class="tag">Graph-first alpha</span>
+      <span class="tag">Learning systems laboratory</span>
     </div>
   </header>
 
   <main>
     <section class="hero">
       <div class="wrap hero-grid">
-        <div class="hero-copy">
-          <span class="eyebrow">Adaptive practice, explained plainly</span>
-          <h1>Adaptive maths practice that treats <span class="accent">mistakes</span> as clues.</h1>
-          <p class="lede">Every answer helps Pondera decide what to do next: move forward when a learner is ready, practise what is shaky, or repair the misconception behind a wrong answer.</p>
+        <div>
+          <span class="eyebrow">Private learning-systems product</span>
+          <h1>Pondera turns curriculum into a <span class="glow">navigable knowledge constellation.</span></h1>
+          <p class="lede">A graph-first system for mapping K-12 maths, diagnosing knowledge gaps, tracking mastery state, and reviewing AI-assisted learning content against inspectable structure.</p>
           <div class="button-row">
-            <a class="button primary" href="#demo">See the fraction example</a>
+            <a class="button primary" href="#constellation">Explore the graph</a>
             <a class="button" href="#contact">Request early access</a>
           </div>
           <div class="field-strip" aria-label="Pondera operating notes">
             <div class="field-note"><strong>2,600+</strong> graph nodes loaded</div>
-            <div class="field-note"><strong>K-12</strong> maths map direction</div>
-            <div class="field-note"><strong>Rules first</strong> AI stays on rails</div>
+            <div class="field-note"><strong>4,400+</strong> authored edges</div>
+            <div class="field-note"><strong>K-12</strong> maths traversal</div>
           </div>
-          <p class="hero-note">Early alpha: the fraction example is small, but it runs on a broader K-12 maths graph so ready students can move quickly.</p>
+          <p class="hero-note">The learner-facing card is not the product boundary. The durable core is the connected map: skills, prerequisites, misconceptions, evidence, and review paths.</p>
         </div>
 
-        <article class="learning-card reveal" aria-label="Interactive fraction addition card">
-          <div class="card-top">
-            <strong>Fractions</strong>
-            <span class="progress" aria-label="Today's goal, 3 of 5">
-              <span class="done"></span><span class="done"></span><span class="done"></span><span></span><span></span>
-            </span>
+        <article class="constellation-card reveal" aria-label="Curriculum constellation map">
+          <div class="constellation-top">
+            <span>Mathematics graph</span>
+            <span>Ontology / diagnostics / review</span>
           </div>
-          <div class="card-main">
-            <div class="question">What is <sup>1</sup>/<sub>4</sub> + <sup>2</sup>/<sub>4</sub>?</div>
-            <div class="fraction-bars" aria-hidden="true">
-              <div class="bar"><span class="green"></span><span></span><span></span><span></span></div>
-              <div class="operator">+</div>
-              <div class="bar"><span class="blue"></span><span class="blue"></span><span></span><span></span></div>
-              <div class="operator">=</div>
-              <div class="bar empty result" id="result-bar" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
-            </div>
-            <div class="choices" id="hero-choices">
-              <button class="choice" type="button" data-answer="wrong">3/8</button>
-              <button class="choice" type="button" data-answer="right">3/4</button>
-              <button class="choice" type="button" data-answer="other">1/2</button>
-            </div>
-            <div class="feedback" id="feedback" aria-live="polite">
-              <strong>Try an answer.</strong>
-              <span>A mistake here can reveal whether the learner is adding denominators instead of counting fourths.</span>
-            </div>
+          <svg class="constellation" viewBox="0 0 720 560" role="img" aria-labelledby="constellation-title">
+            <title id="constellation-title">A constellation-style curriculum graph linking maths strands, topics, misconceptions, and evidence.</title>
+            <circle class="orbit" cx="360" cy="280" r="210"/>
+            <circle class="orbit" cx="360" cy="280" r="132"/>
+            <path class="edge-line" d="M118 310 C198 210 255 174 342 224"/>
+            <path class="edge-line" d="M342 224 C438 160 520 164 604 112"/>
+            <path class="edge-line" d="M342 224 C326 300 278 364 206 420"/>
+            <path class="edge-line" d="M342 224 C428 274 514 304 610 296"/>
+            <path class="edge-line hot" d="M206 420 C314 390 406 408 512 460"/>
+            <path class="edge-line" d="M118 310 C252 336 388 336 610 296"/>
+            <path class="edge-line" d="M260 112 C292 178 318 204 342 224"/>
+            <path class="edge-line hot" d="M512 460 C498 388 540 334 610 296"/>
+
+            <g class="star-node">
+              <circle cx="118" cy="310" r="12" fill="#8ee0b0"/>
+              <circle cx="260" cy="112" r="12" fill="#7dd7e8"/>
+              <circle cx="342" cy="224" r="15" fill="#fff5dc"/>
+              <circle cx="604" cy="112" r="12" fill="#ff9b73"/>
+              <circle cx="610" cy="296" r="12" fill="#8ee0b0"/>
+              <circle cx="206" cy="420" r="12" fill="#b9a1ff"/>
+              <circle cx="512" cy="460" r="12" fill="#7dd7e8"/>
+            </g>
+            <g>
+              <text class="star-label" x="92" y="340">Number</text>
+              <text class="star-label" x="220" y="92">Fractions</text>
+              <text class="star-label" x="306" y="205">Diagnostic core</text>
+              <text class="star-label" x="558" y="91">Algebra</text>
+              <text class="star-label" x="570" y="328">Functions</text>
+              <text class="star-label" x="158" y="452">Misconceptions</text>
+              <text class="star-label" x="470" y="492">Calculus</text>
+            </g>
+          </svg>
+          <div class="constellation-legend">
+            <span>Ontology</span>
+            <span>Prerequisites</span>
+            <span>Diagnostics</span>
+            <span>Evidence trails</span>
           </div>
         </article>
       </div>
     </section>
 
-    <section id="demo">
+    <section id="constellation">
       <div class="wrap reveal">
-        <span class="eyebrow">One answer, three useful views</span>
-        <h2>A wrong answer should explain what to do next.</h2>
-        <p class="deck">Charlie chooses 3/8. To the child, it is a gentle correction. To a parent or tutor, it is a likely misconception. To a builder, it is a checked event with graph context and evidence.</p>
-
-        <div class="tabs">
-          <div class="tab-list" role="tablist" aria-label="Pondera views">
-            <button class="tab" id="tab-learner" type="button" role="tab" aria-selected="true" aria-controls="panel-learner" data-tab="learner">Learner <span>What the child sees</span></button>
-            <button class="tab" id="tab-parent" type="button" role="tab" aria-selected="false" aria-controls="panel-parent" data-tab="parent" tabindex="-1">Parent / Tutor <span>What the mistake means</span></button>
-            <button class="tab" id="tab-studio" type="button" role="tab" aria-selected="false" aria-controls="panel-studio" data-tab="studio" tabindex="-1">Studio / Graph <span>How the system knows</span></button>
-          </div>
-
-          <div class="panel active" id="panel-learner" role="tabpanel" aria-labelledby="tab-learner">
-            <div class="panel-grid">
-              <div class="plain-card">
-                <h3>Feedback stays focused on the maths.</h3>
-                <p><strong>Not quite.</strong> You counted three shaded pieces, which is good. But the pieces are fourths, so the denominator stays 4.</p>
-                <div class="next-step">Next: rebuild the idea with a visual fraction bar, then try the symbolic question again.</div>
-              </div>
-              <div class="plain-card">
-                <h3>Hint voice</h3>
-                <p>Line up the pieces. You are adding fourths to fourths. Count how many fourths are shaded altogether.</p>
-                <p class="tag">No score shame. No random chat. Just the next useful nudge.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="panel" id="panel-parent" role="tabpanel" aria-labelledby="tab-parent" tabindex="0">
-            <div class="panel-grid">
-              <div class="plain-card">
-                <h3>Plain-language interpretation</h3>
-                <ul>
-                  <li><strong>Charlie answered:</strong> 3/8</li>
-                  <li><strong>Likely misconception:</strong> added denominators</li>
-                  <li><strong>Understands:</strong> the numerator counts shaded pieces</li>
-                  <li><strong>Needs work:</strong> keeping the unit size when adding same units</li>
-                </ul>
-              </div>
-              <div class="plain-card">
-                <h3>Recommended next step</h3>
-                <p>Return to a visual card where all pieces are the same size. Ask the learner to count fourths before writing the symbolic answer.</p>
-                <div class="next-step">Repair the denominator meaning, then move back to fraction addition.</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="panel" id="panel-studio" role="tabpanel" aria-labelledby="tab-studio" tabindex="0">
-            <div class="panel-grid">
-              <div class="mini-graph" aria-label="Small graph excerpt">
-                <svg viewBox="0 0 560 300" role="img" aria-labelledby="studio-graph-title">
-                  <title id="studio-graph-title">Graph excerpt linking unit fractions, same-denominator addition, denominator knowledge, and the added-denominators misconception.</title>
-                  <defs>
-                    <filter id="node-shadow" x="-20%" y="-20%" width="140%" height="140%">
-                      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#16324f" flood-opacity="0.08"/>
-                    </filter>
-                  </defs>
-                  <path d="M166 89 L276 145" stroke="#c8bea9" stroke-width="2"/>
-                  <path d="M332 146 L432 94" stroke="#c8bea9" stroke-width="2"/>
-                  <path d="M332 158 L438 232" stroke="#c8bea9" stroke-width="2"/>
-                  <g filter="url(#node-shadow)">
-                    <rect x="62" y="50" width="140" height="62" rx="31" fill="#fffdf8" stroke="#c8bea9"/>
-                    <text x="132" y="77" text-anchor="middle" fill="#34536f" font-size="13" font-family="Inter, sans-serif">Unit</text>
-                    <text x="132" y="94" text-anchor="middle" fill="#34536f" font-size="13" font-family="Inter, sans-serif">fractions</text>
-                    <rect x="214" y="120" width="156" height="70" rx="35" fill="#faece3" stroke="#c97a3d" stroke-width="2"/>
-                    <text x="292" y="149" text-anchor="middle" fill="#8f4f23" font-size="13" font-weight="700" font-family="Inter, sans-serif">Add same</text>
-                    <text x="292" y="166" text-anchor="middle" fill="#8f4f23" font-size="13" font-weight="700" font-family="Inter, sans-serif">denominators</text>
-                    <rect x="390" y="54" width="132" height="62" rx="31" fill="#fffdf8" stroke="#c8bea9"/>
-                    <text x="456" y="81" text-anchor="middle" fill="#34536f" font-size="13" font-family="Inter, sans-serif">Keep</text>
-                    <text x="456" y="98" text-anchor="middle" fill="#34536f" font-size="13" font-family="Inter, sans-serif">denominator</text>
-                    <rect x="388" y="208" width="148" height="62" rx="31" fill="#fffdf8" stroke="#c8bea9"/>
-                    <text x="462" y="235" text-anchor="middle" fill="#34536f" font-size="13" font-family="Inter, sans-serif">Added</text>
-                    <text x="462" y="252" text-anchor="middle" fill="#34536f" font-size="13" font-family="Inter, sans-serif">denominators</text>
-                  </g>
-                </svg>
-              </div>
-              <div class="code-card">
-                <span class="muted">checked_learning_event</span><br>
-                card: add_same_denominators<br>
-                answer: 3/8<br>
-                verdict: incorrect<br>
-                signal: likely_added_denominators<br>
-                next: visual_bar_remediation
-              </div>
-            </div>
-          </div>
+        <span class="eyebrow">The graph underneath</span>
+        <h2>Not lessons in a row. A sky map of what depends on what.</h2>
+        <p class="deck">Pondera treats curriculum as a typed graph: topics, knowledge points, prerequisites, misconceptions, representations, tasks, and evidence-producing checks. That graph is broad enough to support movement across school maths, not just one fraction demo.</p>
+        <div class="strand-map" aria-label="Maths graph coverage">
+          <div class="strand"><div><strong>Number</strong><span>counting, place value, operations, fractions, decimals</span></div><div class="strand-dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+          <div class="strand"><div><strong>Algebra</strong><span>patterns, expressions, equations, linear relationships</span></div><div class="strand-dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+          <div class="strand"><div><strong>Measurement</strong><span>length, area, volume, time, units, angles</span></div><div class="strand-dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+          <div class="strand"><div><strong>Space</strong><span>shapes, transformations, coordinates, trigonometry</span></div><div class="strand-dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+          <div class="strand"><div><strong>Statistics</strong><span>displays, summary statistics, variation, inference</span></div><div class="strand-dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+          <div class="strand"><div><strong>Probability</strong><span>chance, compound events, conditional probability</span></div><div class="strand-dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+          <div class="strand"><div><strong>Senior maths</strong><span>functions, modelling, calculus, advanced pathways</span></div><div class="strand-dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
         </div>
       </div>
     </section>
 
-    <section id="loop">
+    <section id="route">
       <div class="wrap reveal">
-        <span class="eyebrow">The learning loop</span>
-        <h2>Adaptive means the next step changes because the evidence changed.</h2>
-        <p class="deck">A right answer can move the learner forward. A shaky answer can trigger review. A particular wrong answer can reveal a particular misconception.</p>
-        <div class="loop">
-          <div class="loop-step"><span class="tag">01</span><h3>Card</h3><p>Show a focused fraction task.</p></div>
-          <div class="loop-step"><span class="tag">02</span><h3>Answer</h3><p>The learner chooses 3/8.</p></div>
-          <div class="loop-step"><span class="tag">03</span><h3>Check</h3><p>Structured rules mark it incorrect.</p></div>
-          <div class="loop-step"><span class="tag">04</span><h3>Evidence</h3><p>Record what the answer suggests.</p></div>
-          <div class="loop-step"><span class="tag">05</span><h3>Interpret</h3><p>Likely denominator misconception.</p></div>
-          <div class="loop-step"><span class="tag">06</span><h3>Next</h3><p>Choose visual remediation.</p></div>
+        <span class="eyebrow">Traversal, not worksheets</span>
+        <h2>Ready students should not wait for the calendar.</h2>
+        <p class="deck">A broad graph lets Pondera move quickly through secure territory, pause on shaky edges, and route around a precise misconception when a wrong answer reveals one. The path is not fixed by a workbook order.</p>
+        <div class="route">
+          <div class="route-step"><span class="tag">01 Observe</span><h3>Evidence arrives</h3><p>A check records what a learner did, not just whether the answer was right.</p></div>
+          <div class="route-step"><span class="tag">02 Locate</span><h3>Find the node</h3><p>The event attaches to a knowledge point, prerequisite, or misconception.</p></div>
+          <div class="route-step"><span class="tag">03 Infer</span><h3>Update state</h3><p>Mastery, confidence, and likely blockers shift in the local graph.</p></div>
+          <div class="route-step"><span class="tag">04 Route</span><h3>Choose the next star</h3><p>The next step can accelerate forward, review, or remediate.</p></div>
+          <div class="route-step"><span class="tag">05 Review</span><h3>Keep it inspectable</h3><p>AI-assisted content is checked against graph facts and deterministic rules.</p></div>
         </div>
       </div>
     </section>
 
-    <section id="map">
-      <div class="wrap reveal">
-        <span class="eyebrow">The map underneath</span>
-        <h2>A student should be able to move quickly through the maths they are ready for.</h2>
-        <p class="deck">The fraction card is only the visible edge. Underneath it is a growing graph that spans school maths from early number through algebra, geometry, statistics, probability, functions, and calculus. Pondera uses that map to skip what is secure, repair what is shaky, and choose the next useful step.</p>
-        <div class="graph-scale" aria-label="Pondera maths graph coverage">
-          <div class="graph-scale-head">
-            <h3>One connected maths map, not a pile of worksheets.</h3>
-            <p>Each dot stands for clusters of teachable skills, prerequisites, misconceptions, representations, tasks, and evidence links. The public demo shows fractions because it is easy to inspect; the graph is built for traversal across the whole path.</p>
-          </div>
-          <div class="strand-map">
-            <div class="strand"><div><strong>Number</strong><span>counting, place value, operations, fractions, decimals</span></div><div class="strand-dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
-            <div class="strand"><div><strong>Algebra</strong><span>patterns, expressions, equations, linear relationships</span></div><div class="strand-dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
-            <div class="strand"><div><strong>Measurement</strong><span>length, area, volume, time, units, angles</span></div><div class="strand-dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
-            <div class="strand"><div><strong>Space</strong><span>shapes, transformations, coordinates, trigonometry</span></div><div class="strand-dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
-            <div class="strand"><div><strong>Statistics</strong><span>displays, summary statistics, variation, inference</span></div><div class="strand-dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
-            <div class="strand"><div><strong>Probability</strong><span>chance, compound events, conditional probability</span></div><div class="strand-dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
-            <div class="strand"><div><strong>Senior maths</strong><span>functions, modelling, calculus, advanced pathways</span></div><div class="strand-dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
-          </div>
+    <section id="evidence">
+      <div class="wrap two-col reveal">
+        <div>
+          <span class="eyebrow">Diagnostic evidence</span>
+          <h2>A fraction mistake is just one evidence specimen.</h2>
+          <p class="deck">Different clients may want different learner surfaces. The durable part is the model beneath them: a wrong answer becomes evidence, evidence updates the graph-local learner state, and the graph picks a reasoned next move.</p>
         </div>
-        <div class="feature-grid">
-          <div class="feature">
-            <h3>Cards map to exact skills</h3>
-            <p>A task is not just a question. It is tied to the knowledge it is meant to practise, diagnose, or repair.</p>
-          </div>
-          <div class="feature">
-            <h3>Progress can be fast</h3>
-            <p>When connected skills look strong, the sequencer can move ahead instead of forcing a learner through every worksheet.</p>
-          </div>
-          <div class="feature">
-            <h3>Progress is evidence-based</h3>
-            <p>Wrong answers, correct answers, hints, and repair cards all update where the learner should go next.</p>
-          </div>
+        <div class="specimen-code" aria-label="Example checked learning event">
+          <span class="muted">checked_learning_event</span><br>
+          domain: mathematics<br>
+          local_area: fractions<br>
+          prompt: 1/4 + 2/4<br>
+          answer: 3/8<br>
+          verdict: incorrect<br>
+          signal: likely_added_denominators<br>
+          next: denominator_meaning_repair<br>
+          audit: inspectable
         </div>
       </div>
-    </section>
-
-    <section>
-      <div class="wrap reveal">
-        <span class="eyebrow">Placement by evidence</span>
-        <h2>Not just age. Not just grade. The edge of readiness.</h2>
-        <p class="deck">Pondera should place the learner where the evidence says they are: move ahead when connected skills look strong, review when knowledge is fading, and rebuild ideas when a misconception appears. That matters most when the map is broad enough for a learner to jump from secure foundations toward harder work without waiting for a calendar.</p>
-        <div class="feature-grid">
-          <div class="feature">
-            <h3>Different strengths can coexist</h3>
-            <p>A learner might be ready to move forward in one area while needing repair in another.</p>
-          </div>
-          <div class="feature">
-            <h3>Prerequisites can be inferred</h3>
-            <p>Strong downstream performance can count as evidence that earlier skills are probably solid.</p>
-          </div>
-          <div class="feature">
-            <h3>The path can accelerate</h3>
-            <p>The goal is not to finish a worksheet. The goal is to choose the best next piece of maths, even when that means moving ahead quickly.</p>
-          </div>
-        </div>
+      <div class="wrap specimen-grid reveal">
+        <div class="specimen"><span class="tag">Ontology</span><h3>Structure first</h3><p>Curriculum standards are useful, but Pondera's primary unit is the teachable, diagnosable knowledge node.</p></div>
+        <div class="specimen"><span class="tag">Diagnostics</span><h3>Errors have shape</h3><p>A mistake can point to a misconception, a missing prerequisite, or a fragile representation.</p></div>
+        <div class="specimen"><span class="tag">Review</span><h3>AI stays bounded</h3><p>Hints and wording can vary, but graph IDs, checker logic, and evidence rules stay validated.</p></div>
       </div>
     </section>
 
@@ -902,8 +685,8 @@
         <div class="alpha-box">
           <div>
             <span class="eyebrow">Status</span>
-            <h2>Early alpha, built from a real working loop and a broad maths graph.</h2>
-            <p>The current example is fraction addition because it shows the whole shape clearly: a learner card, a checked answer, a likely misconception, an evidence trail, and a recommended next step. Behind it is a K-12 maths graph being expanded across the path to senior high-school topics.</p>
+            <h2>Early alpha, built around the knowledge graph.</h2>
+            <p>Pondera is being built as an inspectable learning-systems product for real home-education use: curriculum ontology, diagnostics, mastery state, deterministic checks, and AI-assisted review on rails.</p>
           </div>
           <a class="button primary" href="mailto:hello@pondera.dev?subject=Pondera%20early%20access">Get in touch</a>
         </div>
@@ -913,74 +696,12 @@
 
   <footer>
     <div class="wrap">
-      <span>Pondera - built by Lachlan Bridges</span>
-      <span><a href="https://github.com/pondera-labs/pondera" target="_blank" rel="noopener">GitHub</a><a href="mailto:hello@pondera.dev">Contact</a></span>
+      <span>Pondera Labs - learning systems laboratory</span>
+      <span><a href="#constellation">Graph</a><a href="#route">Traversal</a><a href="#evidence">Evidence</a></span>
     </div>
   </footer>
 
   <script>
-    const feedback = document.getElementById("feedback");
-    const resultBar = document.getElementById("result-bar");
-    const choices = Array.from(document.querySelectorAll(".choice"));
-
-    function paintResult(kind) {
-      const cells = Array.from(resultBar.querySelectorAll("span"));
-      resultBar.dataset.answer = kind;
-      cells.forEach((cell) => {
-        cell.classList.remove("fill-green", "fill-clay");
-      });
-
-      const count = kind === "other" ? 2 : 3;
-      const fill = kind === "right" ? "fill-green" : "fill-clay";
-      cells.slice(0, count).forEach((cell) => cell.classList.add(fill));
-    }
-
-    function chooseAnswer(kind) {
-      choices.forEach((button) => {
-        button.classList.remove("selected-right", "selected-wrong");
-        if (button.dataset.answer === kind) {
-          button.classList.add(kind === "right" ? "selected-right" : "selected-wrong");
-        }
-      });
-      paintResult(kind);
-
-      if (kind === "right") {
-        feedback.dataset.state = "right";
-        feedback.innerHTML = "<strong>Yes: 3/4.</strong><span>You counted three fourths. Pondera can move forward or strengthen this skill with another example.</span><span class='small'>evidence: supports same-denominator addition</span>";
-      } else if (kind === "wrong") {
-        feedback.dataset.state = "wrong";
-        feedback.innerHTML = "<strong>Useful mistake: 3/8.</strong><span>This often means the learner added denominators. The next card should rebuild what the denominator means.</span><span class='small'>evidence: likely added-denominators misconception</span>";
-      } else {
-        feedback.dataset.state = "wrong";
-        feedback.innerHTML = "<strong>Not quite.</strong><span>This answer is incorrect, but it does not match the main denominator-addition pattern as clearly.</span><span class='small'>evidence: weakens current skill confidence</span>";
-      }
-    }
-
-    choices.forEach((button) => button.addEventListener("click", () => chooseAnswer(button.dataset.answer)));
-
-    const tabs = Array.from(document.querySelectorAll(".tab"));
-    const panels = Array.from(document.querySelectorAll(".panel"));
-    function activateTab(tab) {
-      const panelId = tab.getAttribute("aria-controls");
-      tabs.forEach((button) => {
-        const selected = button === tab;
-        button.setAttribute("aria-selected", selected ? "true" : "false");
-        button.tabIndex = selected ? 0 : -1;
-      });
-      panels.forEach((panel) => panel.classList.toggle("active", panel.id === panelId));
-    }
-    tabs.forEach((tab, index) => {
-      tab.addEventListener("click", () => activateTab(tab));
-      tab.addEventListener("keydown", (event) => {
-        if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") return;
-        event.preventDefault();
-        const direction = event.key === "ArrowRight" ? 1 : -1;
-        const next = tabs[(index + direction + tabs.length) % tabs.length];
-        activateTab(next);
-        next.focus();
-      });
-    });
-
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
