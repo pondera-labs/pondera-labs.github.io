@@ -158,8 +158,13 @@
       overflow: hidden;
     }
     .hero .wrap {
+      max-width: 1240px;
       padding-left: 32px;
       position: relative;
+      display: grid;
+      grid-template-columns: minmax(320px, 0.82fr) minmax(520px, 1.18fr);
+      gap: 44px;
+      align-items: start;
     }
     .hero-kicker {
       font-family: var(--font-mono);
@@ -172,7 +177,7 @@
     .hero h1 {
       font-family: var(--font-serif);
       font-weight: 500;
-      font-size: 44px;
+      font-size: 56px;
       line-height: 1.18;
       letter-spacing: -0.015em;
       margin: 0 0 22px;
@@ -243,6 +248,343 @@
     .btn-secondary:hover {
       border-color: var(--ink);
       color: var(--ink);
+    }
+
+    .product-board {
+      display: grid;
+      gap: 16px;
+      transform: translateY(2px);
+    }
+    .surface {
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid var(--hairline);
+      border-radius: 12px;
+      box-shadow: 0 16px 44px rgba(22, 50, 79, 0.12);
+      overflow: hidden;
+    }
+    .surface-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--hairline);
+      font-size: 12px;
+      color: var(--warm-gray);
+    }
+    .surface-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--ink);
+      font-weight: 600;
+    }
+    .leaf-mark {
+      width: 18px;
+      height: 18px;
+      border: 1px solid var(--moss);
+      border-radius: 50%;
+      display: inline-block;
+      position: relative;
+    }
+    .leaf-mark::after {
+      content: "";
+      position: absolute;
+      width: 8px;
+      height: 11px;
+      border: 1px solid var(--moss);
+      border-left: 0;
+      border-bottom: 0;
+      border-radius: 8px 8px 0 0;
+      left: 5px;
+      top: 3px;
+      transform: rotate(35deg);
+    }
+    .student-surface {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 178px;
+      min-height: 342px;
+    }
+    .practice-card {
+      padding: 26px 28px 24px;
+      border-right: 1px solid var(--hairline);
+      display: grid;
+      align-content: start;
+      gap: 18px;
+    }
+    .crumb {
+      font-size: 12px;
+      color: var(--warm-gray);
+    }
+    .question {
+      text-align: center;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .fraction-visual {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr auto 1fr;
+      align-items: center;
+      gap: 12px;
+    }
+    .mini-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      height: 48px;
+      border: 1.5px solid var(--ink);
+      border-radius: 7px;
+      overflow: hidden;
+      background: var(--paper);
+    }
+    .mini-bar span {
+      border-right: 1px solid var(--hairline-strong);
+    }
+    .mini-bar span:last-child { border-right: 0; }
+    .mini-bar .green { background: #a8d69b; }
+    .mini-bar .blue { background: #95c7e8; }
+    .mini-bar.dashed {
+      border-style: dashed;
+      opacity: 0.82;
+    }
+    .operator {
+      font-family: var(--font-serif);
+      font-size: 26px;
+      color: var(--ink-soft);
+    }
+    .answer-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(72px, 1fr));
+      gap: 12px;
+    }
+    .answer-choice {
+      border: 1px solid var(--hairline);
+      border-radius: 10px;
+      background: var(--paper-raised);
+      min-height: 54px;
+      display: grid;
+      place-items: center;
+      font-family: var(--font-serif);
+      font-size: 22px;
+      box-shadow: 0 6px 18px rgba(22, 50, 79, 0.05);
+    }
+    .answer-choice.selected {
+      background: var(--moss-light);
+      border-color: var(--moss);
+      color: var(--moss-deep);
+      box-shadow: 0 0 0 4px rgba(60, 122, 92, 0.12);
+    }
+    .student-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+    .pill-button {
+      border: 1px solid var(--hairline-strong);
+      border-radius: 8px;
+      padding: 8px 14px;
+      background: var(--paper-raised);
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .pill-button.next {
+      background: var(--moss);
+      color: white;
+      border-color: var(--moss);
+    }
+    .hint-rail {
+      padding: 16px 14px;
+      display: grid;
+      gap: 12px;
+      background: #fbfaf7;
+    }
+    .hint-card {
+      border: 1px solid var(--hairline);
+      border-radius: 10px;
+      background: white;
+      padding: 12px;
+      font-size: 12px;
+      color: var(--ink-soft);
+    }
+    .hint-card strong {
+      color: var(--ink);
+      display: block;
+      margin-bottom: 6px;
+    }
+    .tiny-equation {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 10px;
+    }
+    .tiny-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      width: 46px;
+      height: 18px;
+      border: 1px solid var(--hairline-strong);
+    }
+    .tiny-bar span { border-right: 1px solid var(--hairline); }
+    .tiny-bar span:last-child { border-right: 0; }
+    .tiny-bar .green { background: #a8d69b; }
+    .tiny-bar .blue { background: #95c7e8; }
+    .surface-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .mini-surface {
+      padding: 16px;
+      min-height: 206px;
+    }
+    .surface-title {
+      margin: 0 0 12px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .activity-list {
+      display: grid;
+      gap: 8px;
+    }
+    .activity-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      font-size: 12px;
+      color: var(--ink-soft);
+    }
+    .activity-item strong { color: var(--ink); }
+    .status-good { color: var(--moss); font-weight: 700; }
+    .status-watch { color: var(--clay); font-weight: 700; }
+    .confidence-bar {
+      height: 82px;
+      display: flex;
+      align-items: end;
+      gap: 8px;
+      margin-top: 14px;
+    }
+    .confidence-bar span {
+      width: 22px;
+      border-radius: 5px 5px 0 0;
+      background: var(--clay-light);
+      border: 1px solid #efb58c;
+    }
+    .confidence-bar span:nth-child(1) { height: 70%; }
+    .confidence-bar span:nth-child(2) { height: 42%; background: #fff7ed; }
+    .hex-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 28px);
+      gap: 5px;
+      margin: 10px 0 12px;
+    }
+    .hex {
+      width: 28px;
+      height: 24px;
+      clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+      background: var(--moss-light);
+      border: 1px solid var(--moss);
+    }
+    .hex.dev { background: #fff1c6; border-color: #d8a018; }
+    .hex.risk { background: #ffdce1; border-color: #c75c6d; }
+    .hex.empty { background: #f1f3f1; border-color: #c9d0c8; }
+    .studio-surface {
+      padding: 0;
+      display: grid;
+      grid-template-columns: 72px 1fr 238px;
+      min-height: 256px;
+    }
+    .studio-nav {
+      background: #17263a;
+      color: rgba(255,255,255,0.72);
+      display: grid;
+      align-content: start;
+      gap: 10px;
+      padding: 16px 10px;
+      font-size: 11px;
+    }
+    .studio-nav strong { color: white; margin-bottom: 8px; }
+    .graph-canvas {
+      position: relative;
+      background: #fbfaf7;
+      border-right: 1px solid var(--hairline);
+      min-height: 256px;
+      overflow: hidden;
+    }
+    .graph-node {
+      position: absolute;
+      width: 82px;
+      min-height: 42px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      font-size: 10px;
+      line-height: 1.2;
+      background: white;
+      border: 1px solid var(--hairline-strong);
+      color: var(--ink-soft);
+      box-shadow: 0 8px 18px rgba(22, 50, 79, 0.06);
+    }
+    .graph-node.focus {
+      background: #eee7ff;
+      border-color: #7b61c8;
+      color: #4a2f92;
+      box-shadow: 0 0 0 6px rgba(123, 97, 200, 0.1);
+    }
+    .graph-line {
+      position: absolute;
+      height: 1px;
+      background: var(--hairline-strong);
+      transform-origin: left center;
+    }
+    .checker-panel {
+      padding: 16px;
+      font-size: 12px;
+      color: var(--ink-soft);
+    }
+    .rule-list {
+      display: grid;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .rule-list div {
+      display: grid;
+      grid-template-columns: 14px 1fr;
+      gap: 6px;
+      align-items: start;
+    }
+    .check-dot {
+      color: var(--moss);
+      font-weight: 700;
+    }
+
+    .audience-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .audience-card {
+      background: var(--paper-raised);
+      border: 1px solid var(--hairline);
+      border-radius: 8px;
+      padding: 18px 18px 20px;
+    }
+    .audience-card h3 {
+      margin: 0 0 8px;
+      color: var(--ink);
+      font-size: 15px;
+    }
+    .audience-card p {
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: 14.5px;
+    }
+    .audience-card .tag {
+      display: inline-block;
+      margin-bottom: 10px;
+      color: var(--clay-deep);
     }
 
     .live-demo,
@@ -661,9 +1003,25 @@
 
     @media (max-width: 640px) {
       .hero h1 { font-size: 31px; }
+      .hero .wrap,
+      .student-surface,
+      .surface-row,
+      .studio-surface,
       .principle-grid,
       .adaptive-grid,
+      .audience-grid,
       .worked-grid { grid-template-columns: 1fr; }
+      .student-surface .practice-card {
+        border-right: 0;
+        border-bottom: 1px solid var(--hairline);
+      }
+      .product-board { margin-top: 12px; }
+      .answer-grid { grid-template-columns: repeat(2, minmax(72px, 1fr)); }
+      .studio-nav {
+        grid-template-columns: repeat(3, 1fr);
+        align-content: stretch;
+      }
+      .studio-nav strong { grid-column: 1 / -1; }
       .worked-visual { position: static; }
       .pipeline-row { flex-direction: column; }
       .pipe-node + .pipe-node {
@@ -694,34 +1052,161 @@
 
   <section class="section hero">
     <div class="wrap">
-      <span class="hero-kicker">graph.kp.fractions.keep_denominator_when_adding_same_units</span>
-      <h1>Math is taught with certainty.<br>Tutoring shouldn't <span class="accent-word">lose that</span>.</h1>
-      <p class="lede">
-        Pondera is a graph-backed adaptive learning system. A deterministic curriculum graph and checker decide what's correct and what comes next - <strong>AI helps with how it's explained, never with what's true.</strong>
-      </p>
-      <div class="cta-row">
-        <a href="#contact" class="btn btn-primary">Request early access</a>
-        <a href="#how-it-works" class="btn btn-secondary">See how it works</a>
+      <div class="hero-copy">
+        <span class="hero-kicker">graph-backed adaptive learning</span>
+        <h1>Adaptive learning that can <span class="accent-word">show its working</span>.</h1>
+        <p class="lede">
+          Pondera combines a curriculum graph, deterministic checkers, and constrained AI tutoring to give every learner the right next step - <strong>and the transparency to prove it.</strong>
+        </p>
+        <div class="cta-row">
+          <a href="#contact" class="btn btn-primary">Request early access</a>
+          <a href="#how-it-works" class="btn btn-secondary">See how it works</a>
+        </div>
+
+        <div class="live-demo reveal">
+          <div class="demo-label">
+            <span class="demo-title">Live vertical slice</span>
+            <span class="tag">scene.fraction_bar.v0</span>
+          </div>
+          <p class="live-prompt">The fraction bar shows <strong>1/4 + 2/4</strong>. What's the total?</p>
+          <div class="fbar" id="hero-fbar" aria-hidden="true">
+            <div class="seg" data-i="0"></div>
+            <div class="seg" data-i="1"></div>
+            <div class="seg" data-i="2"></div>
+            <div class="seg" data-i="3"></div>
+          </div>
+          <div class="choice-row" id="hero-choices">
+            <button class="choice-btn" data-answer="wrong" type="button">3/8</button>
+            <button class="choice-btn" data-answer="right" type="button">3/4</button>
+            <button class="choice-btn" data-answer="other" type="button">1/2</button>
+          </div>
+          <div class="live-feedback" id="hero-feedback" aria-live="polite"></div>
+        </div>
       </div>
 
-      <div class="live-demo reveal">
-        <div class="demo-label">
-          <span class="demo-title">Try it</span>
-          <span class="tag">scene.fraction_bar.v0</span>
+      <div class="product-board reveal" aria-label="Pondera product direction mockups">
+        <div class="surface">
+          <div class="surface-top">
+            <span class="surface-brand"><span class="leaf-mark" aria-hidden="true"></span>Pondera</span>
+            <span>student mode · early UI direction</span>
+          </div>
+          <div class="student-surface">
+            <div class="practice-card">
+              <div class="crumb">Fractions / Same-denominator addition</div>
+              <div class="question">What is <sup>1</sup>/<sub>4</sub> + <sup>2</sup>/<sub>4</sub>?</div>
+              <div class="fraction-visual" aria-hidden="true">
+                <div class="mini-bar"><span class="green"></span><span></span><span></span><span></span></div>
+                <span class="operator">+</span>
+                <div class="mini-bar"><span class="blue"></span><span class="blue"></span><span></span><span></span></div>
+                <span class="operator">=</span>
+                <div class="mini-bar dashed"><span></span><span></span><span></span><span></span></div>
+              </div>
+              <div class="answer-grid">
+                <div class="answer-choice">1/4</div>
+                <div class="answer-choice">2/4</div>
+                <div class="answer-choice selected">3/4</div>
+                <div class="answer-choice">3/8</div>
+              </div>
+              <div class="student-actions">
+                <span class="pill-button">Hint</span>
+                <span class="pill-button next">Next</span>
+              </div>
+            </div>
+            <div class="hint-rail">
+              <div class="hint-card">
+                <strong>Need a hint?</strong>
+                Line up the pieces. The fourths are the same size, so keep the unit.
+                <div class="tiny-equation" aria-hidden="true">
+                  <div class="tiny-bar"><span class="green"></span><span></span><span></span><span></span></div>
+                  <span>+</span>
+                  <div class="tiny-bar"><span class="blue"></span><span class="blue"></span><span></span><span></span></div>
+                </div>
+              </div>
+              <div class="hint-card">
+                <strong>Show workings</strong>
+                The checker accepts equivalent fractions, but the evidence event records the exact rule used.
+              </div>
+            </div>
+          </div>
         </div>
-        <p class="live-prompt">The fraction bar shows <strong>1/4 + 2/4</strong>. What's the total?</p>
-        <div class="fbar" id="hero-fbar" aria-hidden="true">
-          <div class="seg" data-i="0"></div>
-          <div class="seg" data-i="1"></div>
-          <div class="seg" data-i="2"></div>
-          <div class="seg" data-i="3"></div>
+
+        <div class="surface-row">
+          <div class="surface mini-surface">
+            <h3 class="surface-title">Tutor / parent mode</h3>
+            <div class="activity-list">
+              <div class="activity-item"><span><strong>Fractions:</strong> add same denominators</span><span class="status-good">3/4</span></div>
+              <div class="activity-item"><span><strong>Place value:</strong> to 1000</span><span class="status-good">5/6</span></div>
+              <div class="activity-item"><span><strong>Area:</strong> rectangles</span><span class="status-watch">2/4</span></div>
+            </div>
+            <div class="confidence-bar" aria-label="Likely next misconception confidence bars"><span></span><span></span></div>
+            <p class="tag">Likely next misconception: adding denominators</p>
+          </div>
+          <div class="surface mini-surface">
+            <h3 class="surface-title">Mastery snapshot</h3>
+            <div class="hex-grid" aria-hidden="true">
+              <span class="hex"></span><span class="hex"></span><span class="hex dev"></span><span class="hex"></span><span class="hex empty"></span>
+              <span class="hex"></span><span class="hex risk"></span><span class="hex dev"></span><span class="hex"></span><span class="hex empty"></span>
+              <span class="hex"></span><span class="hex"></span><span class="hex empty"></span><span class="hex dev"></span><span class="hex empty"></span>
+            </div>
+            <p class="tag">Strong · developing · at risk · not yet seen</p>
+          </div>
         </div>
-        <div class="choice-row" id="hero-choices">
-          <button class="choice-btn" data-answer="wrong" type="button">3/8</button>
-          <button class="choice-btn" data-answer="right" type="button">3/4</button>
-          <button class="choice-btn" data-answer="other" type="button">1/2</button>
+
+        <div class="surface studio-surface">
+          <div class="studio-nav">
+            <strong>Studio</strong>
+            <span>Graph</span>
+            <span>Cards</span>
+            <span>Checkers</span>
+            <span>Evidence</span>
+            <span>Reports</span>
+          </div>
+          <div class="graph-canvas" aria-label="Studio graph editor mockup">
+            <span class="graph-line" style="left: 118px; top: 87px; width: 112px; transform: rotate(30deg);"></span>
+            <span class="graph-line" style="left: 194px; top: 136px; width: 92px; transform: rotate(-35deg);"></span>
+            <span class="graph-line" style="left: 197px; top: 137px; width: 112px; transform: rotate(31deg);"></span>
+            <div class="graph-node" style="left: 106px; top: 34px;">Fractions<br>KP</div>
+            <div class="graph-node focus" style="left: 184px; top: 108px;">Add<br>fractions</div>
+            <div class="graph-node" style="left: 286px; top: 60px;">Equal<br>parts</div>
+            <div class="graph-node" style="left: 300px; top: 170px;">Add same<br>denominators</div>
+            <div class="graph-node" style="left: 76px; top: 174px;">Unit<br>fractions</div>
+          </div>
+          <div class="checker-panel">
+            <h3 class="surface-title">Checker rule</h3>
+            <div class="tag">same_denominator_add</div>
+            <div class="rule-list">
+              <div><span class="check-dot">ok</span><span>Same denominator</span></div>
+              <div><span class="check-dot">ok</span><span>Add numerators</span></div>
+              <div><span class="check-dot">ok</span><span>Keep denominator</span></div>
+              <div><span class="check-dot">ok</span><span>Emit evidence trail</span></div>
+            </div>
+          </div>
         </div>
-        <div class="live-feedback" id="hero-feedback" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap reveal">
+      <span class="tag section-label">pondera.modes</span>
+      <h2 class="h-section">Three faces of the same system</h2>
+      <p class="h-deck">The student sees a focused learning card. Families and tutors see progress and next actions. Builders see the graph, cards, checkers, and evidence that make it trustworthy.</p>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <span class="tag">student mode</span>
+          <h3>The card is the star</h3>
+          <p>Calm practice, gentle hints, and feedback that responds to the actual misconception instead of generic encouragement.</p>
+        </div>
+        <div class="audience-card">
+          <span class="tag">family / tutor mode</span>
+          <h3>Simple, actionable progress</h3>
+          <p>See what is strong, what is shaky, what misconception may be active, and what the next card is trying to repair.</p>
+        </div>
+        <div class="audience-card">
+          <span class="tag">studio / graph mode</span>
+          <h3>Author the machinery</h3>
+          <p>Build the graph, define card templates, validate checker rules, and inspect the evidence trail. AI helps on rails.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -730,20 +1215,22 @@
     <div class="wrap reveal">
       <span class="tag section-label">pondera.pipeline</span>
       <h2 class="h-section">The pipeline</h2>
-      <p class="h-deck">Five deterministic stages decide what a learner sees and what it means. Nothing here is generated by a language model.</p>
+      <p class="h-deck">Six deterministic pieces decide what a learner sees and what it means. AI can help explain the path, but it does not choose the truth.</p>
       <div class="pipeline-row" aria-label="Pondera deterministic learning pipeline">
-        <div class="pipe-node"><p class="pn-title">Graph</p><p class="pn-sub">what exists</p></div>
+        <div class="pipe-node"><p class="pn-title">Curriculum</p><p class="pn-sub">structured graph of skills</p></div>
         <div class="pipe-arrow" aria-hidden="true">-&gt;</div>
-        <div class="pipe-node"><p class="pn-title">Templates</p><p class="pn-sub">what may be asked</p></div>
+        <div class="pipe-node"><p class="pn-title">Task / Card</p><p class="pn-sub">validated learning surface</p></div>
         <div class="pipe-arrow" aria-hidden="true">-&gt;</div>
-        <div class="pipe-node"><p class="pn-title">Checker</p><p class="pn-sub">what is correct</p></div>
+        <div class="pipe-node"><p class="pn-title">Deterministic Check</p><p class="pn-sub">real rules validate answers</p></div>
         <div class="pipe-arrow" aria-hidden="true">-&gt;</div>
         <div class="pipe-node"><p class="pn-title">Evidence</p><p class="pn-sub">what it means</p></div>
         <div class="pipe-arrow" aria-hidden="true">-&gt;</div>
-        <div class="pipe-node"><p class="pn-title">Sequencer</p><p class="pn-sub">what comes next</p></div>
+        <div class="pipe-node"><p class="pn-title">Learner Model</p><p class="pn-sub">mastery updates in real time</p></div>
+        <div class="pipe-arrow" aria-hidden="true">-&gt;</div>
+        <div class="pipe-node"><p class="pn-title">Sequencer</p><p class="pn-sub">picks the next best step</p></div>
       </div>
       <p class="pipeline-note">
-        A knowledge point like <span class="tag">math.kp.fractions.keep_denominator_when_adding_same_units</span> sits in the graph with explicit prerequisites and misconceptions attached. AI may draft wording or a hint inside that scope - it cannot invent a graph id, change a checker's verdict, or decide what a learner has mastered.
+        <strong>AI tutor, on rails.</strong> A knowledge point like <span class="tag">math.kp.fractions.keep_denominator_when_adding_same_units</span> sits in the graph with explicit prerequisites and misconceptions attached. AI may draft wording or a hint inside that scope - it cannot invent a graph id, change a checker's verdict, or decide what a learner has mastered.
       </p>
     </div>
   </section>
@@ -815,20 +1302,20 @@
       <p class="h-deck">Adaptive tutoring usually means a model guessing at correctness and progress. Pondera separates the two questions: what's true, and how it's said.</p>
       <div class="principle-grid reveal-stagger">
         <div class="principle">
-          <h3>The graph is the authority</h3>
-          <p>Knowledge points, prerequisites, and misconceptions are structured and reviewable - not inferred fresh each session.</p>
+          <h3>Every card knows what it teaches</h3>
+          <p>Practice is tied to explicit knowledge points, misconceptions, representations, and prerequisites in the graph.</p>
         </div>
         <div class="principle">
-          <h3>Checkers, not judgment calls</h3>
-          <p>Every attempt is judged by a versioned, testable checker. The same answer always gets the same verdict.</p>
+          <h3>Every answer is checked by rules</h3>
+          <p>Versioned deterministic checkers decide correctness. The same answer gets the same verdict every time.</p>
         </div>
         <div class="principle">
-          <h3>Evidence is auditable</h3>
-          <p>Every attempt produces a structured evidence event tied to task, checker version, and timestamp.</p>
+          <h3>Every misconception is traceable</h3>
+          <p>A wrong answer can activate a named misconception with a confidence score and a concrete failure signal.</p>
         </div>
         <div class="principle">
-          <h3>AI assists, doesn't decide</h3>
-          <p>Wording, hints, and narration may be AI-assisted. Correctness, mastery, and sequencing stay deterministic.</p>
+          <h3>Every next step has a reason</h3>
+          <p>The sequencer can explain why it chose review, remediation, or new material from the learner model.</p>
         </div>
       </div>
     </div>
