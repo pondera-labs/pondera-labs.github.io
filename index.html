@@ -8,6 +8,12 @@
   <meta property="og:title" content="Pondera - adaptive maths practice that treats mistakes as clues">
   <meta property="og:description" content="Structured maths practice with a curriculum graph, explicit answer checks, evidence trails, and misconception-specific next steps.">
   <meta property="og:type" content="website">
+  <meta property="og:image" content="https://pondera-labs.github.io/assets/og-image.svg">
+  <meta property="og:image:type" content="image/svg+xml">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://pondera-labs.github.io/assets/og-image.svg">
   <meta name="theme-color" content="#FAF8F3">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -248,6 +254,27 @@
     .bar .green { background: #a9d99c; }
     .bar .blue { background: #91c8ee; }
     .bar.empty { border-style: dashed; opacity: 0.75; }
+    .bar.result {
+      transition: border-color 0.18s var(--ease), background 0.18s var(--ease), opacity 0.18s var(--ease);
+    }
+    .bar.result span {
+      transition: background 0.18s var(--ease);
+    }
+    .bar.result[data-answer="right"] {
+      border-style: solid;
+      border-color: var(--moss);
+      background: var(--moss-soft);
+      opacity: 1;
+    }
+    .bar.result[data-answer="wrong"],
+    .bar.result[data-answer="other"] {
+      border-style: solid;
+      border-color: var(--clay);
+      background: var(--clay-soft);
+      opacity: 1;
+    }
+    .bar.result .fill-green { background: #a9d99c; }
+    .bar.result .fill-clay { background: #e9b58b; }
     .operator {
       font-family: var(--serif);
       font-size: 34px;
@@ -320,6 +347,7 @@
       border-radius: 18px;
       box-shadow: var(--shadow);
       overflow: hidden;
+      min-height: 440px;
     }
     .tab-list {
       display: grid;
@@ -395,38 +423,17 @@
       margin-top: 14px;
     }
     .mini-graph {
-      position: relative;
       min-height: 300px;
       background: #fbf7ef;
       border: 1px solid var(--line);
       border-radius: 14px;
       overflow: hidden;
     }
-    .node {
-      position: absolute;
-      width: 112px;
-      min-height: 54px;
-      border: 1px solid var(--line-strong);
-      border-radius: 999px;
-      background: white;
-      display: grid;
-      place-items: center;
-      text-align: center;
-      font-size: 12px;
-      color: var(--ink-soft);
-      box-shadow: 0 10px 22px rgba(22, 50, 79, 0.06);
-    }
-    .node.focus {
-      border-color: var(--clay);
-      background: var(--clay-soft);
-      color: var(--clay-deep);
-      box-shadow: 0 0 0 8px rgba(201, 122, 61, 0.12);
-    }
-    .edge {
-      position: absolute;
-      height: 1px;
-      background: var(--line-strong);
-      transform-origin: left center;
+    .mini-graph svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+      min-height: 300px;
     }
     .code-card {
       background: #13283d;
@@ -534,8 +541,6 @@
       background: var(--moss);
       opacity: 0.72;
     }
-    .strand:nth-child(2n) .strand-dots i { background: var(--clay); }
-    .strand:nth-child(3n) .strand-dots i { background: var(--ink-soft); }
 
     .alpha-box {
       background: var(--card);
@@ -648,7 +653,7 @@
               <div class="operator">+</div>
               <div class="bar"><span class="blue"></span><span class="blue"></span><span></span><span></span></div>
               <div class="operator">=</div>
-              <div class="bar empty"><span></span><span></span><span></span><span></span></div>
+              <div class="bar empty result" id="result-bar" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
             </div>
             <div class="choices" id="hero-choices">
               <button class="choice" type="button" data-answer="wrong">3/8</button>
@@ -714,13 +719,31 @@
           <div class="panel" id="panel-studio" role="tabpanel" aria-labelledby="tab-studio" tabindex="0">
             <div class="panel-grid">
               <div class="mini-graph" aria-label="Small graph excerpt">
-                <span class="edge" style="left: 142px; top: 84px; width: 142px; transform: rotate(28deg);"></span>
-                <span class="edge" style="left: 256px; top: 156px; width: 124px; transform: rotate(-32deg);"></span>
-                <span class="edge" style="left: 258px; top: 157px; width: 148px; transform: rotate(31deg);"></span>
-                <div class="node" style="left: 92px; top: 42px;">Unit fractions</div>
-                <div class="node focus" style="left: 220px; top: 128px;">Add same denominators</div>
-                <div class="node" style="left: 394px; top: 74px;">Keep denominator</div>
-                <div class="node" style="left: 408px; top: 214px;">Added denominators</div>
+                <svg viewBox="0 0 560 300" role="img" aria-labelledby="studio-graph-title">
+                  <title id="studio-graph-title">Graph excerpt linking unit fractions, same-denominator addition, denominator knowledge, and the added-denominators misconception.</title>
+                  <defs>
+                    <filter id="node-shadow" x="-20%" y="-20%" width="140%" height="140%">
+                      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#16324f" flood-opacity="0.08"/>
+                    </filter>
+                  </defs>
+                  <path d="M166 89 L276 145" stroke="#c8bea9" stroke-width="2"/>
+                  <path d="M332 146 L432 94" stroke="#c8bea9" stroke-width="2"/>
+                  <path d="M332 158 L438 232" stroke="#c8bea9" stroke-width="2"/>
+                  <g filter="url(#node-shadow)">
+                    <rect x="62" y="50" width="140" height="62" rx="31" fill="#fffdf8" stroke="#c8bea9"/>
+                    <text x="132" y="77" text-anchor="middle" fill="#34536f" font-size="13" font-family="Inter, sans-serif">Unit</text>
+                    <text x="132" y="94" text-anchor="middle" fill="#34536f" font-size="13" font-family="Inter, sans-serif">fractions</text>
+                    <rect x="214" y="120" width="156" height="70" rx="35" fill="#faece3" stroke="#c97a3d" stroke-width="2"/>
+                    <text x="292" y="149" text-anchor="middle" fill="#8f4f23" font-size="13" font-weight="700" font-family="Inter, sans-serif">Add same</text>
+                    <text x="292" y="166" text-anchor="middle" fill="#8f4f23" font-size="13" font-weight="700" font-family="Inter, sans-serif">denominators</text>
+                    <rect x="390" y="54" width="132" height="62" rx="31" fill="#fffdf8" stroke="#c8bea9"/>
+                    <text x="456" y="81" text-anchor="middle" fill="#34536f" font-size="13" font-family="Inter, sans-serif">Keep</text>
+                    <text x="456" y="98" text-anchor="middle" fill="#34536f" font-size="13" font-family="Inter, sans-serif">denominator</text>
+                    <rect x="388" y="208" width="148" height="62" rx="31" fill="#fffdf8" stroke="#c8bea9"/>
+                    <text x="462" y="235" text-anchor="middle" fill="#34536f" font-size="13" font-family="Inter, sans-serif">Added</text>
+                    <text x="462" y="252" text-anchor="middle" fill="#34536f" font-size="13" font-family="Inter, sans-serif">denominators</text>
+                  </g>
+                </svg>
               </div>
               <div class="code-card">
                 <span class="muted">checked_learning_event</span><br>
@@ -834,7 +857,20 @@
 
   <script>
     const feedback = document.getElementById("feedback");
+    const resultBar = document.getElementById("result-bar");
     const choices = Array.from(document.querySelectorAll(".choice"));
+
+    function paintResult(kind) {
+      const cells = Array.from(resultBar.querySelectorAll("span"));
+      resultBar.dataset.answer = kind;
+      cells.forEach((cell) => {
+        cell.classList.remove("fill-green", "fill-clay");
+      });
+
+      const count = kind === "other" ? 2 : 3;
+      const fill = kind === "right" ? "fill-green" : "fill-clay";
+      cells.slice(0, count).forEach((cell) => cell.classList.add(fill));
+    }
 
     function chooseAnswer(kind) {
       choices.forEach((button) => {
@@ -843,6 +879,7 @@
           button.classList.add(kind === "right" ? "selected-right" : "selected-wrong");
         }
       });
+      paintResult(kind);
 
       if (kind === "right") {
         feedback.dataset.state = "right";
