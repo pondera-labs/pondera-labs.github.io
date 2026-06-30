@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Pondera - deterministic adaptive learning</title>
-  <meta name="description" content="Pondera is a graph-backed, deterministic adaptive learning system. Math is taught with certainty; tutoring should not lose that.">
-  <meta property="og:title" content="Pondera - deterministic adaptive learning">
-  <meta property="og:description" content="A graph-backed adaptive learning system where deterministic checkers decide what is true and AI helps explain it.">
+  <title>Pondera - adaptive maths practice that can show its working</title>
+  <meta name="description" content="Pondera is early-alpha adaptive maths practice with structured checkers, a curriculum graph, misconception-specific remediation, and an inspectable evidence trail.">
+  <meta property="og:title" content="Pondera - adaptive maths practice that can show its working">
+  <meta property="og:description" content="A warm, precise, graph-backed learning system where beautiful cards, structured checkers, and evidence trails work together.">
   <meta property="og:type" content="website">
   <meta name="theme-color" content="#FAF8F3">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -262,6 +262,14 @@
       box-shadow: 0 16px 44px rgba(22, 50, 79, 0.12);
       overflow: hidden;
     }
+    .hero .product-board {
+      max-width: 680px;
+      justify-self: end;
+    }
+    .hero .surface-row,
+    .hero .studio-surface {
+      display: none;
+    }
     .surface-top {
       display: flex;
       justify-content: space-between;
@@ -494,6 +502,149 @@
       display: grid;
       grid-template-columns: 72px 1fr 238px;
       min-height: 256px;
+    }
+    .views-section .wrap { max-width: 1120px; }
+    .view-tabs {
+      background: var(--paper-raised);
+      border: 1px solid var(--hairline);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 18px 50px rgba(22, 50, 79, 0.1);
+    }
+    .tab-list {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1px;
+      background: var(--hairline);
+      border-bottom: 1px solid var(--hairline);
+    }
+    .tab-button {
+      appearance: none;
+      border: 0;
+      background: #fbfaf7;
+      color: var(--ink-soft);
+      padding: 14px 16px;
+      font: 700 14px/1.2 var(--font-sans);
+      cursor: pointer;
+      text-align: left;
+      transition: background 0.18s var(--ease), color 0.18s var(--ease), box-shadow 0.18s var(--ease);
+    }
+    .tab-button span {
+      display: block;
+      margin-top: 4px;
+      font: 400 12px/1.35 var(--font-sans);
+      color: var(--warm-gray);
+    }
+    .tab-button[aria-selected="true"] {
+      background: var(--paper-raised);
+      color: var(--ink);
+      box-shadow: inset 0 3px 0 var(--clay);
+    }
+    .tab-button:focus-visible,
+    .choice-btn:focus-visible,
+    .btn:focus-visible {
+      outline: 3px solid rgba(201, 122, 61, 0.35);
+      outline-offset: 2px;
+    }
+    .view-panel {
+      display: none;
+      padding: 24px;
+      background: linear-gradient(180deg, #fffdf8 0%, #faf8f3 100%);
+    }
+    .view-panel.active { display: block; }
+    .view-copy {
+      max-width: 68ch;
+      margin: 0 0 18px;
+      color: var(--ink-soft);
+      font-size: 15px;
+    }
+    .parent-lens-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr 0.8fr;
+      gap: 16px;
+    }
+    .lens-card {
+      background: white;
+      border: 1px solid var(--hairline);
+      border-radius: 12px;
+      padding: 18px;
+      min-height: 180px;
+    }
+    .lens-card h3 {
+      margin: 0 0 10px;
+      font-size: 15px;
+      color: var(--ink);
+    }
+    .lens-card p {
+      margin: 0 0 10px;
+      color: var(--ink-soft);
+      font-size: 14px;
+    }
+    .plain-list {
+      display: grid;
+      gap: 9px;
+      margin: 12px 0 0;
+      padding: 0;
+      list-style: none;
+      font-size: 14px;
+      color: var(--ink-soft);
+    }
+    .plain-list strong { color: var(--ink); }
+    .next-card {
+      border-left: 3px solid var(--moss);
+      background: var(--moss-light);
+      padding: 12px;
+      border-radius: 8px;
+      color: var(--moss-deep);
+      font-size: 14px;
+    }
+    .studio-lens {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 280px;
+      gap: 16px;
+    }
+    .studio-evidence {
+      display: grid;
+      gap: 12px;
+    }
+    .code-card {
+      background: #15283e;
+      color: #f8f3e8;
+      border-radius: 12px;
+      padding: 16px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      line-height: 1.55;
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+    .code-card .muted { color: rgba(248,243,232,0.62); }
+    .loop-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: stretch;
+    }
+    .loop-step {
+      flex: 1 1 126px;
+      background: var(--paper-raised);
+      border: 1px solid var(--hairline);
+      border-radius: 8px;
+      padding: 14px;
+      min-height: 116px;
+    }
+    .loop-step .tag {
+      display: block;
+      color: var(--clay-deep);
+      margin-bottom: 8px;
+    }
+    .loop-step h3 {
+      margin: 0 0 6px;
+      font-size: 14px;
+    }
+    .loop-step p {
+      margin: 0;
+      font-size: 13px;
+      color: var(--ink-soft);
     }
     .studio-nav {
       background: #17263a;
@@ -1007,6 +1158,10 @@
       .student-surface,
       .surface-row,
       .studio-surface,
+      .tab-list,
+      .parent-lens-grid,
+      .studio-lens,
+      .loop-row,
       .principle-grid,
       .adaptive-grid,
       .audience-grid,
@@ -1053,14 +1208,14 @@
   <section class="section hero">
     <div class="wrap">
       <div class="hero-copy">
-        <span class="hero-kicker">graph-backed adaptive learning</span>
-        <h1>Adaptive learning that can <span class="accent-word">show its working</span>.</h1>
+        <span class="hero-kicker">early-alpha graph-backed maths practice</span>
+        <h1>Adaptive maths practice that can <span class="accent-word">show its working</span>.</h1>
         <p class="lede">
-          Pondera combines a curriculum graph, deterministic checkers, and constrained AI tutoring to give every learner the right next step - <strong>and the transparency to prove it.</strong>
+          Pondera gives each learner the right next card, checks answers with structured rules, and shows parents and tutors why the next step was chosen.
         </p>
         <div class="cta-row">
-          <a href="#contact" class="btn btn-primary">Request early access</a>
-          <a href="#how-it-works" class="btn btn-secondary">See how it works</a>
+          <a href="#one-card" class="btn btn-primary">Try the fraction slice</a>
+          <a href="#contact" class="btn btn-secondary">Request early access</a>
         </div>
 
         <div class="live-demo reveal">
@@ -1088,7 +1243,7 @@
         <div class="surface">
           <div class="surface-top">
             <span class="surface-brand"><span class="leaf-mark" aria-hidden="true"></span>Pondera</span>
-            <span>student mode · early UI direction</span>
+            <span>learner card - fraction slice</span>
           </div>
           <div class="student-surface">
             <div class="practice-card">
@@ -1124,7 +1279,7 @@
               </div>
               <div class="hint-card">
                 <strong>Show workings</strong>
-                The checker accepts equivalent fractions, but the evidence event records the exact rule used.
+                If a learner chooses 3/8, Pondera can show the misconception, evidence event, and next remediation card.
               </div>
             </div>
           </div>
@@ -1148,7 +1303,7 @@
               <span class="hex"></span><span class="hex risk"></span><span class="hex dev"></span><span class="hex"></span><span class="hex empty"></span>
               <span class="hex"></span><span class="hex"></span><span class="hex empty"></span><span class="hex dev"></span><span class="hex empty"></span>
             </div>
-            <p class="tag">Strong · developing · at risk · not yet seen</p>
+            <p class="tag">Strong / developing / at risk / not yet seen</p>
           </div>
         </div>
 
@@ -1186,26 +1341,148 @@
     </div>
   </section>
 
-  <section class="section">
+  <section class="section views-section" id="one-card">
     <div class="wrap reveal">
-      <span class="tag section-label">pondera.modes</span>
-      <h2 class="h-section">Three faces of the same system</h2>
-      <p class="h-deck">The student sees a focused learning card. Families and tutors see progress and next actions. Builders see the graph, cards, checkers, and evidence that make it trustworthy.</p>
-      <div class="audience-grid">
-        <div class="audience-card">
-          <span class="tag">student mode</span>
-          <h3>The card is the star</h3>
-          <p>Calm practice, gentle hints, and feedback that responds to the actual misconception instead of generic encouragement.</p>
+      <span class="tag section-label">one card. three views.</span>
+      <h2 class="h-section">Same card. Same answer. Three different lenses.</h2>
+      <p class="h-deck">The fraction slice is deliberately small: one card, one wrong answer, one misconception, and one next step. The point is that every layer can be inspected.</p>
+
+      <div class="view-tabs">
+        <div class="tab-list" role="tablist" aria-label="Pondera demo views">
+          <button class="tab-button" id="tab-learner" role="tab" type="button" aria-selected="true" aria-controls="panel-learner" data-view="learner">
+            Learner <span>The beautiful card first.</span>
+          </button>
+          <button class="tab-button" id="tab-parent" role="tab" type="button" aria-selected="false" aria-controls="panel-parent" data-view="parent" tabindex="-1">
+            Parent / Tutor <span>Plain-language interpretation.</span>
+          </button>
+          <button class="tab-button" id="tab-studio" role="tab" type="button" aria-selected="false" aria-controls="panel-studio" data-view="studio" tabindex="-1">
+            Studio / Graph <span>The machinery underneath.</span>
+          </button>
         </div>
-        <div class="audience-card">
-          <span class="tag">family / tutor mode</span>
-          <h3>Simple, actionable progress</h3>
-          <p>See what is strong, what is shaky, what misconception may be active, and what the next card is trying to repair.</p>
+
+        <div class="view-panel active" id="panel-learner" role="tabpanel" aria-labelledby="tab-learner">
+          <p class="view-copy">For the learner, the system should feel calm and doable. There is no graph jargon here: just a precise card, tactile fraction bars, a hint when needed, and feedback that stays focused on the maths.</p>
+          <div class="surface">
+            <div class="surface-top">
+              <span class="surface-brand"><span class="leaf-mark" aria-hidden="true"></span>Pondera</span>
+              <span>student mode</span>
+            </div>
+            <div class="student-surface">
+              <div class="practice-card">
+                <div class="crumb">Fractions / Same-denominator addition</div>
+                <div class="question">What is <sup>1</sup>/<sub>4</sub> + <sup>2</sup>/<sub>4</sub>?</div>
+                <div class="fraction-visual" aria-hidden="true">
+                  <div class="mini-bar"><span class="green"></span><span></span><span></span><span></span></div>
+                  <span class="operator">+</span>
+                  <div class="mini-bar"><span class="blue"></span><span class="blue"></span><span></span><span></span></div>
+                  <span class="operator">=</span>
+                  <div class="mini-bar dashed"><span></span><span></span><span></span><span></span></div>
+                </div>
+                <div class="answer-grid">
+                  <div class="answer-choice">3/8</div>
+                  <div class="answer-choice selected">3/4</div>
+                  <div class="answer-choice">1/2</div>
+                </div>
+                <div class="student-actions">
+                  <span class="pill-button">Hint</span>
+                  <span class="pill-button next">Next</span>
+                </div>
+              </div>
+              <div class="hint-rail">
+                <div class="hint-card">
+                  <strong>Need a hint?</strong>
+                  You are adding fourths to fourths. Count the shaded fourths, but keep the size of the pieces the same.
+                </div>
+                <div class="hint-card">
+                  <strong>Try this</strong>
+                  What about <sup>1</sup>/<sub>4</sub> + <sup>3</sup>/<sub>4</sub>? The unit is still fourths.
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="audience-card">
-          <span class="tag">studio / graph mode</span>
-          <h3>Author the machinery</h3>
-          <p>Build the graph, define card templates, validate checker rules, and inspect the evidence trail. AI helps on rails.</p>
+
+        <div class="view-panel" id="panel-parent" role="tabpanel" aria-labelledby="tab-parent" tabindex="0">
+          <p class="view-copy">For a parent or tutor, the same moment becomes a simple explanation of what happened and what to do next. It should be useful, not an enterprise analytics cockpit.</p>
+          <div class="parent-lens-grid">
+            <div class="lens-card">
+              <h3>What happened</h3>
+              <ul class="plain-list">
+                <li><strong>Charlie answered:</strong> 3/8</li>
+                <li><strong>Likely misconception:</strong> added denominators</li>
+                <li><strong>Understands:</strong> same-size parts can be counted</li>
+                <li><strong>Needs work:</strong> keeping the denominator when adding same units</li>
+              </ul>
+            </div>
+            <div class="lens-card">
+              <h3>Evidence and progress</h3>
+              <div class="hex-grid" aria-hidden="true">
+                <span class="hex"></span><span class="hex"></span><span class="hex dev"></span><span class="hex"></span><span class="hex empty"></span>
+                <span class="hex"></span><span class="hex risk"></span><span class="hex dev"></span><span class="hex"></span><span class="hex empty"></span>
+                <span class="hex"></span><span class="hex"></span><span class="hex empty"></span><span class="hex dev"></span><span class="hex empty"></span>
+              </div>
+              <p class="tag">Strong / developing / at risk / not yet seen</p>
+              <div class="confidence-bar" aria-label="Misconception confidence bars"><span></span><span></span></div>
+            </div>
+            <div class="lens-card">
+              <h3>Next step</h3>
+              <p>The next card should rebuild the meaning with visual bars before returning to symbolic addition.</p>
+              <div class="next-card">
+                Remediation: line up fourths, count shaded pieces, keep the unit size.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="view-panel" id="panel-studio" role="tabpanel" aria-labelledby="tab-studio" tabindex="0">
+          <p class="view-copy">For builders, the same moment exposes the graph, checker, and evidence trail. This is where internal IDs belong: as specimen labels for an inspectable learning event.</p>
+          <div class="studio-lens">
+            <div class="surface studio-surface">
+              <div class="studio-nav">
+                <strong>Studio</strong>
+                <span>Graph</span>
+                <span>Cards</span>
+                <span>Checkers</span>
+                <span>Evidence</span>
+                <span>Reports</span>
+              </div>
+              <div class="graph-canvas" aria-label="Studio graph editor mockup">
+                <span class="graph-line" style="left: 118px; top: 87px; width: 112px; transform: rotate(30deg);"></span>
+                <span class="graph-line" style="left: 194px; top: 136px; width: 92px; transform: rotate(-35deg);"></span>
+                <span class="graph-line" style="left: 197px; top: 137px; width: 112px; transform: rotate(31deg);"></span>
+                <div class="graph-node" style="left: 106px; top: 34px;">Fractions<br>KP</div>
+                <div class="graph-node focus" style="left: 184px; top: 108px;">Add<br>fractions</div>
+                <div class="graph-node" style="left: 286px; top: 60px;">Equal<br>parts</div>
+                <div class="graph-node" style="left: 300px; top: 170px;">Add same<br>denominators</div>
+                <div class="graph-node" style="left: 76px; top: 174px;">Unit<br>fractions</div>
+              </div>
+              <div class="checker-panel">
+                <h3 class="surface-title">Checker rule</h3>
+                <div class="tag">same_denominator_add</div>
+                <div class="rule-list">
+                  <div><span class="check-dot">ok</span><span>Same denominator</span></div>
+                  <div><span class="check-dot">ok</span><span>Add numerators</span></div>
+                  <div><span class="check-dot">ok</span><span>Keep denominator</span></div>
+                  <div><span class="check-dot">ok</span><span>Emit evidence trail</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="studio-evidence">
+              <div class="code-card">
+                <span class="muted">checker</span><br>
+                id: same_denominator_add<br>
+                answer: 3/8<br>
+                verdict: incorrect<br>
+                diagnostic: add_denominators_when_adding
+              </div>
+              <div class="code-card">
+                <span class="muted">evidence_event</span><br>
+                target: math.kp.fractions.keep_denominator_when_adding_same_units<br>
+                signal: activates_misconception<br>
+                next: visual_fraction_bar_remediation
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -1214,23 +1491,23 @@
   <section class="section" id="how-it-works">
     <div class="wrap reveal">
       <span class="tag section-label">pondera.pipeline</span>
-      <h2 class="h-section">The pipeline</h2>
-      <p class="h-deck">Six deterministic pieces decide what a learner sees and what it means. AI can help explain the path, but it does not choose the truth.</p>
-      <div class="pipeline-row" aria-label="Pondera deterministic learning pipeline">
-        <div class="pipe-node"><p class="pn-title">Curriculum</p><p class="pn-sub">structured graph of skills</p></div>
+      <h2 class="h-section">How one attempt becomes the next card</h2>
+      <p class="h-deck">The important event is not just a chat response. It is a checked learning event: what card was shown, what the learner answered, what rule judged it, what evidence was recorded, and what changed next.</p>
+      <div class="loop-row" aria-label="One Pondera learning attempt loop">
+        <div class="loop-step"><span class="tag">01</span><h3>Card</h3><p>1/4 + 2/4 appears with fraction bars.</p></div>
         <div class="pipe-arrow" aria-hidden="true">-&gt;</div>
-        <div class="pipe-node"><p class="pn-title">Task / Card</p><p class="pn-sub">validated learning surface</p></div>
+        <div class="loop-step"><span class="tag">02</span><h3>Answer</h3><p>The learner chooses 3/8.</p></div>
         <div class="pipe-arrow" aria-hidden="true">-&gt;</div>
-        <div class="pipe-node"><p class="pn-title">Deterministic Check</p><p class="pn-sub">real rules validate answers</p></div>
+        <div class="loop-step"><span class="tag">03</span><h3>Checker</h3><p>Structured rules mark it incorrect.</p></div>
         <div class="pipe-arrow" aria-hidden="true">-&gt;</div>
-        <div class="pipe-node"><p class="pn-title">Evidence</p><p class="pn-sub">what it means</p></div>
+        <div class="loop-step"><span class="tag">04</span><h3>Evidence</h3><p>An explicit event records the result.</p></div>
         <div class="pipe-arrow" aria-hidden="true">-&gt;</div>
-        <div class="pipe-node"><p class="pn-title">Learner Model</p><p class="pn-sub">mastery updates in real time</p></div>
+        <div class="loop-step"><span class="tag">05</span><h3>Misconception</h3><p>Added denominators is activated.</p></div>
         <div class="pipe-arrow" aria-hidden="true">-&gt;</div>
-        <div class="pipe-node"><p class="pn-title">Sequencer</p><p class="pn-sub">picks the next best step</p></div>
+        <div class="loop-step"><span class="tag">06</span><h3>Next card</h3><p>Visual-bar remediation is selected.</p></div>
       </div>
       <p class="pipeline-note">
-        <strong>AI tutor, on rails.</strong> A knowledge point like <span class="tag">math.kp.fractions.keep_denominator_when_adding_same_units</span> sits in the graph with explicit prerequisites and misconceptions attached. AI may draft wording or a hint inside that scope - it cannot invent a graph id, change a checker's verdict, or decide what a learner has mastered.
+        Hints and explanations can be generated around this structured event. The check, evidence trail, and next-step reasoning remain inspectable.
       </p>
     </div>
   </section>
@@ -1238,8 +1515,8 @@
   <section class="section graph-section">
     <div class="wrap reveal">
       <span class="tag section-label">pondera.graph.excerpt</span>
-      <h2 class="h-section">What the graph actually looks like</h2>
-      <p class="h-deck">The full curriculum graph currently has around 2,670 knowledge points and 4,470 prerequisite edges. Below is a real excerpt around fraction addition - actual node and edge ids, not a mockup.</p>
+      <h2 class="h-section">Every card sits somewhere in a map of maths knowledge.</h2>
+      <p class="h-deck">Fractions are the representative vertical slice, not the whole ambition. The broader graph is being built outward from the same idea: cards map to knowledge points, misconceptions, prerequisites, and evidence.</p>
       <div class="graph-frame">
         <div class="demo-label">
           <span class="demo-title">Excerpt</span>
@@ -1289,7 +1566,7 @@
           </g>
         </svg>
         <div class="graph-caption">
-          The misconception node is attached to the topic with a typed edge, with an explicit failure signal recorded: the learner adds denominators instead of combining counts of the same unit. That's looked up at run time - never inferred fresh by AI.
+          The misconception node is attached to the topic with a typed edge and an explicit failure signal: the learner adds denominators instead of combining counts of the same unit.
         </div>
       </div>
     </div>
@@ -1298,8 +1575,8 @@
   <section class="section">
     <div class="wrap reveal">
       <span class="tag section-label">pondera.principles</span>
-      <h2 class="h-section">Why deterministic</h2>
-      <p class="h-deck">Adaptive tutoring usually means a model guessing at correctness and progress. Pondera separates the two questions: what's true, and how it's said.</p>
+      <h2 class="h-section">Why structured checking matters</h2>
+      <p class="h-deck">Many systems can respond conversationally. Pondera is designed around checked learning events: visible cards, structured answers, deterministic checkers, explicit evidence, and inspectable next-step reasoning.</p>
       <div class="principle-grid reveal-stagger">
         <div class="principle">
           <h3>Every card knows what it teaches</h3>
@@ -1324,8 +1601,8 @@
   <section class="section worked">
     <div class="wrap reveal">
       <span class="tag section-label">pondera.misconception.fractions</span>
-      <h2 class="h-section">A misconception, caught and corrected</h2>
-      <p class="h-deck">A learner adds denominators as well as numerators. Pondera catches the pattern and routes to visual remediation.</p>
+      <h2 class="h-section">Misconception-specific remediation</h2>
+      <p class="h-deck">Many systems can track whether an answer was right or wrong. Pondera is designed to notice what kind of wrong answer it was.</p>
       <div class="worked-grid">
         <ol class="worked-steps reveal-stagger">
           <li><span class="step-mark">01</span><span class="step-body">Learner is asked <strong>1/4 + 2/4</strong> as a diagnostic task.</span></li>
@@ -1366,26 +1643,26 @@
     <div class="wrap reveal">
       <span class="tag section-label">pondera.sequencer.placement</span>
       <h2 class="h-section">Always working at the edge of what you know</h2>
-      <p class="h-deck">There's no grade level to place a learner at. There's only a graph, and evidence about where on it they currently stand.</p>
+      <p class="h-deck">Pondera places the learner where the evidence says they are, not simply where their age or grade says they should be.</p>
       <div class="adaptive-grid reveal-stagger">
         <div class="adaptive-card">
           <span class="ac-num">placement</span>
           <h3>Placed by evidence, not age</h3>
-          <p>A learner starts wherever their attempts say they are, and that can differ across strands.</p>
+          <p>A learner can be strong in one strand and shaky in another. The graph lets those states differ without forcing a single grade label.</p>
         </div>
         <div class="adaptive-card">
           <span class="ac-num">inference</span>
           <h3>Prerequisites inferred, not just tested</h3>
-          <p>Performing well on a knowledge point counts as evidence that its prerequisites are solid too.</p>
+          <p>Strong downstream performance can provide evidence that prerequisites are probably solid, without testing every prerequisite directly.</p>
         </div>
         <div class="adaptive-card">
           <span class="ac-num">frontier</span>
           <h3>Review and new ground, balanced</h3>
-          <p>The sequencer mixes spaced review with new material at the frontier the learner has earned.</p>
+          <p>The sequencer should balance revision with pushing the boundary forward, keeping practice near the frontier of readiness.</p>
         </div>
       </div>
       <div class="anki-note">
-        <strong>Like spaced repetition, but over a curriculum.</strong> Anki decides when you will forget a single fact. Pondera applies that idea across an entire graph of math knowledge.
+        <strong>Like spaced repetition, but over a curriculum graph.</strong> Instead of scheduling isolated flashcards, Pondera uses evidence from connected skills to decide what to review, repair, or introduce next.
       </div>
     </div>
   </section>
@@ -1393,22 +1670,22 @@
   <section class="section">
     <div class="wrap reveal">
       <span class="tag section-label">pondera.notes</span>
-      <h2 class="h-section">Where this differs from other adaptive math tools</h2>
-      <p class="h-deck">Knowledge-graph-driven adaptive math platforms are not new. Two things we lean on harder than most:</p>
+      <h2 class="h-section">What makes the system inspectable</h2>
+      <p class="h-deck">The alpha slice is small, but the architectural promise is concrete: each visible learning moment has a structured trail behind it.</p>
       <div class="compare-table">
-        <div class="compare-row head"><span>Idea</span><span>What's common</span><span>What we emphasize</span></div>
+        <div class="compare-row head"><span>Layer</span><span>What is visible</span><span>Why it matters</span></div>
         <div class="compare-row">
-          <span class="c-label">Misconception-level diagnosis</span>
-          <p>Most adaptive systems track mastery as a level or confidence score per topic.</p>
-          <p>Pondera diagnoses the specific error pattern and routes to remediation built for that misconception.</p>
+          <span class="c-label">Evidence trail</span>
+          <p>The card, answer, checker rule, diagnostic signal, and next step can be inspected together.</p>
+          <p>A parent, tutor, or technical reviewer can ask why something happened and get a structured answer.</p>
         </div>
         <div class="compare-row">
-          <span class="c-label">Where AI is allowed to act</span>
-          <p>Many systems use model-driven decision-making for what comes next.</p>
-          <p>Pondera keeps correctness, mastery, and sequencing inside deterministic, versioned, testable logic.</p>
+          <span class="c-label">AI boundary</span>
+          <p>Hints and explanations can be generated around checked events and graph facts.</p>
+          <p>The goal is not a black-box tutor, but an assistant wrapped around structured learning state.</p>
         </div>
       </div>
-      <p class="compare-note">This is an architectural stance, not a finished claim of superiority. The system is still early.</p>
+      <p class="compare-note">This is an early implementation direction, not a finished-product claim.</p>
     </div>
   </section>
 
@@ -1418,7 +1695,7 @@
       <div class="status-box">
         <div class="status-copy">
           <h3><span class="status-dot"></span>Early alpha</h3>
-          <p>The curriculum graph, deterministic checkers, and shared scene renderer are live. Currently a single vertical slice - fraction addition - is wired end to end, with the rest of the graph in progress.</p>
+          <p>Pondera is early. The current vertical slice focuses on fractions because it proves the full loop: card, checker, evidence, misconception, graph, and next step. The system is being built outward from there.</p>
         </div>
         <a href="mailto:hello@pondera.dev?subject=Pondera%20early%20access" class="btn btn-primary">Get in touch</a>
       </div>
@@ -1498,6 +1775,33 @@
           '<div class="fb-row"><span>no known misconception pattern matched</span><span class="fb-tag">low confidence</span></div>';
       }
     }
+
+    const tabButtons = Array.from(document.querySelectorAll(".tab-button"));
+    const tabPanels = Array.from(document.querySelectorAll(".view-panel"));
+
+    function activateView(button) {
+      const panelId = button.getAttribute("aria-controls");
+      tabButtons.forEach((tab) => {
+        const selected = tab === button;
+        tab.setAttribute("aria-selected", selected ? "true" : "false");
+        tab.tabIndex = selected ? 0 : -1;
+      });
+      tabPanels.forEach((panel) => {
+        panel.classList.toggle("active", panel.id === panelId);
+      });
+    }
+
+    tabButtons.forEach((button, index) => {
+      button.addEventListener("click", () => activateView(button));
+      button.addEventListener("keydown", (event) => {
+        if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") return;
+        event.preventDefault();
+        const direction = event.key === "ArrowRight" ? 1 : -1;
+        const next = tabButtons[(index + direction + tabButtons.length) % tabButtons.length];
+        activateView(next);
+        next.focus();
+      });
+    });
 
     document.querySelectorAll("#hero-choices .choice-btn").forEach((button) => {
       button.addEventListener("click", () => ponderaTryAnswer(button.dataset.answer));
