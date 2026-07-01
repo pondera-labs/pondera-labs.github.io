@@ -1,68 +1,114 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
   <title id="title">Pondera</title>
-  <desc id="desc">Pondera turns curriculum into a navigable knowledge constellation.</desc>
+  <desc id="desc">A graph-first maths project for curriculum ontology, diagnostics, and evidence trails.</desc>
   <defs>
-    <radialGradient id="bg" cx="58%" cy="35%" r="82%">
+    <radialGradient id="bg" cx="54%" cy="38%" r="88%">
       <stop offset="0" stop-color="#17364c"/>
-      <stop offset="0.55" stop-color="#0f2131"/>
-      <stop offset="1" stop-color="#091522"/>
+      <stop offset="0.52" stop-color="#10283a"/>
+      <stop offset="1" stop-color="#07121d"/>
     </radialGradient>
-    <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
-      <feGaussianBlur stdDeviation="6" result="blur"/>
+    <linearGradient id="panel" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#153044" stop-opacity="0.92"/>
+      <stop offset="1" stop-color="#081724" stop-opacity="0.96"/>
+    </linearGradient>
+    <filter id="softGlow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
       <feMerge>
         <feMergeNode in="blur"/>
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
+    <pattern id="grid" width="46" height="46" patternUnits="userSpaceOnUse">
+      <path d="M46 0H0V46" fill="none" stroke="#d8eef7" stroke-opacity="0.045" stroke-width="1"/>
+    </pattern>
   </defs>
+
   <rect width="1200" height="630" fill="url(#bg)"/>
-  <g opacity="0.5">
-    <circle cx="120" cy="90" r="1.6" fill="#fff5dc"/>
-    <circle cx="260" cy="132" r="1.2" fill="#d8eef7"/>
-    <circle cx="442" cy="76" r="1.4" fill="#fff5dc"/>
-    <circle cx="796" cy="112" r="1.6" fill="#d8eef7"/>
-    <circle cx="1010" cy="86" r="1.3" fill="#fff5dc"/>
-    <circle cx="1084" cy="294" r="1.5" fill="#d8eef7"/>
-    <circle cx="186" cy="502" r="1.2" fill="#fff5dc"/>
-    <circle cx="616" cy="542" r="1.6" fill="#d8eef7"/>
-    <circle cx="942" cy="510" r="1.1" fill="#fff5dc"/>
+  <rect width="1200" height="630" fill="url(#grid)" opacity="0.72"/>
+
+  <g opacity="0.62">
+    <circle cx="68" cy="86" r="1.4" fill="#fff5dc"/>
+    <circle cx="174" cy="182" r="1.1" fill="#d8eef7"/>
+    <circle cx="304" cy="66" r="1.5" fill="#fff5dc"/>
+    <circle cx="496" cy="138" r="1.2" fill="#d8eef7"/>
+    <circle cx="764" cy="92" r="1.6" fill="#fff5dc"/>
+    <circle cx="1088" cy="118" r="1.3" fill="#d8eef7"/>
+    <circle cx="1134" cy="344" r="1.5" fill="#fff5dc"/>
+    <circle cx="944" cy="548" r="1.1" fill="#d8eef7"/>
+    <circle cx="636" cy="568" r="1.4" fill="#fff5dc"/>
+    <circle cx="206" cy="524" r="1.1" fill="#d8eef7"/>
   </g>
-  <g transform="translate(64 46) scale(0.62)">
-    <line x1="22" y1="60" x2="78" y2="38" stroke="#fff5dc" stroke-width="2.75" stroke-linecap="round"/>
-    <circle cx="22" cy="60" r="14" fill="#5fc9d6" stroke="#d8eef7" stroke-width="2.25"/>
-    <circle cx="22" cy="60" r="5.2" fill="#091522" opacity="0.72"/>
-    <circle cx="78" cy="38" r="7.5" fill="#091522" stroke="#e58a5a" stroke-width="2.75"/>
-    <circle cx="78" cy="38" r="2.45" fill="#e58a5a"/>
-    <polyline points="76,45 68,62 76,68 60,86" fill="none" stroke="#e58a5a" stroke-width="2.35" stroke-linecap="round" stroke-linejoin="round"/>
-    <circle cx="60" cy="86" r="5" fill="#091522" stroke="#e58a5a" stroke-width="2.25"/>
-  </g>
-  <text x="132" y="88" fill="#fff5dc" font-family="Georgia, serif" font-size="34" font-weight="600">Pondera</text>
-  <text x="72" y="154" fill="#7dd7e8" font-family="Consolas, monospace" font-size="17" font-weight="600">LEARNING SYSTEMS LABORATORY</text>
-  <text x="72" y="248" fill="#fff5dc" font-family="Georgia, serif" font-size="74">Curriculum as a</text>
-  <text x="72" y="328" fill="#fff5dc" font-family="Georgia, serif" font-size="74">navigable knowledge</text>
-  <text x="72" y="408" fill="#fff5dc" font-family="Georgia, serif" font-size="74">constellation.</text>
-  <text x="76" y="474" fill="#a9b7bc" font-family="Inter, Arial, sans-serif" font-size="25">Graph-first K-12 maths traversal, diagnostics, and review.</text>
-  <g transform="translate(710 128)">
-    <path d="M20 256 C112 130 180 92 268 146" fill="none" stroke="#7dd7e8" stroke-width="2" opacity="0.58"/>
-    <path d="M268 146 C342 84 418 76 456 20" fill="none" stroke="#7dd7e8" stroke-width="2" opacity="0.5"/>
-    <path d="M268 146 C336 194 404 220 486 218" fill="none" stroke="#7dd7e8" stroke-width="2" opacity="0.55"/>
-    <path d="M116 332 C224 300 314 312 408 382" fill="none" stroke="#ff9b73" stroke-width="2" opacity="0.68"/>
-    <path d="M20 256 C184 276 318 268 486 218" fill="none" stroke="#d8eef7" stroke-width="1.4" opacity="0.32"/>
-    <g filter="url(#glow)">
-      <circle cx="20" cy="256" r="12" fill="#8ee0b0"/>
-      <circle cx="160" cy="60" r="12" fill="#7dd7e8"/>
-      <circle cx="268" cy="146" r="16" fill="#fff5dc"/>
-      <circle cx="456" cy="20" r="12" fill="#ff9b73"/>
-      <circle cx="486" cy="218" r="12" fill="#8ee0b0"/>
-      <circle cx="116" cy="332" r="12" fill="#b9a1ff"/>
-      <circle cx="408" cy="382" r="12" fill="#7dd7e8"/>
+
+  <rect x="38" y="34" width="1124" height="562" fill="none" stroke="#d8eef7" stroke-opacity="0.28"/>
+
+  <g transform="translate(72 62)">
+    <g transform="scale(0.78)">
+      <line x1="22" y1="60" x2="78" y2="38" stroke="#fff5dc" stroke-width="2.75" stroke-linecap="round"/>
+      <circle cx="22" cy="60" r="14" fill="#5fc9d6" stroke="#d8eef7" stroke-width="2.25"/>
+      <circle cx="22" cy="60" r="5.2" fill="#091522" opacity="0.72"/>
+      <circle cx="78" cy="38" r="7.5" fill="#091522" stroke="#e58a5a" stroke-width="2.75"/>
+      <circle cx="78" cy="38" r="2.45" fill="#e58a5a"/>
+      <polyline points="76,45 68,62 76,68 60,86" fill="none" stroke="#e58a5a" stroke-width="2.35" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="60" cy="86" r="5" fill="#091522" stroke="#e58a5a" stroke-width="2.25"/>
     </g>
-    <text x="-6" y="286" fill="#d8eef7" font-family="Consolas, monospace" font-size="13">NUMBER</text>
-    <text x="118" y="40" fill="#d8eef7" font-family="Consolas, monospace" font-size="13">FRACTIONS</text>
-    <text x="214" y="126" fill="#d8eef7" font-family="Consolas, monospace" font-size="13">DIAGNOSTIC CORE</text>
-    <text x="418" y="0" fill="#d8eef7" font-family="Consolas, monospace" font-size="13">ALGEBRA</text>
-    <text x="446" y="250" fill="#d8eef7" font-family="Consolas, monospace" font-size="13">FUNCTIONS</text>
-    <text x="68" y="364" fill="#d8eef7" font-family="Consolas, monospace" font-size="13">MISCONCEPTIONS</text>
-    <text x="364" y="416" fill="#d8eef7" font-family="Consolas, monospace" font-size="13">CALCULUS</text>
+    <text x="82" y="42" fill="#fff5dc" font-family="Georgia, serif" font-size="38" font-weight="600">Pondera</text>
+    <text x="0" y="106" fill="#7dd7e8" font-family="Consolas, monospace" font-size="15" font-weight="700" letter-spacing="2.3">GRAPH-FIRST MATHS PROJECT</text>
+  </g>
+
+  <g transform="translate(72 218)">
+    <text x="0" y="0" fill="#fff5dc" font-family="Georgia, serif" font-size="62">Curriculum as an</text>
+    <text x="0" y="66" fill="#fff5dc" font-family="Georgia, serif" font-size="62">inspectable</text>
+    <text x="0" y="132" fill="#fff5dc" font-family="Georgia, serif" font-size="62">knowledge</text>
+    <text x="0" y="198" fill="#fff5dc" font-family="Georgia, serif" font-size="62">constellation.</text>
+    <text x="2" y="258" fill="#a9b7bc" font-family="Inter, Arial, sans-serif" font-size="22">Graph-first K-12 maths ontology,</text>
+    <text x="2" y="288" fill="#a9b7bc" font-family="Inter, Arial, sans-serif" font-size="22">diagnostics, and evidence trails.</text>
+  </g>
+
+  <g transform="translate(72 514)">
+    <rect x="0" y="0" width="156" height="58" fill="#0b1b29" stroke="#7dd7e8" stroke-opacity="0.5"/>
+    <text x="18" y="27" fill="#fff5dc" font-family="Georgia, serif" font-size="25" font-weight="700">2,600+</text>
+    <text x="18" y="45" fill="#d8eef7" font-family="Consolas, monospace" font-size="10" letter-spacing="1.4">GRAPH NODES</text>
+    <rect x="174" y="0" width="156" height="58" fill="#0b1b29" stroke="#7dd7e8" stroke-opacity="0.5"/>
+    <text x="192" y="27" fill="#fff5dc" font-family="Georgia, serif" font-size="25" font-weight="700">4,400+</text>
+    <text x="192" y="45" fill="#d8eef7" font-family="Consolas, monospace" font-size="10" letter-spacing="1.4">AUTHORED EDGES</text>
+    <rect x="348" y="0" width="156" height="58" fill="#0b1b29" stroke="#7dd7e8" stroke-opacity="0.5"/>
+    <text x="366" y="27" fill="#fff5dc" font-family="Georgia, serif" font-size="25" font-weight="700">K-12</text>
+    <text x="366" y="45" fill="#d8eef7" font-family="Consolas, monospace" font-size="10" letter-spacing="1.4">MATHS GRAPH</text>
+  </g>
+
+  <g transform="translate(642 118)">
+    <rect x="0" y="0" width="482" height="398" fill="url(#panel)" stroke="#d8eef7" stroke-opacity="0.28"/>
+    <text x="28" y="36" fill="#d8eef7" fill-opacity="0.76" font-family="Consolas, monospace" font-size="12" font-weight="700" letter-spacing="1.7">LOCAL DIAGNOSTIC CONSTELLATION</text>
+    <text x="28" y="56" fill="#d8eef7" fill-opacity="0.66" font-family="Consolas, monospace" font-size="11" font-weight="700" letter-spacing="1.5">KNOWLEDGE / SIGNAL / REPAIR</text>
+    <line x1="0" y1="70" x2="482" y2="70" stroke="#d8eef7" stroke-opacity="0.16"/>
+
+    <circle cx="244" cy="224" r="158" fill="none" stroke="#d8eef7" stroke-opacity="0.08"/>
+    <circle cx="244" cy="224" r="92" fill="none" stroke="#d8eef7" stroke-opacity="0.08" stroke-dasharray="5 9"/>
+
+    <path d="M84 254 C150 160 184 136 236 188" fill="none" stroke="#7dd7e8" stroke-width="2" stroke-opacity="0.58"/>
+    <path d="M236 188 C270 128 334 98 404 122" fill="none" stroke="#ff9b73" stroke-width="2" stroke-opacity="0.66"/>
+    <path d="M236 188 C296 240 348 252 404 246" fill="none" stroke="#8ee0b0" stroke-width="2" stroke-opacity="0.58"/>
+    <path d="M84 254 C202 278 292 276 404 246" fill="none" stroke="#7dd7e8" stroke-width="1.7" stroke-opacity="0.35"/>
+    <path d="M168 326 C220 260 238 232 236 188" fill="none" stroke="#d8eef7" stroke-width="1.7" stroke-opacity="0.52"/>
+    <path d="M168 326 C252 300 320 316 348 342" fill="none" stroke="#ff9b73" stroke-width="2" stroke-opacity="0.68"/>
+    <path d="M404 246 C374 286 356 318 348 342" fill="none" stroke="#ff9b73" stroke-width="1.7" stroke-opacity="0.5"/>
+
+    <g filter="url(#softGlow)">
+      <circle cx="84" cy="254" r="12" fill="#8ee0b0"/>
+      <circle cx="182" cy="116" r="12" fill="#7dd7e8"/>
+      <circle cx="236" cy="188" r="15" fill="#fff5dc"/>
+      <circle cx="404" cy="122" r="12" fill="#ff9b73"/>
+      <circle cx="404" cy="246" r="12" fill="#8ee0b0"/>
+      <circle cx="168" cy="326" r="12" fill="#b9a1ff"/>
+      <circle cx="348" cy="342" r="12" fill="#7dd7e8"/>
+    </g>
+
+    <text x="44" y="288" fill="#d8eef7" font-family="Consolas, monospace" font-size="12" font-weight="700">UNIT FRACTIONS</text>
+    <text x="126" y="98" fill="#d8eef7" font-family="Consolas, monospace" font-size="12" font-weight="700">DENOMINATOR MEANING</text>
+    <text x="190" y="170" fill="#fff5dc" font-family="Consolas, monospace" font-size="12" font-weight="700">ADD SAME DENOMINATORS</text>
+    <text x="314" y="104" fill="#ffbea3" font-family="Consolas, monospace" font-size="12" font-weight="700">MISCONCEPTION SIGNAL</text>
+    <text x="332" y="276" fill="#d8eef7" font-family="Consolas, monospace" font-size="12" font-weight="700">EQUIVALENT FRACTIONS</text>
+    <text x="104" y="360" fill="#d8eef7" font-family="Consolas, monospace" font-size="12" font-weight="700">REPAIR CARD</text>
+    <text x="292" y="376" fill="#d8eef7" font-family="Consolas, monospace" font-size="12" font-weight="700">EVIDENCE EVENT</text>
   </g>
 </svg>
