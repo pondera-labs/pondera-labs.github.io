@@ -724,27 +724,53 @@
             </div>
           </div>
         </div>
-        <div class="repair-graph" aria-label="Graph showing likely broken denominator-meaning node">
-          <svg viewBox="0 0 980 360" role="img" aria-labelledby="repair-title">
-            <title id="repair-title">A local fraction graph where the denominator meaning node is highlighted as the repair target.</title>
-            <path class="edge-line" d="M120 182 C220 100 324 104 430 158"/>
-            <path class="edge-line" d="M430 158 C548 96 664 96 790 148"/>
-            <path class="edge-line" d="M430 158 C552 212 660 230 820 246"/>
-            <path class="edge-line broken-edge" d="M262 268 C344 232 386 206 430 158"/>
-            <path class="edge-line" d="M262 268 C438 304 608 304 820 246"/>
+        <div class="repair-graph" aria-label="Typed graph showing a fraction misconception signal and repair path">
+          <svg viewBox="0 0 980 390" role="img" aria-labelledby="repair-title">
+            <title id="repair-title">A local fraction graph where a wrong answer produces a misconception signal and routes to a denominator-meaning repair card.</title>
+            <defs>
+              <marker id="arrow-blue" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                <path d="M0,0 L8,4 L0,8 Z" fill="#7dd7e8" opacity="0.72"/>
+              </marker>
+              <marker id="arrow-coral" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                <path d="M0,0 L8,4 L0,8 Z" fill="#ff9b73" opacity="0.9"/>
+              </marker>
+              <marker id="arrow-violet" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                <path d="M0,0 L8,4 L0,8 Z" fill="#b9a1ff" opacity="0.86"/>
+              </marker>
+            </defs>
+            <path d="M120 176 C182 118 226 104 286 118" fill="none" stroke="#7dd7e8" stroke-width="1.8" stroke-opacity="0.62" marker-end="url(#arrow-blue)"/>
+            <path d="M324 120 C388 120 430 136 484 166" fill="none" stroke="#7dd7e8" stroke-width="1.8" stroke-opacity="0.62" marker-end="url(#arrow-blue)"/>
+            <path d="M532 172 C610 154 660 150 728 164" fill="none" stroke="#8ee0b0" stroke-width="1.8" stroke-opacity="0.55" marker-end="url(#arrow-blue)"/>
+            <path d="M738 194 C678 246 618 272 536 274" fill="none" stroke="#ff9b73" stroke-width="1.8" stroke-opacity="0.8" stroke-dasharray="8 8" marker-end="url(#arrow-coral)"/>
+            <path d="M482 278 C420 280 372 278 324 272" fill="none" stroke="#ff9b73" stroke-width="1.8" stroke-opacity="0.82" stroke-dasharray="8 8" marker-end="url(#arrow-coral)"/>
+            <path d="M318 252 C316 208 316 170 314 138" fill="none" stroke="#ff9b73" stroke-width="1.6" stroke-opacity="0.72" stroke-dasharray="8 8" marker-end="url(#arrow-coral)"/>
+            <path d="M336 276 C456 326 608 324 742 282" fill="none" stroke="#b9a1ff" stroke-width="1.8" stroke-opacity="0.72" marker-end="url(#arrow-violet)"/>
+            <path d="M760 254 C626 206 466 176 330 132" fill="none" stroke="#b9a1ff" stroke-width="1.6" stroke-opacity="0.58" marker-end="url(#arrow-violet)"/>
             <g class="star-node">
-              <circle cx="120" cy="182" r="12" fill="#7dd7e8"/>
-              <circle cx="262" cy="268" r="15" fill="#ff9b73"/>
-              <circle cx="430" cy="158" r="16" fill="#fff5dc"/>
-              <circle cx="790" cy="148" r="12" fill="#8ee0b0"/>
-              <circle cx="820" cy="246" r="12" fill="#b9a1ff"/>
+              <circle cx="110" cy="182" r="12" fill="#7dd7e8"/>
+              <circle cx="306" cy="118" r="13" fill="#7dd7e8"/>
+              <circle cx="510" cy="172" r="16" fill="#fff5dc"/>
+              <circle cx="762" cy="172" r="12" fill="#8ee0b0"/>
+              <circle cx="510" cy="274" r="12" fill="#ff9b73"/>
+              <circle cx="306" cy="270" r="15" fill="#ff9b73"/>
+              <circle cx="770" cy="270" r="12" fill="#b9a1ff"/>
             </g>
-            <text class="graph-label" x="78" y="216">Unit fractions</text>
-            <text class="graph-label hot" x="180" y="304">Denominator meaning</text>
-            <text class="graph-label" x="374" y="132">Add same denominators</text>
-            <text class="graph-label" x="734" y="124">Equivalent fractions</text>
-            <text class="graph-label" x="748" y="282">Visual repair card</text>
-            <text class="graph-label hot" x="318" y="228">likely broken edge</text>
+            <text class="graph-label" x="58" y="214">Unit fractions</text>
+            <text class="graph-label" x="238" y="92">Denominator meaning</text>
+            <text class="graph-label" x="440" y="148">Add same denominators</text>
+            <text class="graph-label" x="694" y="148">Evidence event</text>
+            <text class="graph-label hot" x="452" y="310">3/8 response</text>
+            <text class="graph-label hot" x="194" y="306">Adds denominators</text>
+            <text class="graph-label hot" x="218" y="324">misconception</text>
+            <text class="graph-label" x="704" y="306">Fraction-bar repair</text>
+            <g>
+              <line x1="58" y1="350" x2="104" y2="350" stroke="#7dd7e8" stroke-width="1.8" stroke-opacity="0.72"/>
+              <text class="graph-label" x="116" y="354">requires / targets knowledge</text>
+              <line x1="360" y1="350" x2="406" y2="350" stroke="#ff9b73" stroke-width="1.8" stroke-dasharray="8 8" stroke-opacity="0.85"/>
+              <text class="graph-label hot" x="418" y="354">diagnostic signal</text>
+              <line x1="618" y1="350" x2="664" y2="350" stroke="#b9a1ff" stroke-width="1.8" stroke-opacity="0.78"/>
+              <text class="graph-label" x="676" y="354">remediation path</text>
+            </g>
           </svg>
         </div>
       </div>
