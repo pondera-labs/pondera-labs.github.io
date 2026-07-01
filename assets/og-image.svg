@@ -103,21 +103,21 @@
 
     <path d="M84 140 L166 140" fill="none" stroke="#7dd7e8" stroke-width="1.8" marker-end="url(#ogArrowBlue)"/>
     <path d="M214 140 L292 140" fill="none" stroke="#7dd7e8" stroke-width="3.2" marker-end="url(#ogArrowBlue)"/>
-    <path d="M330 92 L306 130" fill="none" stroke="#7dd7e8" stroke-opacity="0.34"/>
-    <path d="M360 120 L306 138" fill="none" stroke="#7dd7e8" stroke-opacity="0.34"/>
-    <path d="M360 164 L306 148" fill="none" stroke="#7dd7e8" stroke-opacity="0.34"/>
+    <path d="M462 88 C408 98 366 114 328 130" fill="none" stroke="#7dd7e8" stroke-opacity="0.34" marker-end="url(#ogArrowBlue)"/>
+    <path d="M478 122 C420 124 372 132 328 138" fill="none" stroke="#7dd7e8" stroke-opacity="0.34" marker-end="url(#ogArrowBlue)"/>
+    <path d="M462 174 C408 164 366 154 328 148" fill="none" stroke="#7dd7e8" stroke-opacity="0.34" marker-end="url(#ogArrowBlue)"/>
 
     <g filter="url(#softGlow)">
       <circle cx="66" cy="140" r="11" fill="#091522" stroke="#7dd7e8" stroke-width="2"/>
       <circle cx="190" cy="140" r="11" fill="#091522" stroke="#7dd7e8" stroke-width="2"/>
-      <circle cx="314" cy="140" r="12" fill="#091522" stroke="#fff5dc" stroke-width="2"/>
+      <circle cx="314" cy="140" r="12" fill="#fff5dc" fill-opacity="0.08" stroke="#fff5dc" stroke-width="2.4"/>
       <circle cx="188" cy="292" r="13" fill="#091522" stroke="#ff9b73" stroke-width="2.4"/>
       <circle cx="330" cy="292" r="11" fill="#091522" stroke="#b9a1ff" stroke-width="2"/>
     </g>
     <text x="38" y="166" fill="#d8eef7" font-family="Consolas, monospace" font-size="10" font-weight="700">UNIT FRACTIONS</text>
     <text x="136" y="166" fill="#d8eef7" font-family="Consolas, monospace" font-size="10" font-weight="700">DENOMINATOR MEANING</text>
     <text x="266" y="166" fill="#fff5dc" font-family="Consolas, monospace" font-size="10" font-weight="700">ADD SAME</text>
-    <text x="226" y="126" fill="#7dd7e8" font-family="Consolas, monospace" font-size="9" font-weight="700">KEY FIX IDENTIFIED</text>
+    <text x="222" y="118" fill="#7dd7e8" font-family="Consolas, monospace" font-size="9" font-weight="700">KEY FIX IDENTIFIED</text>
 
     <rect x="46" y="244" width="88" height="28" fill="#091522" stroke="#d8eef7" stroke-opacity="0.34"/>
     <text x="62" y="263" fill="#d8eef7" font-family="Consolas, monospace" font-size="10" font-weight="700">1/4 + 2/4</text>
@@ -134,7 +134,7 @@
     <text x="140" y="358" fill="#ffbea3" font-family="Consolas, monospace" font-size="9" font-weight="700">MISCONCEPTION</text>
     <path d="M204 292 L306 292" fill="none" stroke="#b9a1ff" stroke-width="1.7" marker-end="url(#ogArrowViolet)"/>
     <text x="286" y="274" fill="#b9a1ff" font-family="Consolas, monospace" font-size="10" font-weight="700">REPAIR</text>
-    <path d="M330 280 C330 214 258 164 202 146" fill="none" stroke="#b9a1ff" stroke-width="1.7" marker-end="url(#ogArrowViolet)"/>
+    <path d="M342 292 C430 292 446 238 446 190 C446 112 310 102 202 134" fill="none" stroke="#b9a1ff" stroke-width="1.7" marker-end="url(#ogArrowViolet)"/>
 
     <line x1="28" y1="382" x2="60" y2="382" stroke="#7dd7e8" stroke-width="2" stroke-opacity="0.72"/>
     <text x="68" y="386" fill="#d8eef7" font-family="Consolas, monospace" font-size="10" font-weight="700">KNOWLEDGE</text>
