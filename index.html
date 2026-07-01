@@ -311,7 +311,7 @@
     .star-node { filter: drop-shadow(0 0 12px rgba(125, 215, 232, 0.32)); }
     .star-label {
       font-family: var(--mono);
-      font-size: 13px;
+      font-size: 12px;
       fill: var(--star-soft);
       text-transform: uppercase;
     }
@@ -673,7 +673,7 @@
             <span>Mathematics graph</span>
             <span>Ontology / diagnostics / review</span>
           </div>
-          <svg class="constellation" viewBox="40 50 640 470" role="img" aria-labelledby="constellation-title">
+          <svg class="constellation" viewBox="-35 25 780 585" role="img" aria-labelledby="constellation-title">
             <title id="constellation-title">A domain-level mathematics graph with Diagnostic Core as the central hub connecting subjects, misconceptions, and review paths.</title>
             <g opacity="0.5">
               <circle cx="78" cy="88" r="2" fill="#7dd7e8"/>
@@ -688,52 +688,54 @@
               <circle cx="660" cy="276" r="1.7" fill="#d8eef7"/>
               <circle cx="58" cy="276" r="1.7" fill="#d8eef7"/>
             </g>
-            <path class="edge-line core-link" d="M140 176 C228 132 304 144 360 246"/>
-            <path class="edge-line hot core-link" d="M188 286 C256 258 312 250 360 246"/>
-            <path class="edge-line hot core-link" d="M360 246 C408 280 454 322 512 372"/>
-            <path class="edge-line core-link" d="M360 246 C426 164 492 134 580 142"/>
-            <path class="edge-line core-link" d="M360 246 C440 220 510 222 602 276"/>
-            <path class="edge-line core-link" d="M360 246 C318 332 294 392 268 462"/>
-            <path class="edge-line" d="M188 286 C278 358 382 382 512 372"/>
-            <path class="edge-line" d="M140 176 C278 92 464 86 580 142"/>
-            <path class="edge-line" d="M268 462 C354 428 438 424 512 372"/>
-            <path class="edge-line" d="M602 276 C520 340 440 366 268 462"/>
-            <g opacity="0.28">
-              <path class="edge-line" d="M92 188 C108 178 120 176 140 176"/>
-              <path class="edge-line" d="M516 106 C538 116 558 126 580 142"/>
-              <path class="edge-line" d="M620 334 C610 318 606 296 602 276"/>
-              <path class="edge-line" d="M214 412 C232 430 248 446 268 462"/>
-              <circle cx="92" cy="188" r="4" fill="#7dd7e8"/>
-              <circle cx="108" cy="220" r="3" fill="#d8eef7"/>
-              <circle cx="152" cy="238" r="3" fill="#7dd7e8"/>
-              <circle cx="214" cy="176" r="3" fill="#d8eef7"/>
-              <circle cx="516" cy="106" r="3" fill="#7dd7e8"/>
-              <circle cx="552" cy="188" r="3" fill="#d8eef7"/>
-              <circle cx="630" cy="206" r="3" fill="#7dd7e8"/>
-              <circle cx="620" cy="334" r="3" fill="#d8eef7"/>
-              <circle cx="468" cy="410" r="3" fill="#7dd7e8"/>
-              <circle cx="314" cy="430" r="3" fill="#d8eef7"/>
-              <circle cx="214" cy="412" r="3" fill="#7dd7e8"/>
-              <circle cx="156" cy="360" r="3" fill="#d8eef7"/>
-            </g>
-            <g class="star-node">
-              <circle cx="360" cy="246" r="28" class="core-node"/>
-              <circle cx="360" cy="246" r="18" class="core-node inner"/>
-              <circle cx="140" cy="176" r="18" fill="#7dd7e8"/>
-              <circle cx="188" cy="286" r="18" fill="#7dd7e8"/>
-              <circle cx="580" cy="142" r="18" fill="#7dd7e8"/>
-              <circle cx="602" cy="276" r="18" fill="#7dd7e8"/>
-              <circle cx="268" cy="462" r="18" fill="#7dd7e8"/>
-              <circle cx="512" cy="372" r="19" fill="#ff9b73"/>
-            </g>
-            <g>
-              <text class="star-label" x="302" y="226">Diagnostic Core</text>
-              <text class="star-label" x="100" y="152">Number</text>
-              <text class="star-label" x="142" y="318">Fractions</text>
-              <text class="star-label" x="548" y="118">Algebra</text>
-              <text class="star-label" x="568" y="310">Functions</text>
-              <text class="star-label" x="220" y="496">Calculus</text>
-              <text class="star-label" x="456" y="410">Misconceptions</text>
+            <g transform="translate(360,246) scale(1.4) translate(-360,-246)">
+              <path class="edge-line core-link" d="M140 176 C228 132 304 144 360 246"/>
+              <path class="edge-line hot core-link" d="M188 286 C256 258 312 250 360 246"/>
+              <path class="edge-line hot core-link" d="M360 246 C408 280 454 322 512 372"/>
+              <path class="edge-line core-link" d="M360 246 C426 164 492 134 580 142"/>
+              <path class="edge-line core-link" d="M360 246 C440 220 510 222 602 276"/>
+              <path class="edge-line core-link" d="M360 246 C318 332 294 392 268 462"/>
+              <path class="edge-line" d="M188 286 C278 358 382 382 512 372"/>
+              <path class="edge-line" d="M140 176 C278 92 464 86 580 142"/>
+              <path class="edge-line" d="M268 462 C354 428 438 424 512 372"/>
+              <path class="edge-line" d="M602 276 C520 340 440 366 268 462"/>
+              <g opacity="0.28">
+                <path class="edge-line" d="M92 188 C108 178 120 176 140 176"/>
+                <path class="edge-line" d="M516 106 C538 116 558 126 580 142"/>
+                <path class="edge-line" d="M620 334 C610 318 606 296 602 276"/>
+                <path class="edge-line" d="M214 412 C232 430 248 446 268 462"/>
+                <circle cx="92" cy="188" r="4" fill="#7dd7e8"/>
+                <circle cx="108" cy="220" r="3" fill="#d8eef7"/>
+                <circle cx="152" cy="238" r="3" fill="#7dd7e8"/>
+                <circle cx="214" cy="176" r="3" fill="#d8eef7"/>
+                <circle cx="516" cy="106" r="3" fill="#7dd7e8"/>
+                <circle cx="552" cy="188" r="3" fill="#d8eef7"/>
+                <circle cx="630" cy="206" r="3" fill="#7dd7e8"/>
+                <circle cx="620" cy="334" r="3" fill="#d8eef7"/>
+                <circle cx="468" cy="410" r="3" fill="#7dd7e8"/>
+                <circle cx="314" cy="430" r="3" fill="#d8eef7"/>
+                <circle cx="214" cy="412" r="3" fill="#7dd7e8"/>
+                <circle cx="156" cy="360" r="3" fill="#d8eef7"/>
+              </g>
+              <g class="star-node">
+                <circle cx="360" cy="246" r="28" class="core-node"/>
+                <circle cx="360" cy="246" r="18" class="core-node inner"/>
+                <circle cx="140" cy="176" r="18" fill="#7dd7e8"/>
+                <circle cx="188" cy="286" r="18" fill="#7dd7e8"/>
+                <circle cx="580" cy="142" r="18" fill="#7dd7e8"/>
+                <circle cx="602" cy="276" r="18" fill="#7dd7e8"/>
+                <circle cx="268" cy="462" r="18" fill="#7dd7e8"/>
+                <circle cx="512" cy="372" r="19" fill="#ff9b73"/>
+              </g>
+              <g>
+                <text class="star-label" x="302" y="226">Diagnostic Core</text>
+                <text class="star-label" x="100" y="152">Number</text>
+                <text class="star-label" x="142" y="318">Fractions</text>
+                <text class="star-label" x="548" y="118">Algebra</text>
+                <text class="star-label" x="568" y="310">Functions</text>
+                <text class="star-label" x="220" y="496">Calculus</text>
+                <text class="star-label" x="456" y="410">Misconceptions</text>
+              </g>
             </g>
           </svg>
           <div class="constellation-legend">
