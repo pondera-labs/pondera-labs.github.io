@@ -15,6 +15,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://pondera-labs.github.io/assets/og-image.svg">
   <meta name="theme-color" content="#091522">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -390,35 +391,35 @@
       overflow: auto;
     }
     .specimen-code .muted { color: rgba(216, 238, 247, 0.46); }
+    #route { padding: 62px 0; }
     .route {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 10px;
+      display: flex;
+      align-items: stretch;
+      gap: 0;
       margin-top: 28px;
+      border: 1px solid var(--line);
+      background: rgba(255, 245, 220, 0.025);
+      overflow: hidden;
     }
     .route-step {
-      border: 1px solid var(--line);
-      background: rgba(255, 245, 220, 0.035);
+      border: 0;
+      border-right: 1px solid var(--line);
+      background: transparent;
       padding: 16px;
-      min-height: 136px;
+      min-height: 128px;
       position: relative;
+      flex: 1 1 0;
     }
-    .route-step::after {
-      content: "";
-      position: absolute;
-      right: -10px;
-      top: 50%;
-      width: 10px;
-      height: 1px;
-      background: var(--line-strong);
-    }
-    .route-step:last-child::after { display: none; }
+    .route-step:nth-child(1) { flex-basis: 0.82fr; }
+    .route-step:nth-child(3) { flex-basis: 1.2fr; background: rgba(125, 215, 232, 0.05); }
+    .route-step:nth-child(4) { flex-basis: 1.12fr; }
+    .route-step:last-child { border-right: 0; }
     .route-step .tag { color: var(--aqua); display: block; margin-bottom: 8px; }
     .route-step p { margin: 0; color: var(--muted); font-size: 13px; }
 
     .diagnostic-compare {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: 0.9fr 0.98fr 1.22fr;
       gap: 14px;
       margin-top: 30px;
     }
@@ -482,7 +483,7 @@
 
     .specimen-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: 1.35fr 0.9fr 0.9fr;
       gap: 18px;
     }
     .specimen {
@@ -493,6 +494,29 @@
     }
     .specimen p { color: var(--muted); margin: 0; font-size: 14px; }
     .specimen .tag { color: var(--coral); display: block; margin-bottom: 10px; }
+    .build-note {
+      display: grid;
+      grid-template-columns: minmax(280px, 0.8fr) minmax(380px, 1.2fr);
+      gap: 34px;
+      align-items: start;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 44px 0;
+    }
+    .build-note p {
+      color: var(--muted);
+      margin: 0 0 16px;
+      font-size: 16px;
+      line-height: 1.75;
+    }
+    .build-note p:last-child { margin-bottom: 0; }
+    .build-note .pull {
+      color: var(--star);
+      font-family: var(--serif);
+      font-size: clamp(28px, 4vw, 46px);
+      line-height: 1.1;
+      margin: 0;
+    }
 
     .alpha-box {
       border: 1px solid var(--line-strong);
@@ -541,12 +565,14 @@
       .hero-grid,
       .two-col,
       .specimen-grid,
+      .build-note,
       .alpha-box {
         grid-template-columns: 1fr;
         display: grid;
       }
-      .route { grid-template-columns: repeat(2, 1fr); }
-      .route-step::after { display: none; }
+      .route { display: grid; grid-template-columns: repeat(2, 1fr); }
+      .route-step { border-right: 0; border-bottom: 1px solid var(--line); }
+      .route-step:last-child { border-bottom: 0; }
       .diagnostic-compare { grid-template-columns: 1fr; }
     }
     @media (max-width: 560px) {
@@ -732,6 +758,19 @@
         <div class="specimen"><span class="tag">Ontology</span><h3>Structure first</h3><p>Curriculum standards are useful, but Pondera's primary unit is the teachable, diagnosable knowledge node.</p></div>
         <div class="specimen"><span class="tag">Diagnostics</span><h3>Errors have shape</h3><p>A mistake can point to a misconception, a missing prerequisite, or a fragile representation.</p></div>
         <div class="specimen"><span class="tag">Review</span><h3>AI stays bounded</h3><p>Hints and wording can vary, but graph IDs, checker logic, and evidence rules stay validated.</p></div>
+      </div>
+    </section>
+
+    <section id="build">
+      <div class="wrap build-note reveal">
+        <div>
+          <span class="eyebrow">Build note</span>
+          <p class="pull">The hard part is not making more content. It is making the next decision explainable.</p>
+        </div>
+        <div>
+          <p>Early versions of this project made the learner card too central. That was useful for proving the loop, but it was the wrong long-term centre of gravity. Cards can change. Clients can want different interfaces. The graph should remain.</p>
+          <p>Pondera is being designed around the slower, less glamorous problem: naming the knowledge, recording what an answer actually suggests, and keeping the system honest when AI helps with wording or review.</p>
+        </div>
       </div>
     </section>
 
