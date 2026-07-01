@@ -270,12 +270,11 @@
     .constellation-card {
       border: 1px solid var(--line-strong);
       background:
-        radial-gradient(circle at 50% 50%, rgba(125, 215, 232, 0.08), transparent 44%),
+        radial-gradient(circle at 50% 46%, rgba(125, 215, 232, 0.14), transparent 52%),
         linear-gradient(180deg, rgba(16, 40, 58, 0.86), rgba(8, 20, 32, 0.92));
       box-shadow: var(--shadow);
       position: relative;
       overflow: hidden;
-      min-height: 590px;
     }
     .constellation-card::before {
       content: "";
@@ -308,10 +307,10 @@
       position: relative;
       z-index: 1;
     }
-    .star-node { filter: drop-shadow(0 0 12px rgba(125, 215, 232, 0.32)); }
+    .star-node { filter: drop-shadow(0 0 13px rgba(125, 215, 232, 0.36)); }
     .star-label {
       font-family: var(--mono);
-      font-size: 12px;
+      font-size: 13px;
       fill: var(--star-soft);
       text-transform: uppercase;
     }
@@ -333,7 +332,7 @@
     .core-node {
       fill: none;
       stroke: var(--star);
-      stroke-width: 2.2;
+      stroke-width: 2.4;
     }
     .core-node.inner {
       stroke-width: 1;
@@ -628,7 +627,6 @@
       .hero-grid { gap: 32px; }
       h1 { font-size: clamp(42px, 13vw, 58px); }
       .field-strip { grid-template-columns: 1fr; }
-      .constellation-card { min-height: auto; }
       .constellation-legend { grid-template-columns: repeat(2, 1fr); }
       .route { grid-template-columns: 1fr; }
       .alpha-box { align-items: start; }
@@ -673,69 +671,73 @@
             <span>Mathematics graph</span>
             <span>Ontology / diagnostics / review</span>
           </div>
-          <svg class="constellation" viewBox="-35 25 780 585" role="img" aria-labelledby="constellation-title">
+          <svg class="constellation" viewBox="0 0 680 460" role="img" aria-labelledby="constellation-title">
             <title id="constellation-title">A domain-level mathematics graph with Diagnostic Core as the central hub connecting subjects, misconceptions, and review paths.</title>
+
+            <!-- ambient background stars, corners only, deliberately outside the cluster -->
             <g opacity="0.5">
-              <circle cx="78" cy="88" r="2" fill="#7dd7e8"/>
-              <circle cx="102" cy="126" r="2" fill="#d8eef7"/>
-              <circle cx="128" cy="104" r="2" fill="#7dd7e8"/>
-              <circle cx="612" cy="84" r="2" fill="#d8eef7"/>
-              <circle cx="646" cy="124" r="2" fill="#7dd7e8"/>
-              <circle cx="604" cy="452" r="2" fill="#d8eef7"/>
-              <circle cx="642" cy="422" r="2" fill="#7dd7e8"/>
-              <circle cx="82" cy="434" r="2" fill="#d8eef7"/>
-              <circle cx="126" cy="462" r="2" fill="#7dd7e8"/>
-              <circle cx="660" cy="276" r="1.7" fill="#d8eef7"/>
-              <circle cx="58" cy="276" r="1.7" fill="#d8eef7"/>
+              <circle cx="30" cy="30" r="2" fill="#7dd7e8"/>
+              <circle cx="55" cy="20" r="1.6" fill="#d8eef7"/>
+              <circle cx="650" cy="25" r="1.8" fill="#d8eef7"/>
+              <circle cx="620" cy="55" r="2" fill="#7dd7e8"/>
+              <circle cx="655" cy="435" r="1.8" fill="#d8eef7"/>
+              <circle cx="600" cy="450" r="2" fill="#7dd7e8"/>
+              <circle cx="25" cy="440" r="1.6" fill="#d8eef7"/>
+              <circle cx="60" cy="415" r="2" fill="#7dd7e8"/>
+              <circle cx="340" cy="14" r="1.4" fill="#d8eef7"/>
+              <circle cx="340" cy="448" r="1.4" fill="#d8eef7"/>
             </g>
-            <g transform="translate(360,246) scale(1.4) translate(-360,-246)">
-              <path class="edge-line core-link" d="M140 176 C228 132 304 144 360 246"/>
-              <path class="edge-line hot core-link" d="M188 286 C256 258 312 250 360 246"/>
-              <path class="edge-line hot core-link" d="M360 246 C408 280 454 322 512 372"/>
-              <path class="edge-line core-link" d="M360 246 C426 164 492 134 580 142"/>
-              <path class="edge-line core-link" d="M360 246 C440 220 510 222 602 276"/>
-              <path class="edge-line core-link" d="M360 246 C318 332 294 392 268 462"/>
-              <path class="edge-line" d="M188 286 C278 358 382 382 512 372"/>
-              <path class="edge-line" d="M140 176 C278 92 464 86 580 142"/>
-              <path class="edge-line" d="M268 462 C354 428 438 424 512 372"/>
-              <path class="edge-line" d="M602 276 C520 340 440 366 268 462"/>
-              <g opacity="0.28">
-                <path class="edge-line" d="M92 188 C108 178 120 176 140 176"/>
-                <path class="edge-line" d="M516 106 C538 116 558 126 580 142"/>
-                <path class="edge-line" d="M620 334 C610 318 606 296 602 276"/>
-                <path class="edge-line" d="M214 412 C232 430 248 446 268 462"/>
-                <circle cx="92" cy="188" r="4" fill="#7dd7e8"/>
-                <circle cx="108" cy="220" r="3" fill="#d8eef7"/>
-                <circle cx="152" cy="238" r="3" fill="#7dd7e8"/>
-                <circle cx="214" cy="176" r="3" fill="#d8eef7"/>
-                <circle cx="516" cy="106" r="3" fill="#7dd7e8"/>
-                <circle cx="552" cy="188" r="3" fill="#d8eef7"/>
-                <circle cx="630" cy="206" r="3" fill="#7dd7e8"/>
-                <circle cx="620" cy="334" r="3" fill="#d8eef7"/>
-                <circle cx="468" cy="410" r="3" fill="#7dd7e8"/>
-                <circle cx="314" cy="430" r="3" fill="#d8eef7"/>
-                <circle cx="214" cy="412" r="3" fill="#7dd7e8"/>
-                <circle cx="156" cy="360" r="3" fill="#d8eef7"/>
-              </g>
-              <g class="star-node">
-                <circle cx="360" cy="246" r="28" class="core-node"/>
-                <circle cx="360" cy="246" r="18" class="core-node inner"/>
-                <circle cx="140" cy="176" r="18" fill="#7dd7e8"/>
-                <circle cx="188" cy="286" r="18" fill="#7dd7e8"/>
-                <circle cx="580" cy="142" r="18" fill="#7dd7e8"/>
-                <circle cx="602" cy="276" r="18" fill="#7dd7e8"/>
-                <circle cx="268" cy="462" r="18" fill="#7dd7e8"/>
-                <circle cx="512" cy="372" r="19" fill="#ff9b73"/>
-              </g>
-              <g>
-                <text class="star-label" x="302" y="226">Diagnostic Core</text>
-                <text class="star-label" x="100" y="152">Number</text>
-                <text class="star-label" x="142" y="318">Fractions</text>
-                <text class="star-label" x="548" y="118">Algebra</text>
-                <text class="star-label" x="568" y="310">Functions</text>
-                <text class="star-label" x="220" y="496">Calculus</text>
-                <text class="star-label" x="456" y="410">Misconceptions</text>
-              </g>
+
+            <!-- subject-to-subject adjacency, solid, outer ring -->
+            <path class="edge-line" d="M120 90 C260 45 420 45 560 90"/>
+            <path class="edge-line" d="M85 250 C220 350 380 380 520 395"/>
+            <path class="edge-line" d="M160 395 C280 430 400 430 520 395"/>
+            <path class="edge-line" d="M595 250 C470 350 300 385 160 395"/>
+
+            <!-- core links: dashed, mark the diagnostic core as a different kind of node -->
+            <path class="edge-line core-link" d="M340 230 C280 190 190 140 120 90"/>
+            <path class="edge-line core-link" d="M340 230 C400 190 500 140 560 90"/>
+            <path class="edge-line hot core-link" d="M340 230 C250 238 150 244 85 250"/>
+            <path class="edge-line core-link" d="M340 230 C430 238 520 244 595 250"/>
+            <path class="edge-line core-link" d="M340 230 C280 300 210 360 160 395"/>
+            <path class="edge-line hot core-link" d="M340 230 C400 300 460 360 520 395"/>
+
+            <!-- texture: a few connected dots implying denser structure beyond what's labeled -->
+            <g opacity="0.3">
+              <path class="edge-line" d="M95 55 C102 68 112 80 120 90"/>
+              <path class="edge-line" d="M590 60 C580 72 570 82 560 90"/>
+              <path class="edge-line" d="M45 215 C58 228 72 240 85 250"/>
+              <circle cx="95" cy="55" r="3" fill="#7dd7e8"/>
+              <circle cx="150" cy="50" r="2.5" fill="#d8eef7"/>
+              <circle cx="535" cy="50" r="2.5" fill="#d8eef7"/>
+              <circle cx="590" cy="60" r="3" fill="#7dd7e8"/>
+              <circle cx="45" cy="215" r="3" fill="#7dd7e8"/>
+              <circle cx="635" cy="215" r="3" fill="#7dd7e8"/>
+              <circle cx="105" cy="435" r="2.5" fill="#d8eef7"/>
+              <circle cx="560" cy="435" r="2.5" fill="#d8eef7"/>
+            </g>
+
+            <!-- main nodes -->
+            <g class="star-node">
+              <circle cx="340" cy="230" r="30" class="core-node"/>
+              <circle cx="340" cy="230" r="19" class="core-node inner"/>
+              <circle cx="120" cy="90" r="19" fill="#7dd7e8"/>
+              <circle cx="560" cy="90" r="19" fill="#7dd7e8"/>
+              <circle cx="85" cy="250" r="19" fill="#7dd7e8"/>
+              <circle cx="595" cy="250" r="19" fill="#7dd7e8"/>
+              <circle cx="160" cy="395" r="19" fill="#7dd7e8"/>
+              <circle cx="520" cy="395" r="21" fill="#ff9b73"/>
+            </g>
+
+            <!-- labels, centered on their node -->
+            <g text-anchor="middle">
+              <text class="star-label" x="340" y="182">Diagnostic Core</text>
+              <text class="star-label" x="120" y="63">Number</text>
+              <text class="star-label" x="560" y="63">Algebra</text>
+              <text class="star-label" x="85" y="285">Fractions</text>
+              <text class="star-label" x="595" y="285">Functions</text>
+              <text class="star-label" x="160" y="430">Calculus</text>
+              <text class="star-label" x="520" y="432">Misconceptions</text>
             </g>
           </svg>
           <div class="constellation-legend">
