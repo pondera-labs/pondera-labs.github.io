@@ -98,10 +98,10 @@
     <circle cx="244" cy="224" r="92" fill="none" stroke="#d8eef7" stroke-opacity="0.08" stroke-dasharray="5 9"/>
 
     <path d="M68 204 C116 144 146 126 164 122" fill="none" stroke="#7dd7e8" stroke-width="2" stroke-opacity="0.62" marker-end="url(#ogArrowBlue)"/>
-    <path d="M188 124 C218 132 238 148 252 168" fill="none" stroke="#7dd7e8" stroke-width="2" stroke-opacity="0.62" marker-end="url(#ogArrowBlue)"/>
-    <path d="M276 176 C322 158 354 160 388 174" fill="none" stroke="#8ee0b0" stroke-width="2" stroke-opacity="0.58" marker-end="url(#ogArrowBlue)"/>
-    <path d="M392 162 C344 118 300 120 274 162" fill="none" stroke="#8ee0b0" stroke-width="1.8" stroke-opacity="0.68" marker-end="url(#ogArrowGreen)"/>
-    <path d="M390 198 C318 252 234 282 154 274" fill="none" stroke="#ff9b73" stroke-width="2" stroke-dasharray="7 7" stroke-opacity="0.82" marker-end="url(#ogArrowCoral)"/>
+    <path d="M188 124 C218 134 240 152 252 174" fill="none" stroke="#7dd7e8" stroke-width="2" stroke-opacity="0.62" marker-end="url(#ogArrowBlue)"/>
+    <path d="M346 94 C374 112 392 138 398 166" fill="none" stroke="#8ee0b0" stroke-width="1.7" stroke-opacity="0.5" marker-end="url(#ogArrowGreen)"/>
+    <path d="M392 166 C342 122 302 126 274 166" fill="none" stroke="#8ee0b0" stroke-width="1.8" stroke-opacity="0.68" marker-end="url(#ogArrowGreen)"/>
+    <path d="M390 202 C318 252 234 282 154 274" fill="none" stroke="#ff9b73" stroke-width="2" stroke-dasharray="7 7" stroke-opacity="0.82" marker-end="url(#ogArrowCoral)"/>
     <path d="M146 254 C152 208 158 162 168 136" fill="none" stroke="#ff9b73" stroke-width="1.7" stroke-dasharray="7 7" stroke-opacity="0.72" marker-end="url(#ogArrowCoral)"/>
     <path d="M160 282 C228 320 316 318 392 292" fill="none" stroke="#b9a1ff" stroke-width="2" stroke-opacity="0.72" marker-end="url(#ogArrowViolet)"/>
     <path d="M390 260 C334 174 262 98 184 122" fill="none" stroke="#b9a1ff" stroke-width="1.7" stroke-opacity="0.58" marker-end="url(#ogArrowViolet)"/>
@@ -109,18 +109,19 @@
     <g filter="url(#softGlow)">
       <circle cx="70" cy="202" r="12" fill="#7dd7e8"/>
       <circle cx="176" cy="122" r="12" fill="#7dd7e8"/>
-      <circle cx="264" cy="176" r="15" fill="#fff5dc"/>
-      <circle cx="398" cy="180" r="12" fill="#8ee0b0"/>
+      <circle cx="264" cy="184" r="15" fill="#fff5dc"/>
+      <circle cx="398" cy="190" r="12" fill="#8ee0b0"/>
       <circle cx="146" cy="272" r="14" fill="#ff9b73"/>
       <circle cx="404" cy="284" r="12" fill="#b9a1ff"/>
     </g>
 
-    <text x="282" y="94" fill="#d8eef7" font-family="Consolas, monospace" font-size="10" font-weight="700">PROMPT: 1/4 + 2/4</text>
+    <rect x="276" y="74" width="96" height="32" fill="#fff5dc" fill-opacity="0.04" stroke="#d8eef7" stroke-opacity="0.28"/>
+    <text x="288" y="94" fill="#d8eef7" font-family="Consolas, monospace" font-size="10" font-weight="700">TASK: 1/4 + 2/4</text>
     <text x="32" y="232" fill="#d8eef7" font-family="Consolas, monospace" font-size="11" font-weight="700">UNIT FRACTIONS</text>
     <text x="116" y="104" fill="#d8eef7" font-family="Consolas, monospace" font-size="11" font-weight="700">DENOMINATOR MEANING</text>
-    <text x="214" y="156" fill="#fff5dc" font-family="Consolas, monospace" font-size="11" font-weight="700">ADD SAME DENOMINATORS</text>
-    <text x="348" y="210" fill="#d8eef7" font-family="Consolas, monospace" font-size="11" font-weight="700">EVIDENCE EVENT</text>
-    <text x="330" y="124" fill="#d8eef7" font-family="Consolas, monospace" font-size="10" font-weight="700">3/4 CORRECT</text>
+    <text x="210" y="164" fill="#fff5dc" font-family="Consolas, monospace" font-size="11" font-weight="700">ADD SAME DENOMINATORS</text>
+    <text x="344" y="230" fill="#d8eef7" font-family="Consolas, monospace" font-size="11" font-weight="700">ANSWER CHECKED</text>
+    <text x="322" y="130" fill="#d8eef7" font-family="Consolas, monospace" font-size="10" font-weight="700">3/4 CORRECT</text>
     <text x="252" y="258" fill="#ffbea3" font-family="Consolas, monospace" font-size="11" font-weight="700">3/8 RESPONSE</text>
     <text x="76" y="304" fill="#ffbea3" font-family="Consolas, monospace" font-size="11" font-weight="700">ADDS DENOMINATORS</text>
     <text x="78" y="320" fill="#ffbea3" font-family="Consolas, monospace" font-size="11" font-weight="700">MISCONCEPTION</text>
