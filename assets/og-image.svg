@@ -94,44 +94,53 @@
       <path d="M0,0 L8,4 L0,8 Z" fill="#8ee0b0" opacity="0.86"/>
     </marker>
 
-    <circle cx="244" cy="224" r="158" fill="none" stroke="#d8eef7" stroke-opacity="0.08"/>
-    <circle cx="244" cy="224" r="92" fill="none" stroke="#d8eef7" stroke-opacity="0.08" stroke-dasharray="5 9"/>
+    <text x="28" y="98" fill="#d8eef7" fill-opacity="0.62" font-family="Consolas, monospace" font-size="9" font-weight="700" letter-spacing="1.5">PREREQUISITE KNOWLEDGE</text>
+    <line x1="28" y1="108" x2="454" y2="108" stroke="#d8eef7" stroke-opacity="0.1"/>
+    <text x="28" y="218" fill="#d8eef7" fill-opacity="0.62" font-family="Consolas, monospace" font-size="9" font-weight="700" letter-spacing="1.5">THIS ATTEMPT</text>
+    <line x1="28" y1="228" x2="454" y2="228" stroke="#d8eef7" stroke-opacity="0.1"/>
+    <text x="28" y="320" fill="#d8eef7" fill-opacity="0.62" font-family="Consolas, monospace" font-size="9" font-weight="700" letter-spacing="1.5">DIAGNOSIS + REMEDIATION</text>
+    <line x1="28" y1="330" x2="454" y2="330" stroke="#d8eef7" stroke-opacity="0.1"/>
 
-    <path d="M68 204 C116 144 146 126 164 122" fill="none" stroke="#7dd7e8" stroke-width="2" stroke-opacity="0.62" marker-end="url(#ogArrowBlue)"/>
-    <path d="M188 124 C218 134 240 152 252 174" fill="none" stroke="#7dd7e8" stroke-width="2" stroke-opacity="0.62" marker-end="url(#ogArrowBlue)"/>
-    <path d="M346 94 C374 112 392 138 398 166" fill="none" stroke="#8ee0b0" stroke-width="1.7" stroke-opacity="0.5" marker-end="url(#ogArrowGreen)"/>
-    <path d="M392 166 C342 122 302 126 274 166" fill="none" stroke="#8ee0b0" stroke-width="1.8" stroke-opacity="0.68" marker-end="url(#ogArrowGreen)"/>
-    <path d="M390 202 C318 252 234 282 154 274" fill="none" stroke="#ff9b73" stroke-width="2" stroke-dasharray="7 7" stroke-opacity="0.82" marker-end="url(#ogArrowCoral)"/>
-    <path d="M146 254 C152 208 158 162 168 136" fill="none" stroke="#ff9b73" stroke-width="1.7" stroke-dasharray="7 7" stroke-opacity="0.72" marker-end="url(#ogArrowCoral)"/>
-    <path d="M160 282 C228 320 316 318 392 292" fill="none" stroke="#b9a1ff" stroke-width="2" stroke-opacity="0.72" marker-end="url(#ogArrowViolet)"/>
-    <path d="M390 260 C334 174 262 98 184 122" fill="none" stroke="#b9a1ff" stroke-width="1.7" stroke-opacity="0.58" marker-end="url(#ogArrowViolet)"/>
+    <path d="M84 140 L166 140" fill="none" stroke="#7dd7e8" stroke-width="1.8" marker-end="url(#ogArrowBlue)"/>
+    <path d="M214 140 L292 140" fill="none" stroke="#7dd7e8" stroke-width="3.2" marker-end="url(#ogArrowBlue)"/>
+    <path d="M330 92 L306 130" fill="none" stroke="#7dd7e8" stroke-opacity="0.34"/>
+    <path d="M360 120 L306 138" fill="none" stroke="#7dd7e8" stroke-opacity="0.34"/>
+    <path d="M360 164 L306 148" fill="none" stroke="#7dd7e8" stroke-opacity="0.34"/>
 
     <g filter="url(#softGlow)">
-      <circle cx="70" cy="202" r="12" fill="#7dd7e8"/>
-      <circle cx="176" cy="122" r="12" fill="#7dd7e8"/>
-      <circle cx="264" cy="184" r="15" fill="#fff5dc"/>
-      <circle cx="398" cy="190" r="12" fill="#8ee0b0"/>
-      <circle cx="146" cy="272" r="14" fill="#ff9b73"/>
-      <circle cx="404" cy="284" r="12" fill="#b9a1ff"/>
+      <circle cx="66" cy="140" r="11" fill="#091522" stroke="#7dd7e8" stroke-width="2"/>
+      <circle cx="190" cy="140" r="11" fill="#091522" stroke="#7dd7e8" stroke-width="2"/>
+      <circle cx="314" cy="140" r="12" fill="#091522" stroke="#fff5dc" stroke-width="2"/>
+      <circle cx="188" cy="292" r="13" fill="#091522" stroke="#ff9b73" stroke-width="2.4"/>
+      <circle cx="330" cy="292" r="11" fill="#091522" stroke="#b9a1ff" stroke-width="2"/>
     </g>
+    <text x="38" y="166" fill="#d8eef7" font-family="Consolas, monospace" font-size="10" font-weight="700">UNIT FRACTIONS</text>
+    <text x="136" y="166" fill="#d8eef7" font-family="Consolas, monospace" font-size="10" font-weight="700">DENOMINATOR MEANING</text>
+    <text x="266" y="166" fill="#fff5dc" font-family="Consolas, monospace" font-size="10" font-weight="700">ADD SAME</text>
+    <text x="226" y="126" fill="#7dd7e8" font-family="Consolas, monospace" font-size="9" font-weight="700">KEY FIX IDENTIFIED</text>
 
-    <rect x="276" y="74" width="96" height="32" fill="#fff5dc" fill-opacity="0.04" stroke="#d8eef7" stroke-opacity="0.28"/>
-    <text x="288" y="94" fill="#d8eef7" font-family="Consolas, monospace" font-size="10" font-weight="700">TASK: 1/4 + 2/4</text>
-    <text x="32" y="232" fill="#d8eef7" font-family="Consolas, monospace" font-size="11" font-weight="700">UNIT FRACTIONS</text>
-    <text x="116" y="104" fill="#d8eef7" font-family="Consolas, monospace" font-size="11" font-weight="700">DENOMINATOR MEANING</text>
-    <text x="210" y="164" fill="#fff5dc" font-family="Consolas, monospace" font-size="11" font-weight="700">ADD SAME DENOMINATORS</text>
-    <text x="344" y="230" fill="#d8eef7" font-family="Consolas, monospace" font-size="11" font-weight="700">ANSWER CHECKED</text>
-    <text x="322" y="130" fill="#d8eef7" font-family="Consolas, monospace" font-size="10" font-weight="700">3/4 CORRECT</text>
-    <text x="252" y="258" fill="#ffbea3" font-family="Consolas, monospace" font-size="11" font-weight="700">3/8 RESPONSE</text>
-    <text x="76" y="304" fill="#ffbea3" font-family="Consolas, monospace" font-size="11" font-weight="700">ADDS DENOMINATORS</text>
-    <text x="78" y="320" fill="#ffbea3" font-family="Consolas, monospace" font-size="11" font-weight="700">MISCONCEPTION</text>
-    <text x="350" y="318" fill="#d8eef7" font-family="Consolas, monospace" font-size="11" font-weight="700">REPAIR CARD</text>
+    <rect x="46" y="244" width="88" height="28" fill="#091522" stroke="#d8eef7" stroke-opacity="0.34"/>
+    <text x="62" y="263" fill="#d8eef7" font-family="Consolas, monospace" font-size="10" font-weight="700">1/4 + 2/4</text>
+    <path d="M136 258 L188 258" fill="none" stroke="#ff9b73" stroke-width="1.7" marker-end="url(#ogArrowCoral)"/>
+    <circle cx="210" cy="258" r="11" fill="#091522" stroke="#ff9b73" stroke-width="2"/>
+    <text x="194" y="282" fill="#ffbea3" font-family="Consolas, monospace" font-size="9" font-weight="700">3/8 GIVEN</text>
+    <path d="M224 258 L350 258" fill="none" stroke="#d8eef7" stroke-opacity="0.34" stroke-dasharray="3 6" marker-end="url(#ogArrowBlue)"/>
+    <circle cx="374" cy="258" r="11" fill="#091522" stroke="#8ee0b0" stroke-width="2"/>
+    <text x="350" y="282" fill="#8ee0b0" font-family="Consolas, monospace" font-size="9" font-weight="700">3/4 CORRECT</text>
 
-    <line x1="28" y1="362" x2="60" y2="362" stroke="#7dd7e8" stroke-width="2" stroke-opacity="0.72"/>
-    <text x="68" y="366" fill="#d8eef7" font-family="Consolas, monospace" font-size="10" font-weight="700">KNOWLEDGE</text>
-    <line x1="176" y1="362" x2="208" y2="362" stroke="#ff9b73" stroke-width="2" stroke-dasharray="7 7" stroke-opacity="0.85"/>
-    <text x="216" y="366" fill="#ffbea3" font-family="Consolas, monospace" font-size="10" font-weight="700">SIGNAL</text>
-    <line x1="306" y1="362" x2="338" y2="362" stroke="#b9a1ff" stroke-width="2" stroke-opacity="0.78"/>
-    <text x="346" y="366" fill="#d8eef7" font-family="Consolas, monospace" font-size="10" font-weight="700">REPAIR</text>
+    <path d="M210 270 C210 292 202 306 194 322" fill="none" stroke="#ff9b73" stroke-width="1.7" stroke-dasharray="6 5" marker-end="url(#ogArrowCoral)"/>
+    <text x="232" y="318" fill="#ffbea3" font-family="Consolas, monospace" font-size="9" font-weight="700">DIAGNOSTIC SIGNAL</text>
+    <text x="116" y="344" fill="#ffbea3" font-family="Consolas, monospace" font-size="10" font-weight="700">ADDS DENOMINATORS</text>
+    <text x="140" y="358" fill="#ffbea3" font-family="Consolas, monospace" font-size="9" font-weight="700">MISCONCEPTION</text>
+    <path d="M204 292 L306 292" fill="none" stroke="#b9a1ff" stroke-width="1.7" marker-end="url(#ogArrowViolet)"/>
+    <text x="286" y="274" fill="#b9a1ff" font-family="Consolas, monospace" font-size="10" font-weight="700">REPAIR</text>
+    <path d="M330 280 C330 214 258 164 202 146" fill="none" stroke="#b9a1ff" stroke-width="1.7" marker-end="url(#ogArrowViolet)"/>
+
+    <line x1="28" y1="382" x2="60" y2="382" stroke="#7dd7e8" stroke-width="2" stroke-opacity="0.72"/>
+    <text x="68" y="386" fill="#d8eef7" font-family="Consolas, monospace" font-size="10" font-weight="700">KNOWLEDGE</text>
+    <line x1="176" y1="382" x2="208" y2="382" stroke="#ff9b73" stroke-width="2" stroke-dasharray="7 7" stroke-opacity="0.85"/>
+    <text x="216" y="386" fill="#ffbea3" font-family="Consolas, monospace" font-size="10" font-weight="700">SIGNAL</text>
+    <line x1="306" y1="382" x2="338" y2="382" stroke="#b9a1ff" stroke-width="2" stroke-opacity="0.78"/>
+    <text x="346" y="386" fill="#d8eef7" font-family="Consolas, monospace" font-size="10" font-weight="700">REPAIR</text>
   </g>
 </svg>

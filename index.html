@@ -725,56 +725,67 @@
           </div>
         </div>
         <div class="repair-graph" aria-label="Typed graph showing a fraction misconception signal and repair path">
-          <svg viewBox="0 0 980 390" role="img" aria-labelledby="repair-title">
-            <title id="repair-title">A local fraction graph where a checked answer either strengthens a target skill or points to a misconception and repair card.</title>
+          <svg viewBox="0 0 980 560" role="img" aria-labelledby="repair-title">
+            <title id="repair-title">A three-band diagnostic graph showing prerequisite knowledge, this attempt, and diagnosis plus remediation.</title>
             <defs>
-              <marker id="arrow-blue" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
-                <path d="M0,0 L8,4 L0,8 Z" fill="#7dd7e8" opacity="0.72"/>
-              </marker>
-              <marker id="arrow-coral" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
-                <path d="M0,0 L8,4 L0,8 Z" fill="#ff9b73" opacity="0.9"/>
-              </marker>
-              <marker id="arrow-violet" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
-                <path d="M0,0 L8,4 L0,8 Z" fill="#b9a1ff" opacity="0.86"/>
-              </marker>
-              <marker id="arrow-green" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
-                <path d="M0,0 L8,4 L0,8 Z" fill="#8ee0b0" opacity="0.86"/>
-              </marker>
+              <marker id="arrow-blue" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#7dd7e8" opacity="0.84"/></marker>
+              <marker id="arrow-coral" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#ff9b73" opacity="0.9"/></marker>
+              <marker id="arrow-violet" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#b9a1ff" opacity="0.9"/></marker>
+              <marker id="arrow-green" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#8ee0b0" opacity="0.9"/></marker>
             </defs>
-            <path d="M118 182 C178 122 226 104 284 118" fill="none" stroke="#7dd7e8" stroke-width="1.8" stroke-opacity="0.62" marker-end="url(#arrow-blue)"/>
-            <path d="M326 120 C390 128 432 148 486 176" fill="none" stroke="#7dd7e8" stroke-width="1.8" stroke-opacity="0.62" marker-end="url(#arrow-blue)"/>
-            <path d="M610 96 C672 116 718 144 750 180" fill="none" stroke="#8ee0b0" stroke-width="1.7" stroke-opacity="0.5" marker-end="url(#arrow-green)"/>
-            <path d="M738 178 C656 126 584 126 536 166" fill="none" stroke="#8ee0b0" stroke-width="1.8" stroke-opacity="0.7" marker-end="url(#arrow-green)"/>
-            <path d="M740 206 C624 262 470 288 326 270" fill="none" stroke="#ff9b73" stroke-width="1.8" stroke-opacity="0.82" stroke-dasharray="8 8" marker-end="url(#arrow-coral)"/>
-            <path d="M314 248 C312 206 312 170 314 138" fill="none" stroke="#ff9b73" stroke-width="1.6" stroke-opacity="0.72" stroke-dasharray="8 8" marker-end="url(#arrow-coral)"/>
-            <path d="M336 276 C462 326 618 322 748 292" fill="none" stroke="#b9a1ff" stroke-width="1.8" stroke-opacity="0.72" marker-end="url(#arrow-violet)"/>
-            <path d="M760 258 C650 176 500 98 330 120" fill="none" stroke="#b9a1ff" stroke-width="1.6" stroke-opacity="0.58" marker-end="url(#arrow-violet)"/>
+            <text class="graph-label" x="46" y="46">Prerequisite knowledge</text>
+            <line x1="46" y1="58" x2="934" y2="58" stroke="#d8eef7" stroke-opacity="0.12"/>
+            <text class="graph-label" x="46" y="224">This attempt</text>
+            <line x1="46" y1="236" x2="934" y2="236" stroke="#d8eef7" stroke-opacity="0.12"/>
+            <text class="graph-label" x="46" y="388">Diagnosis + remediation</text>
+            <line x1="46" y1="400" x2="934" y2="400" stroke="#d8eef7" stroke-opacity="0.12"/>
+
+            <path d="M138 118 L280 118" fill="none" stroke="#7dd7e8" stroke-width="1.8" marker-end="url(#arrow-blue)"/>
+            <path d="M338 118 L462 118" fill="none" stroke="#7dd7e8" stroke-width="3.4" marker-end="url(#arrow-blue)"/>
+            <path d="M512 66 L476 102" fill="none" stroke="#7dd7e8" stroke-opacity="0.34"/>
+            <path d="M558 82 L478 112" fill="none" stroke="#7dd7e8" stroke-opacity="0.34"/>
+            <path d="M592 122 L478 122" fill="none" stroke="#7dd7e8" stroke-opacity="0.34"/>
+            <path d="M560 166 L478 132" fill="none" stroke="#7dd7e8" stroke-opacity="0.34"/>
             <g class="star-node">
-              <circle cx="110" cy="182" r="12" fill="#7dd7e8"/>
-              <circle cx="306" cy="118" r="13" fill="#7dd7e8"/>
-              <circle cx="510" cy="184" r="16" fill="#fff5dc"/>
-              <circle cx="760" cy="192" r="12" fill="#8ee0b0"/>
-              <circle cx="306" cy="268" r="15" fill="#ff9b73"/>
-              <circle cx="774" cy="282" r="12" fill="#b9a1ff"/>
+              <circle cx="106" cy="118" r="14" fill="#091522" stroke="#7dd7e8" stroke-width="2.4"/>
+              <circle cx="308" cy="118" r="14" fill="#091522" stroke="#7dd7e8" stroke-width="2.4"/>
+              <circle cx="492" cy="118" r="15" fill="#091522" stroke="#fff5dc" stroke-width="2.4"/>
             </g>
-            <rect x="438" y="70" width="172" height="44" rx="0" fill="#fff5dc" fill-opacity="0.04" stroke="#d8eef7" stroke-opacity="0.28"/>
-            <text class="graph-label" x="464" y="98">Task: 1/4 + 2/4</text>
-            <text class="graph-label" x="58" y="214">Unit fractions</text>
-            <text class="graph-label" x="238" y="92">Denominator meaning</text>
-            <text class="graph-label" x="442" y="160">Add same denominators</text>
-            <text class="graph-label" x="704" y="234">Answer checked</text>
-            <text class="graph-label" x="632" y="132">3/4 correct</text>
-            <text class="graph-label hot" x="502" y="278">3/8 response</text>
-            <text class="graph-label hot" x="194" y="306">Adds denominators</text>
-            <text class="graph-label hot" x="218" y="324">misconception</text>
-            <text class="graph-label" x="708" y="316">Fraction-bar repair</text>
+            <text class="graph-label" x="72" y="156">Unit fractions</text>
+            <text class="graph-label" x="236" y="156">Denominator meaning</text>
+            <text class="graph-label" x="420" y="156">Add same denominators</text>
+            <text class="graph-label" x="354" y="96" fill="#7dd7e8">key fix identified</text>
+            <text class="graph-label" x="414" y="174" fill="#7dd7e8" opacity="0.72">many prerequisites, one identified as key</text>
+
+            <rect x="86" y="276" width="160" height="48" fill="#091522" stroke="#d8eef7" stroke-opacity="0.34"/>
+            <text class="graph-label" x="122" y="306">1/4 + 2/4</text>
+            <path d="M248 300 L344 300" fill="none" stroke="#ff9b73" stroke-width="1.8" marker-end="url(#arrow-coral)"/>
+            <text class="graph-label hot" x="282" y="284">response</text>
+            <circle cx="378" cy="300" r="15" fill="#091522" stroke="#ff9b73" stroke-width="2.4"/>
+            <text class="graph-label hot" x="342" y="340">3/8 given</text>
+            <path d="M396 300 L640 300" fill="none" stroke="#d8eef7" stroke-opacity="0.34" stroke-dasharray="3 6" marker-end="url(#arrow-blue)"/>
+            <text class="graph-label" x="476" y="284" opacity="0.72">checked against</text>
+            <circle cx="674" cy="300" r="15" fill="#091522" stroke="#8ee0b0" stroke-width="2.4"/>
+            <text class="graph-label" x="640" y="340" fill="#8ee0b0">3/4 correct</text>
+
+            <path d="M378 316 C378 360 378 392 378 432" fill="none" stroke="#ff9b73" stroke-width="1.8" stroke-dasharray="7 6" marker-end="url(#arrow-coral)"/>
+            <text class="graph-label hot" x="414" y="382">diagnostic signal</text>
+            <circle cx="378" cy="462" r="17" fill="#091522" stroke="#ff9b73" stroke-width="2.8"/>
+            <text class="graph-label hot" x="304" y="438">Adds denominators</text>
+            <text class="graph-label hot" x="326" y="502">(misconception)</text>
+            <path d="M398 462 L596 462" fill="none" stroke="#b9a1ff" stroke-width="1.8" marker-end="url(#arrow-violet)"/>
+            <circle cx="630" cy="462" r="15" fill="#091522" stroke="#b9a1ff" stroke-width="2.4"/>
+            <text class="graph-label" x="568" y="438" fill="#b9a1ff">Fraction-bar repair</text>
+            <path d="M630 444 C620 278 432 150 326 124" fill="none" stroke="#b9a1ff" stroke-width="1.8" marker-end="url(#arrow-violet)"/>
+            <text class="graph-label" x="702" y="210" fill="#b9a1ff">remediation path</text>
+
             <g>
-              <line x1="58" y1="350" x2="104" y2="350" stroke="#7dd7e8" stroke-width="1.8" stroke-opacity="0.72"/>
-              <text class="graph-label" x="116" y="354">requires / targets knowledge</text>
-              <line x1="360" y1="350" x2="406" y2="350" stroke="#ff9b73" stroke-width="1.8" stroke-dasharray="8 8" stroke-opacity="0.85"/>
-              <text class="graph-label hot" x="418" y="354">diagnostic signal</text>
-              <line x1="618" y1="350" x2="664" y2="350" stroke="#b9a1ff" stroke-width="1.8" stroke-opacity="0.78"/>
-              <text class="graph-label" x="676" y="354">remediation path</text>
+              <line x1="46" y1="530" x2="92" y2="530" stroke="#7dd7e8" stroke-width="1.8"/>
+              <text class="graph-label" x="106" y="534">requires / targets knowledge</text>
+              <line x1="360" y1="530" x2="406" y2="530" stroke="#ff9b73" stroke-width="1.8" stroke-dasharray="8 8"/>
+              <text class="graph-label hot" x="420" y="534">diagnostic signal</text>
+              <line x1="628" y1="530" x2="674" y2="530" stroke="#b9a1ff" stroke-width="1.8"/>
+              <text class="graph-label" x="688" y="534">remediation path</text>
             </g>
           </svg>
         </div>
