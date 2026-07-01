@@ -326,7 +326,10 @@
       stroke: rgba(125, 215, 232, 0.42);
       stroke-width: 1.4;
     }
-    .edge-line.hot { stroke: rgba(255, 155, 115, 0.65); }
+    .edge-line.hot {
+      stroke: rgba(255, 155, 115, 0.74);
+      stroke-width: 2.2;
+    }
     .constellation-legend {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -650,39 +653,65 @@
 
         <article class="constellation-card reveal" aria-label="Curriculum constellation map">
           <div class="constellation-top">
-            <span>Local diagnostic graph</span>
-            <span>Knowledge / signal / repair</span>
+            <span>Mathematics graph</span>
+            <span>Ontology / diagnostics / review</span>
           </div>
           <svg class="constellation" viewBox="0 0 720 560" role="img" aria-labelledby="constellation-title">
-            <title id="constellation-title">A constellation-style diagnostic graph linking fraction knowledge, a misconception signal, and a repair task.</title>
-            <circle class="orbit" cx="360" cy="280" r="210"/>
-            <circle class="orbit" cx="360" cy="280" r="132"/>
-            <path class="edge-line" d="M118 310 C198 210 255 174 342 224"/>
-            <path class="edge-line" d="M342 224 C438 160 520 164 604 112"/>
-            <path class="edge-line" d="M342 224 C326 300 278 364 206 420"/>
-            <path class="edge-line" d="M342 224 C428 274 514 304 610 296"/>
-            <path class="edge-line hot" d="M206 420 C314 390 406 408 512 460"/>
-            <path class="edge-line" d="M118 310 C252 336 388 336 610 296"/>
-            <path class="edge-line" d="M260 112 C292 178 318 204 342 224"/>
-            <path class="edge-line hot" d="M512 460 C498 388 540 334 610 296"/>
-
+            <title id="constellation-title">A domain-level mathematics graph with Diagnostic Core as the central hub connecting subjects, misconceptions, and review paths.</title>
+            <g opacity="0.5">
+              <circle cx="78" cy="88" r="2" fill="#7dd7e8"/>
+              <circle cx="102" cy="126" r="2" fill="#d8eef7"/>
+              <circle cx="128" cy="104" r="2" fill="#7dd7e8"/>
+              <circle cx="612" cy="84" r="2" fill="#d8eef7"/>
+              <circle cx="646" cy="124" r="2" fill="#7dd7e8"/>
+              <circle cx="604" cy="452" r="2" fill="#d8eef7"/>
+              <circle cx="642" cy="422" r="2" fill="#7dd7e8"/>
+              <circle cx="82" cy="434" r="2" fill="#d8eef7"/>
+              <circle cx="126" cy="462" r="2" fill="#7dd7e8"/>
+              <circle cx="660" cy="276" r="1.7" fill="#d8eef7"/>
+              <circle cx="58" cy="276" r="1.7" fill="#d8eef7"/>
+            </g>
+            <path class="edge-line" d="M140 176 C228 132 304 144 360 246"/>
+            <path class="edge-line hot" d="M188 286 C256 258 312 250 360 246"/>
+            <path class="edge-line hot" d="M360 246 C408 280 454 322 512 372"/>
+            <path class="edge-line" d="M360 246 C426 164 492 134 580 142"/>
+            <path class="edge-line" d="M360 246 C440 220 510 222 602 276"/>
+            <path class="edge-line" d="M360 246 C318 332 294 392 268 462"/>
+            <path class="edge-line" d="M188 286 C278 358 382 382 512 372"/>
+            <path class="edge-line" d="M140 176 C278 92 464 86 580 142"/>
+            <path class="edge-line" d="M268 462 C354 428 438 424 512 372"/>
+            <path class="edge-line" d="M602 276 C520 340 440 366 268 462"/>
+            <g opacity="0.42">
+              <circle cx="92" cy="188" r="4" fill="#7dd7e8"/>
+              <circle cx="108" cy="220" r="3" fill="#d8eef7"/>
+              <circle cx="152" cy="238" r="3" fill="#7dd7e8"/>
+              <circle cx="214" cy="176" r="3" fill="#d8eef7"/>
+              <circle cx="516" cy="106" r="3" fill="#7dd7e8"/>
+              <circle cx="552" cy="188" r="3" fill="#d8eef7"/>
+              <circle cx="630" cy="206" r="3" fill="#7dd7e8"/>
+              <circle cx="620" cy="334" r="3" fill="#d8eef7"/>
+              <circle cx="468" cy="410" r="3" fill="#7dd7e8"/>
+              <circle cx="314" cy="430" r="3" fill="#d8eef7"/>
+              <circle cx="214" cy="412" r="3" fill="#7dd7e8"/>
+              <circle cx="156" cy="360" r="3" fill="#d8eef7"/>
+            </g>
             <g class="star-node">
-              <circle cx="118" cy="310" r="12" fill="#8ee0b0"/>
-              <circle cx="260" cy="112" r="12" fill="#7dd7e8"/>
-              <circle cx="342" cy="224" r="15" fill="#fff5dc"/>
-              <circle cx="604" cy="112" r="12" fill="#ff9b73"/>
-              <circle cx="610" cy="296" r="12" fill="#8ee0b0"/>
-              <circle cx="206" cy="420" r="12" fill="#b9a1ff"/>
-              <circle cx="512" cy="460" r="12" fill="#7dd7e8"/>
+              <circle cx="360" cy="246" r="21" fill="#fff5dc"/>
+              <circle cx="140" cy="176" r="14" fill="#7dd7e8"/>
+              <circle cx="188" cy="286" r="14" fill="#8ee0b0"/>
+              <circle cx="580" cy="142" r="14" fill="#7dd7e8"/>
+              <circle cx="602" cy="276" r="14" fill="#8ee0b0"/>
+              <circle cx="268" cy="462" r="14" fill="#7dd7e8"/>
+              <circle cx="512" cy="372" r="15" fill="#ff9b73"/>
             </g>
             <g>
-              <text class="star-label" x="72" y="340">Unit fractions</text>
-              <text class="star-label" x="198" y="92">Denominator meaning</text>
-              <text class="star-label" x="286" y="205">Add same denominators</text>
-              <text class="star-label" x="532" y="91">Added-denominators signal</text>
-              <text class="star-label" x="546" y="328">Equivalent fractions</text>
-              <text class="star-label" x="132" y="452">Fraction-bar repair</text>
-              <text class="star-label" x="470" y="492">Evidence event</text>
+              <text class="star-label" x="302" y="226">Diagnostic Core</text>
+              <text class="star-label" x="100" y="152">Number</text>
+              <text class="star-label" x="142" y="318">Fractions</text>
+              <text class="star-label" x="548" y="118">Algebra</text>
+              <text class="star-label" x="568" y="310">Functions</text>
+              <text class="star-label" x="220" y="496">Calculus</text>
+              <text class="star-label" x="456" y="410">Misconceptions</text>
             </g>
           </svg>
           <div class="constellation-legend">
@@ -762,7 +791,7 @@
             <path d="M248 300 L344 300" fill="none" stroke="#ff9b73" stroke-width="1.8" marker-end="url(#arrow-coral)"/>
             <text class="graph-label hot" x="282" y="284">response</text>
             <circle cx="378" cy="300" r="15" fill="#091522" stroke="#ff9b73" stroke-width="2.4"/>
-            <text class="graph-label hot" x="342" y="340">3/8 given</text>
+            <text class="graph-label hot" x="398" y="332">3/8 given</text>
             <path d="M396 300 L640 300" fill="none" stroke="#d8eef7" stroke-opacity="0.34" stroke-dasharray="3 6" marker-end="url(#arrow-blue)"/>
             <text class="graph-label" x="476" y="284" opacity="0.72">checked against</text>
             <circle cx="674" cy="300" r="15" fill="#091522" stroke="#8ee0b0" stroke-width="2.4"/>
@@ -776,8 +805,8 @@
             <path d="M398 462 L596 462" fill="none" stroke="#b9a1ff" stroke-width="1.8" marker-end="url(#arrow-violet)"/>
             <circle cx="630" cy="462" r="15" fill="#091522" stroke="#b9a1ff" stroke-width="2.4"/>
             <text class="graph-label" x="568" y="438" fill="#b9a1ff">Fraction-bar repair</text>
-            <path d="M646 452 C812 450 892 388 892 282 C892 150 626 86 326 112" fill="none" stroke="#b9a1ff" stroke-width="1.8" marker-end="url(#arrow-violet)"/>
-            <text class="graph-label" x="784" y="330" fill="#b9a1ff">remediation path</text>
+            <path d="M630 444 C520 454 416 430 326 382 C236 334 212 256 246 198 C262 170 282 142 304 128" fill="none" stroke="#b9a1ff" stroke-width="2" marker-end="url(#arrow-violet)"/>
+            <text class="graph-label" x="504" y="420" fill="#b9a1ff">remediation path</text>
 
             <g>
               <line x1="46" y1="530" x2="92" y2="530" stroke="#7dd7e8" stroke-width="1.8"/>
