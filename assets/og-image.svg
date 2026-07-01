@@ -27,8 +27,15 @@
     <circle cx="616" cy="542" r="1.6" fill="#d8eef7"/>
     <circle cx="942" cy="510" r="1.1" fill="#fff5dc"/>
   </g>
-  <rect x="72" y="56" width="44" height="44" fill="rgba(125,215,232,0.08)" stroke="#7dd7e8" stroke-width="2"/>
-  <text x="94" y="84" fill="#7dd7e8" font-family="Consolas, monospace" font-size="15" text-anchor="middle">P</text>
+  <g transform="translate(64 46) scale(0.62)">
+    <line x1="22" y1="60" x2="78" y2="38" stroke="#fff5dc" stroke-width="2.75" stroke-linecap="round"/>
+    <circle cx="22" cy="60" r="14" fill="#5fc9d6" stroke="#d8eef7" stroke-width="2.25"/>
+    <circle cx="22" cy="60" r="5.2" fill="#091522" opacity="0.72"/>
+    <circle cx="78" cy="38" r="7.5" fill="#091522" stroke="#e58a5a" stroke-width="2.75"/>
+    <circle cx="78" cy="38" r="2.45" fill="#e58a5a"/>
+    <polyline points="76,45 68,62 76,68 60,86" fill="none" stroke="#e58a5a" stroke-width="2.35" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="60" cy="86" r="5" fill="#091522" stroke="#e58a5a" stroke-width="2.25"/>
+  </g>
   <text x="132" y="88" fill="#fff5dc" font-family="Georgia, serif" font-size="34" font-weight="600">Pondera</text>
   <text x="72" y="154" fill="#7dd7e8" font-family="Consolas, monospace" font-size="17" font-weight="600">LEARNING SYSTEMS LABORATORY</text>
   <text x="72" y="248" fill="#fff5dc" font-family="Georgia, serif" font-size="74">Curriculum as a</text>

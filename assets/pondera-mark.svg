@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-labelledby="pondera-mark-title pondera-mark-desc">
+  <title id="pondera-mark-title">Pondera mark</title>
+  <desc id="pondera-mark-desc">A tilted evidence beam connects settled knowledge to an evaluated node, with a kinked misconception link below.</desc>
+  <line x1="22" y1="60" x2="78" y2="38" stroke="#fff5dc" stroke-width="2.75" stroke-linecap="round"/>
+  <circle cx="22" cy="60" r="14" fill="#5fc9d6" stroke="#d8eef7" stroke-width="2.25"/>
+  <circle cx="22" cy="60" r="5.2" fill="#091522" opacity="0.72"/>
+  <circle cx="78" cy="38" r="7.5" fill="#091522" stroke="#e58a5a" stroke-width="2.75"/>
+  <circle cx="78" cy="38" r="2.45" fill="#e58a5a"/>
+  <polyline points="76,45 68,62 76,68 60,86" fill="none" stroke="#e58a5a" stroke-width="2.35" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="60" cy="86" r="5" fill="#091522" stroke="#e58a5a" stroke-width="2.25"/>
+</svg>
