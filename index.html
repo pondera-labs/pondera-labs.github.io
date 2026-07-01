@@ -334,19 +334,27 @@
       position: relative;
       z-index: 1;
     }
-    .constellation-legend span {
-      min-height: 62px;
-      display: grid;
-      place-items: center;
+    .constellation-legend div {
+      min-height: 96px;
       border-right: 1px solid var(--line);
+      padding: 14px;
+    }
+    .constellation-legend div:last-child { border-right: 0; }
+    .constellation-legend strong {
+      display: block;
       color: var(--star-soft);
       font-family: var(--mono);
       font-size: 10px;
-      text-align: center;
+      letter-spacing: 0.09em;
+      margin-bottom: 8px;
       text-transform: uppercase;
-      padding: 10px;
     }
-    .constellation-legend span:last-child { border-right: 0; }
+    .constellation-legend p {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+      margin: 0;
+    }
 
     .deck {
       max-width: 76ch;
@@ -421,6 +429,17 @@
       grid-template-columns: 0.9fr 0.98fr 1.22fr;
       gap: 14px;
       margin-top: 30px;
+    }
+    .diagnostic-layout {
+      display: grid;
+      grid-template-columns: minmax(260px, 0.7fr) minmax(520px, 1.3fr);
+      gap: 34px;
+      align-items: start;
+    }
+    .diagnostic-layout .deck,
+    .diagnostic-layout .diagnostic-compare {
+      margin-bottom: 0;
+      margin-top: 0;
     }
     .diagnostic-card {
       border: 1px solid var(--line);
@@ -570,6 +589,7 @@
       .hero { min-height: auto; }
       .hero-grid,
       .two-col,
+      .diagnostic-layout,
       .specimen-grid,
       .build-note,
       .alpha-box {
@@ -603,7 +623,7 @@
         <a href="#constellation">Constellation</a>
         <a href="#route">Traversal</a>
         <a href="#evidence">Evidence</a>
-        <a href="#contact">Access</a>
+        <a href="#build">Build note</a>
       </nav>
       <span class="tag">Learning systems laboratory</span>
     </div>
@@ -613,12 +633,12 @@
     <section class="hero">
       <div class="wrap hero-grid">
         <div>
-          <span class="eyebrow">Private learning-systems product</span>
+          <span class="eyebrow">Graph-first maths project</span>
           <h1>Pondera turns curriculum into a <span class="glow">navigable knowledge constellation.</span></h1>
           <p class="lede">A graph-first system for mapping K-12 maths, diagnosing knowledge gaps, tracking mastery state, and reviewing AI-assisted learning content against inspectable structure.</p>
           <div class="button-row">
             <a class="button primary" href="#constellation">Explore the graph</a>
-            <a class="button" href="#contact">Request early access</a>
+            <a class="button" href="#build">Read the build note</a>
           </div>
           <div class="field-strip" aria-label="Pondera operating notes">
             <div class="field-note"><strong>2,600+</strong> graph nodes loaded</div>
@@ -630,11 +650,11 @@
 
         <article class="constellation-card reveal" aria-label="Curriculum constellation map">
           <div class="constellation-top">
-            <span>Mathematics graph</span>
-            <span>Ontology / diagnostics / review</span>
+            <span>Local diagnostic graph</span>
+            <span>Knowledge / signal / repair</span>
           </div>
           <svg class="constellation" viewBox="0 0 720 560" role="img" aria-labelledby="constellation-title">
-            <title id="constellation-title">A constellation-style curriculum graph linking maths strands, topics, misconceptions, and evidence.</title>
+            <title id="constellation-title">A constellation-style diagnostic graph linking fraction knowledge, a misconception signal, and a repair task.</title>
             <circle class="orbit" cx="360" cy="280" r="210"/>
             <circle class="orbit" cx="360" cy="280" r="132"/>
             <path class="edge-line" d="M118 310 C198 210 255 174 342 224"/>
@@ -656,20 +676,20 @@
               <circle cx="512" cy="460" r="12" fill="#7dd7e8"/>
             </g>
             <g>
-              <text class="star-label" x="92" y="340">Number</text>
-              <text class="star-label" x="220" y="92">Fractions</text>
-              <text class="star-label" x="306" y="205">Diagnostic core</text>
-              <text class="star-label" x="558" y="91">Algebra</text>
-              <text class="star-label" x="570" y="328">Functions</text>
-              <text class="star-label" x="158" y="452">Misconceptions</text>
-              <text class="star-label" x="470" y="492">Calculus</text>
+              <text class="star-label" x="72" y="340">Unit fractions</text>
+              <text class="star-label" x="198" y="92">Denominator meaning</text>
+              <text class="star-label" x="286" y="205">Add same denominators</text>
+              <text class="star-label" x="532" y="91">Added-denominators signal</text>
+              <text class="star-label" x="546" y="328">Equivalent fractions</text>
+              <text class="star-label" x="132" y="452">Fraction-bar repair</text>
+              <text class="star-label" x="470" y="492">Evidence event</text>
             </g>
           </svg>
           <div class="constellation-legend">
-            <span>Ontology</span>
-            <span>Prerequisites</span>
-            <span>Diagnostics</span>
-            <span>Evidence trails</span>
+            <div><strong>Ontology</strong><p>Names the teachable ideas so the system can talk about them precisely.</p></div>
+            <div><strong>Prerequisites</strong><p>Records what normally needs to be secure before a later idea is reliable.</p></div>
+            <div><strong>Diagnostics</strong><p>Treats a wrong answer as evidence for a possible misconception, not just failure.</p></div>
+            <div><strong>Evidence trails</strong><p>Keeps the reason for the next step visible instead of hiding it in a black box.</p></div>
           </div>
         </article>
       </div>
@@ -677,27 +697,31 @@
 
     <section id="constellation">
       <div class="wrap reveal">
-        <span class="eyebrow">What the graph sees</span>
-        <h2>Same answer. Three very different systems.</h2>
-        <p class="deck">A learner answers <strong>3/8</strong> to <strong>1/4 + 2/4</strong>. That is not just a red X. It is a clue about the structure underneath the mistake.</p>
-        <div class="diagnostic-compare" aria-label="Three interpretations of the same wrong answer">
-          <div class="diagnostic-card">
-            <span class="tag">Bad system</span>
-            <div class="answer-line">1/4 + 2/4 = 3/8</div>
-            <h3>Incorrect.</h3>
-            <p>The system only knows the answer was wrong. The next activity is guesswork or a generic retry.</p>
+        <div class="diagnostic-layout">
+          <div>
+            <span class="eyebrow">What the graph sees</span>
+            <h2>Same answer. Three very different systems.</h2>
+            <p class="deck">A learner answers <strong>3/8</strong> to <strong>1/4 + 2/4</strong>. Pondera treats that as a small diagnostic event: what did the learner probably believe, and what should be repaired next?</p>
           </div>
-          <div class="diagnostic-card">
-            <span class="tag">Reasonable system</span>
-            <div class="answer-line">topic: adding fractions</div>
-            <h3>More practice needed.</h3>
-            <p>The system knows the broad topic is shaky, but it does not know which idea inside the topic broke.</p>
-          </div>
-          <div class="diagnostic-card good">
-            <span class="tag">Pondera</span>
-            <div class="answer-line">signal: added denominators</div>
-            <h3>Repair denominator meaning.</h3>
-            <p>The graph points to a likely misconception: the learner counted shaded pieces but treated denominators as addable counts.</p>
+          <div class="diagnostic-compare" aria-label="Three interpretations of the same wrong answer">
+            <div class="diagnostic-card">
+              <span class="tag">Bad system</span>
+              <div class="answer-line">1/4 + 2/4 = 3/8</div>
+              <h3>Incorrect.</h3>
+              <p>The system only knows the answer was wrong. The next activity is guesswork or a generic retry.</p>
+            </div>
+            <div class="diagnostic-card">
+              <span class="tag">Reasonable system</span>
+              <div class="answer-line">topic: adding fractions</div>
+              <h3>More practice needed.</h3>
+              <p>The system knows the broad topic is shaky, but it does not know which idea inside the topic broke.</p>
+            </div>
+            <div class="diagnostic-card good">
+              <span class="tag">Pondera</span>
+              <div class="answer-line">signal: added denominators</div>
+              <h3>Repair denominator meaning.</h3>
+              <p>The graph points to a likely misconception: the learner counted shaded pieces but treated denominators as addable counts.</p>
+            </div>
           </div>
         </div>
         <div class="repair-graph" aria-label="Graph showing likely broken denominator-meaning node">
@@ -785,11 +809,11 @@
       <div class="wrap reveal">
         <div class="alpha-box">
           <div>
-            <span class="eyebrow">Status</span>
-            <h2>Early alpha, built around the knowledge graph.</h2>
-            <p>Pondera is being built as an inspectable learning-systems product for real home-education use: curriculum ontology, diagnostics, mastery state, deterministic checks, and AI-assisted review on rails.</p>
+            <span class="eyebrow">Project status</span>
+            <h2>Early alpha, built for inspection rather than signups.</h2>
+            <p>Pondera is an active build around curriculum ontology, diagnostics, mastery state, deterministic checks, and AI-assisted review on rails. This page is a project note first: what exists, what the graph is for, and why the architecture matters.</p>
           </div>
-          <a class="button primary" href="mailto:hello@pondera.dev?subject=Pondera%20early%20access">Get in touch</a>
+          <a class="button primary" href="mailto:hello@pondera.dev?subject=Pondera">Email Lachlan</a>
         </div>
       </div>
     </section>
