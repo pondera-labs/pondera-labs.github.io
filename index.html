@@ -416,47 +416,69 @@
     .route-step .tag { color: var(--aqua); display: block; margin-bottom: 8px; }
     .route-step p { margin: 0; color: var(--muted); font-size: 13px; }
 
-    .strand-map {
+    .diagnostic-compare {
       display: grid;
-      grid-template-columns: repeat(7, minmax(0, 1fr));
-      gap: 10px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
       margin-top: 30px;
     }
-    .strand {
-      min-height: 168px;
+    .diagnostic-card {
       border: 1px solid var(--line);
-      background:
-        radial-gradient(circle at 26px 30px, rgba(125, 215, 232, 0.28), transparent 18px),
-        rgba(255, 245, 220, 0.035);
-      padding: 14px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 16px;
-    }
-    .strand strong {
-      display: block;
-      color: var(--star);
-      font-size: 14px;
-      margin-bottom: 5px;
-    }
-    .strand span {
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.4;
-    }
-    .strand-dots {
+      background: rgba(255, 245, 220, 0.035);
+      padding: 20px;
+      min-height: 230px;
       display: grid;
-      grid-template-columns: repeat(4, 8px);
-      gap: 6px;
+      gap: 14px;
+      align-content: start;
     }
-    .strand-dots i {
-      width: 8px;
-      height: 8px;
-      border-radius: 99px;
-      background: var(--aqua);
-      box-shadow: 0 0 10px rgba(125, 215, 232, 0.48);
+    .diagnostic-card.good {
+      border-color: rgba(125, 215, 232, 0.56);
+      background: linear-gradient(180deg, rgba(125, 215, 232, 0.08), rgba(255, 245, 220, 0.03));
     }
+    .diagnostic-card .tag {
+      color: var(--coral);
+      display: block;
+    }
+    .diagnostic-card.good .tag { color: var(--aqua); }
+    .diagnostic-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .answer-line {
+      border: 1px solid var(--line);
+      background: rgba(3, 10, 18, 0.36);
+      padding: 10px 12px;
+      color: var(--star);
+      font-family: var(--mono);
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+    .repair-graph {
+      border: 1px solid var(--line-strong);
+      background:
+        radial-gradient(circle at 50% 52%, rgba(125, 215, 232, 0.1), transparent 44%),
+        rgba(255, 245, 220, 0.025);
+      margin-top: 24px;
+      overflow: hidden;
+    }
+    .repair-graph svg {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    .broken-edge {
+      stroke: rgba(255, 155, 115, 0.9);
+      stroke-dasharray: 8 8;
+      filter: drop-shadow(0 0 8px rgba(255, 155, 115, 0.42));
+    }
+    .graph-label {
+      font-family: var(--mono);
+      font-size: 12px;
+      fill: var(--star-soft);
+      text-transform: uppercase;
+    }
+    .graph-label.hot { fill: var(--coral); }
 
     .specimen-grid {
       display: grid;
@@ -525,7 +547,7 @@
       }
       .route { grid-template-columns: repeat(2, 1fr); }
       .route-step::after { display: none; }
-      .strand-map { grid-template-columns: repeat(2, 1fr); }
+      .diagnostic-compare { grid-template-columns: 1fr; }
     }
     @media (max-width: 560px) {
       .wrap { width: min(100% - 28px, 1160px); }
@@ -536,8 +558,7 @@
       .field-strip { grid-template-columns: 1fr; }
       .constellation-card { min-height: auto; }
       .constellation-legend { grid-template-columns: repeat(2, 1fr); }
-      .route,
-      .strand-map { grid-template-columns: 1fr; }
+      .route { grid-template-columns: 1fr; }
       .alpha-box { align-items: start; }
     }
   </style>
@@ -624,17 +645,51 @@
 
     <section id="constellation">
       <div class="wrap reveal">
-        <span class="eyebrow">The graph underneath</span>
-        <h2>Not lessons in a row. A sky map of what depends on what.</h2>
-        <p class="deck">Pondera treats curriculum as a typed graph: topics, knowledge points, prerequisites, misconceptions, representations, tasks, and evidence-producing checks. That graph is broad enough to support movement across school maths, not just one fraction demo.</p>
-        <div class="strand-map" aria-label="Maths graph coverage">
-          <div class="strand"><div><strong>Number</strong><span>counting, place value, operations, fractions, decimals</span></div><div class="strand-dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
-          <div class="strand"><div><strong>Algebra</strong><span>patterns, expressions, equations, linear relationships</span></div><div class="strand-dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
-          <div class="strand"><div><strong>Measurement</strong><span>length, area, volume, time, units, angles</span></div><div class="strand-dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
-          <div class="strand"><div><strong>Space</strong><span>shapes, transformations, coordinates, trigonometry</span></div><div class="strand-dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
-          <div class="strand"><div><strong>Statistics</strong><span>displays, summary statistics, variation, inference</span></div><div class="strand-dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
-          <div class="strand"><div><strong>Probability</strong><span>chance, compound events, conditional probability</span></div><div class="strand-dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
-          <div class="strand"><div><strong>Senior maths</strong><span>functions, modelling, calculus, advanced pathways</span></div><div class="strand-dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+        <span class="eyebrow">What the graph sees</span>
+        <h2>Same answer. Three very different systems.</h2>
+        <p class="deck">A learner answers <strong>3/8</strong> to <strong>1/4 + 2/4</strong>. That is not just a red X. It is a clue about the structure underneath the mistake.</p>
+        <div class="diagnostic-compare" aria-label="Three interpretations of the same wrong answer">
+          <div class="diagnostic-card">
+            <span class="tag">Bad system</span>
+            <div class="answer-line">1/4 + 2/4 = 3/8</div>
+            <h3>Incorrect.</h3>
+            <p>The system only knows the answer was wrong. The next activity is guesswork or a generic retry.</p>
+          </div>
+          <div class="diagnostic-card">
+            <span class="tag">Reasonable system</span>
+            <div class="answer-line">topic: adding fractions</div>
+            <h3>More practice needed.</h3>
+            <p>The system knows the broad topic is shaky, but it does not know which idea inside the topic broke.</p>
+          </div>
+          <div class="diagnostic-card good">
+            <span class="tag">Pondera</span>
+            <div class="answer-line">signal: added denominators</div>
+            <h3>Repair denominator meaning.</h3>
+            <p>The graph points to a likely misconception: the learner counted shaded pieces but treated denominators as addable counts.</p>
+          </div>
+        </div>
+        <div class="repair-graph" aria-label="Graph showing likely broken denominator-meaning node">
+          <svg viewBox="0 0 980 360" role="img" aria-labelledby="repair-title">
+            <title id="repair-title">A local fraction graph where the denominator meaning node is highlighted as the repair target.</title>
+            <path class="edge-line" d="M120 182 C220 100 324 104 430 158"/>
+            <path class="edge-line" d="M430 158 C548 96 664 96 790 148"/>
+            <path class="edge-line" d="M430 158 C552 212 660 230 820 246"/>
+            <path class="edge-line broken-edge" d="M262 268 C344 232 386 206 430 158"/>
+            <path class="edge-line" d="M262 268 C438 304 608 304 820 246"/>
+            <g class="star-node">
+              <circle cx="120" cy="182" r="12" fill="#7dd7e8"/>
+              <circle cx="262" cy="268" r="15" fill="#ff9b73"/>
+              <circle cx="430" cy="158" r="16" fill="#fff5dc"/>
+              <circle cx="790" cy="148" r="12" fill="#8ee0b0"/>
+              <circle cx="820" cy="246" r="12" fill="#b9a1ff"/>
+            </g>
+            <text class="graph-label" x="78" y="216">Unit fractions</text>
+            <text class="graph-label hot" x="180" y="304">Denominator meaning</text>
+            <text class="graph-label" x="374" y="132">Add same denominators</text>
+            <text class="graph-label" x="734" y="124">Equivalent fractions</text>
+            <text class="graph-label" x="748" y="282">Visual repair card</text>
+            <text class="graph-label hot" x="318" y="228">likely broken edge</text>
+          </svg>
         </div>
       </div>
     </section>
@@ -658,7 +713,7 @@
       <div class="wrap two-col reveal">
         <div>
           <span class="eyebrow">Diagnostic evidence</span>
-          <h2>A fraction mistake is just one evidence specimen.</h2>
+          <h2>The interface can change. The evidence trail should survive.</h2>
           <p class="deck">Different clients may want different learner surfaces. The durable part is the model beneath them: a wrong answer becomes evidence, evidence updates the graph-local learner state, and the graph picks a reasoned next move.</p>
         </div>
         <div class="specimen-code" aria-label="Example checked learning event">
