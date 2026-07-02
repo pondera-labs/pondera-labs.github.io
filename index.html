@@ -204,8 +204,9 @@
     }
     .hero-grid {
       display: grid;
-      grid-template-columns: minmax(380px, 0.9fr) minmax(500px, 1.1fr);
-      gap: 58px;
+      width: min(1380px, calc(100% - 44px));
+      grid-template-columns: minmax(360px, 0.72fr) minmax(680px, 1.28fr);
+      gap: 46px;
       align-items: center;
     }
     h1 {
@@ -306,7 +307,7 @@
       z-index: 1;
       display: grid;
       grid-template-columns: 92px minmax(0, 1fr) 132px;
-      min-height: 430px;
+      min-height: 500px;
       margin: 26px 26px 22px;
       overflow: hidden;
       border: 1px solid rgba(216, 238, 247, 0.16);
@@ -384,7 +385,7 @@
     }
     .workbench-graph {
       width: 100%;
-      min-height: 292px;
+      min-height: 348px;
       margin-top: 4px;
       overflow: visible;
       position: relative;
@@ -467,7 +468,7 @@
     }
     .workbench-stats div {
       border-right: 1px solid var(--line);
-      padding: 16px;
+      padding: 20px 16px;
       color: var(--muted);
       font-family: var(--mono);
       font-size: 10px;
@@ -479,7 +480,7 @@
       display: block;
       color: var(--star);
       font-family: var(--sans);
-      font-size: 28px;
+      font-size: 34px;
       margin-bottom: 4px;
       text-transform: none;
     }
