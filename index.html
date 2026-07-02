@@ -267,16 +267,17 @@
       margin-bottom: 2px;
     }
 
-    .constellation-card {
+    .workbench-card {
       border: 1px solid var(--line-strong);
       background:
-        radial-gradient(circle at 50% 46%, rgba(125, 215, 232, 0.14), transparent 52%),
+        radial-gradient(circle at 48% 42%, rgba(125, 215, 232, 0.16), transparent 45%),
+        radial-gradient(circle at 82% 22%, rgba(185, 161, 255, 0.1), transparent 32%),
         linear-gradient(180deg, rgba(16, 40, 58, 0.86), rgba(8, 20, 32, 0.92));
       box-shadow: var(--shadow);
       position: relative;
       overflow: hidden;
     }
-    .constellation-card::before {
+    .workbench-card::before {
       content: "";
       position: absolute;
       inset: 0;
@@ -285,7 +286,7 @@
         linear-gradient(rgba(216, 238, 247, 0.04) 1px, transparent 1px) 0 0 / 44px 44px;
       mask-image: radial-gradient(circle at center, black, transparent 78%);
     }
-    .constellation-top {
+    .workbench-top {
       min-height: 54px;
       border-bottom: 1px solid var(--line);
       display: flex;
@@ -300,10 +301,92 @@
       position: relative;
       z-index: 1;
     }
-    .constellation {
-      width: 100%;
-      height: auto;
+    .workbench-screen {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 92px minmax(0, 1fr) 132px;
+      min-height: 430px;
+      margin: 26px 26px 22px;
+      overflow: hidden;
+      border: 1px solid rgba(216, 238, 247, 0.16);
+      background:
+        radial-gradient(circle at 48% 52%, rgba(125, 215, 232, 0.16), transparent 44%),
+        linear-gradient(145deg, rgba(9, 21, 34, 0.92), rgba(16, 40, 58, 0.84));
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 20px 44px rgba(0, 0, 0, 0.24);
+    }
+    .workbench-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 18px 10px;
+      border-right: 1px solid var(--line);
+      background: rgba(3, 10, 18, 0.22);
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--muted);
+    }
+    .workbench-sidebar strong {
+      color: var(--star);
+      font-family: var(--serif);
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .workbench-sidebar span {
       display: block;
+      padding: 8px 7px;
+      border: 1px solid transparent;
+    }
+    .workbench-sidebar span.active {
+      border-color: rgba(125, 215, 232, 0.24);
+      background: rgba(125, 215, 232, 0.12);
+      color: var(--star-soft);
+    }
+    .workbench-main {
+      min-width: 0;
+      padding: 18px 16px 12px;
+    }
+    .workbench-toolbar {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 10px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .workbench-toolbar em {
+      border: 1px solid var(--line);
+      background: rgba(255, 245, 220, 0.035);
+      color: var(--muted);
+      font-style: normal;
+      padding: 6px 8px;
+    }
+    .workbench-main h2 {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0;
+      font-family: var(--serif);
+      font-size: 24px;
+      font-weight: 500;
+      line-height: 1.1;
+    }
+    .workbench-main h2 span {
+      border: 1px solid rgba(142, 224, 176, 0.34);
+      color: var(--green);
+      font-family: var(--mono);
+      font-size: 10px;
+      padding: 3px 6px;
+      text-transform: uppercase;
+    }
+    .workbench-graph {
+      width: 100%;
+      min-height: 292px;
+      margin-top: 4px;
+      overflow: visible;
       position: relative;
       z-index: 1;
     }
@@ -341,33 +424,64 @@
     .edge-line.core-link {
       stroke-dasharray: 6 7;
     }
-    .constellation-legend {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      border-top: 1px solid var(--line);
-      position: relative;
-      z-index: 1;
+    .workbench-detail {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      padding: 18px 12px;
+      border-left: 1px solid var(--line);
+      background: rgba(255, 245, 220, 0.035);
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.45;
     }
-    .constellation-legend div {
-      min-height: 96px;
-      border-right: 1px solid var(--line);
-      padding: 14px;
-    }
-    .constellation-legend div:last-child { border-right: 0; }
-    .constellation-legend strong {
-      display: block;
+    .workbench-detail b,
+    .workbench-detail i {
       color: var(--star-soft);
       font-family: var(--mono);
       font-size: 10px;
-      letter-spacing: 0.09em;
-      margin-bottom: 8px;
+      font-style: normal;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
     }
-    .constellation-legend p {
-      color: var(--muted);
+    .workbench-detail strong {
+      color: var(--star);
       font-size: 12px;
-      line-height: 1.45;
-      margin: 0;
+    }
+    .workbench-pill {
+      display: inline-block;
+      width: max-content;
+      border: 1px solid var(--line);
+      padding: 4px 7px;
+      color: var(--star-soft);
+      font-family: var(--mono);
+      font-size: 10px;
+    }
+    .workbench-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      margin: 0 26px 26px;
+      border: 1px solid var(--line);
+      position: relative;
+      z-index: 1;
+    }
+    .workbench-stats div {
+      border-right: 1px solid var(--line);
+      padding: 16px;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 10px;
+      text-align: center;
+      text-transform: uppercase;
+    }
+    .workbench-stats div:last-child { border-right: 0; }
+    .workbench-stats strong {
+      display: block;
+      color: var(--star);
+      font-family: var(--sans);
+      font-size: 28px;
+      margin-bottom: 4px;
+      text-transform: none;
     }
 
     .deck {
@@ -627,7 +741,23 @@
       .hero-grid { gap: 32px; }
       h1 { font-size: clamp(42px, 13vw, 58px); }
       .field-strip { grid-template-columns: 1fr; }
-      .constellation-legend { grid-template-columns: repeat(2, 1fr); }
+      .workbench-screen {
+        grid-template-columns: 1fr;
+        margin: 14px;
+        min-height: auto;
+      }
+      .workbench-sidebar,
+      .workbench-detail {
+        display: none;
+      }
+      .workbench-main { padding: 16px 12px 10px; }
+      .workbench-main h2 { font-size: 22px; }
+      .workbench-stats {
+        grid-template-columns: repeat(3, 1fr);
+        margin: 0 14px 14px;
+      }
+      .workbench-stats div { padding: 12px 8px; }
+      .workbench-stats strong { font-size: 21px; }
       .route { grid-template-columns: 1fr; }
       .alpha-box { align-items: start; }
     }
@@ -659,92 +789,95 @@
             <a class="button" href="#build">Read the build note</a>
           </div>
           <div class="field-strip" aria-label="Pondera operating notes">
-            <div class="field-note"><strong>2,600+</strong> graph nodes loaded</div>
-            <div class="field-note"><strong>4,400+</strong> authored edges</div>
-            <div class="field-note"><strong>K-12</strong> maths traversal</div>
+            <div class="field-note"><strong>Graph</strong> skills and prerequisites</div>
+            <div class="field-note"><strong>Evidence</strong> from every answer</div>
+            <div class="field-note"><strong>Review</strong> AI kept on rails</div>
           </div>
           <p class="hero-note">The learner-facing card is not the product boundary. The durable core is the connected map: skills, prerequisites, misconceptions, evidence, and review paths.</p>
         </div>
 
-        <article class="constellation-card reveal" aria-label="Curriculum constellation map">
-          <div class="constellation-top">
-            <span>Mathematics graph</span>
-            <span>Ontology / diagnostics / review</span>
+        <article class="workbench-card reveal" aria-label="Pondera graph workbench preview">
+          <div class="workbench-top">
+            <span>Graph workbench</span>
+            <span>Ontology / evidence / review</span>
           </div>
-          <svg class="constellation" viewBox="0 0 680 460" role="img" aria-labelledby="constellation-title">
-            <title id="constellation-title">A domain-level mathematics graph with Diagnostic Core as the central hub connecting subjects, misconceptions, and review paths.</title>
-
-            <!-- ambient background stars, corners only, deliberately outside the cluster -->
-            <g opacity="0.5">
-              <circle cx="30" cy="30" r="2" fill="#7dd7e8"/>
-              <circle cx="55" cy="20" r="1.6" fill="#d8eef7"/>
-              <circle cx="650" cy="25" r="1.8" fill="#d8eef7"/>
-              <circle cx="620" cy="55" r="2" fill="#7dd7e8"/>
-              <circle cx="655" cy="435" r="1.8" fill="#d8eef7"/>
-              <circle cx="600" cy="450" r="2" fill="#7dd7e8"/>
-              <circle cx="25" cy="440" r="1.6" fill="#d8eef7"/>
-              <circle cx="60" cy="415" r="2" fill="#7dd7e8"/>
-              <circle cx="340" cy="14" r="1.4" fill="#d8eef7"/>
-              <circle cx="340" cy="448" r="1.4" fill="#d8eef7"/>
-            </g>
-
-            <!-- subject-to-subject adjacency, solid, outer ring -->
-            <path class="edge-line" d="M120 90 C260 45 420 45 560 90"/>
-            <path class="edge-line" d="M85 250 C220 350 380 380 520 395"/>
-            <path class="edge-line" d="M160 395 C280 430 400 430 520 395"/>
-            <path class="edge-line" d="M595 250 C470 350 300 385 160 395"/>
-
-            <!-- core links: dashed, mark the diagnostic core as a different kind of node -->
-            <path class="edge-line core-link" d="M340 230 C280 190 190 140 120 90"/>
-            <path class="edge-line core-link" d="M340 230 C400 190 500 140 560 90"/>
-            <path class="edge-line hot core-link" d="M340 230 C250 238 150 244 85 250"/>
-            <path class="edge-line core-link" d="M340 230 C430 238 520 244 595 250"/>
-            <path class="edge-line core-link" d="M340 230 C280 300 210 360 160 395"/>
-            <path class="edge-line hot core-link" d="M340 230 C400 300 460 360 520 395"/>
-
-            <!-- texture: a few connected dots implying denser structure beyond what's labeled -->
-            <g opacity="0.3">
-              <path class="edge-line" d="M95 55 C102 68 112 80 120 90"/>
-              <path class="edge-line" d="M590 60 C580 72 570 82 560 90"/>
-              <path class="edge-line" d="M45 215 C58 228 72 240 85 250"/>
-              <circle cx="95" cy="55" r="3" fill="#7dd7e8"/>
-              <circle cx="150" cy="50" r="2.5" fill="#d8eef7"/>
-              <circle cx="535" cy="50" r="2.5" fill="#d8eef7"/>
-              <circle cx="590" cy="60" r="3" fill="#7dd7e8"/>
-              <circle cx="45" cy="215" r="3" fill="#7dd7e8"/>
-              <circle cx="635" cy="215" r="3" fill="#7dd7e8"/>
-              <circle cx="105" cy="435" r="2.5" fill="#d8eef7"/>
-              <circle cx="560" cy="435" r="2.5" fill="#d8eef7"/>
-            </g>
-
-            <!-- main nodes -->
-            <g class="star-node">
-              <circle cx="340" cy="230" r="30" class="core-node"/>
-              <circle cx="340" cy="230" r="19" class="core-node inner"/>
-              <circle cx="120" cy="90" r="19" fill="#7dd7e8"/>
-              <circle cx="560" cy="90" r="19" fill="#7dd7e8"/>
-              <circle cx="85" cy="250" r="19" fill="#7dd7e8"/>
-              <circle cx="595" cy="250" r="19" fill="#7dd7e8"/>
-              <circle cx="160" cy="395" r="19" fill="#7dd7e8"/>
-              <circle cx="520" cy="395" r="21" fill="#ff9b73"/>
-            </g>
-
-            <!-- labels, centered on their node -->
-            <g text-anchor="middle">
-              <text class="star-label" x="340" y="182">Diagnostic Core</text>
-              <text class="star-label" x="120" y="63">Number</text>
-              <text class="star-label" x="560" y="63">Algebra</text>
-              <text class="star-label" x="85" y="285">Fractions</text>
-              <text class="star-label" x="595" y="285">Functions</text>
-              <text class="star-label" x="160" y="430">Calculus</text>
-              <text class="star-label" x="520" y="432">Misconceptions</text>
-            </g>
-          </svg>
-          <div class="constellation-legend">
-            <div><strong>Ontology</strong><p>Names the teachable ideas so the system can talk about them precisely.</p></div>
-            <div><strong>Prerequisites</strong><p>Records what normally needs to be secure before a later idea is reliable.</p></div>
-            <div><strong>Diagnostics</strong><p>Treats a wrong answer as evidence for a possible misconception, not just failure.</p></div>
-            <div><strong>Evidence trails</strong><p>Keeps the reason for the next step visible instead of hiding it in a black box.</p></div>
+          <div class="workbench-screen">
+            <div class="workbench-sidebar" aria-hidden="true">
+              <strong>Pondera</strong>
+              <span class="active">Graph</span>
+              <span>Diagnostics</span>
+              <span>Evidence</span>
+              <span>Curriculum</span>
+              <span>Review</span>
+            </div>
+            <div class="workbench-main">
+              <div class="workbench-toolbar">
+                <span>Maths / Number / Fractions</span>
+                <em>Search nodes...</em>
+              </div>
+              <h2>Equivalent fractions <span>active</span></h2>
+              <svg class="workbench-graph" viewBox="0 0 430 310" role="img" aria-labelledby="workbench-graph-title">
+                <title id="workbench-graph-title">A graph explorer centred on equivalent fractions, showing prerequisites, practice targets, evidence, and review paths.</title>
+                <defs>
+                  <marker id="workbench-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                    <path d="M0,0 L8,4 L0,8 Z" fill="#7dd7e8" opacity="0.86"/>
+                  </marker>
+                  <marker id="workbench-hot-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                    <path d="M0,0 L8,4 L0,8 Z" fill="#ff9b73" opacity="0.9"/>
+                  </marker>
+                  <marker id="workbench-violet-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                    <path d="M0,0 L8,4 L0,8 Z" fill="#b9a1ff" opacity="0.9"/>
+                  </marker>
+                </defs>
+                <path class="edge-line" marker-end="url(#workbench-arrow)" d="M214 148 L214 54"/>
+                <path class="edge-line" marker-end="url(#workbench-arrow)" d="M214 148 L322 74"/>
+                <path class="edge-line" marker-end="url(#workbench-arrow)" d="M214 148 L380 148"/>
+                <path class="edge-line" marker-end="url(#workbench-arrow)" d="M214 148 L326 224"/>
+                <path class="edge-line" marker-end="url(#workbench-arrow)" d="M214 148 L214 260"/>
+                <path class="edge-line" marker-end="url(#workbench-arrow)" d="M214 148 L92 224"/>
+                <path class="edge-line" marker-end="url(#workbench-arrow)" d="M214 148 L48 148"/>
+                <path class="edge-line" marker-end="url(#workbench-arrow)" d="M214 148 L98 76"/>
+                <path class="edge-line hot core-link" marker-end="url(#workbench-hot-arrow)" d="M326 224 C370 208 394 178 380 148"/>
+                <path class="edge-line core-link" marker-end="url(#workbench-violet-arrow)" d="M326 224 C284 206 246 178 214 148"/>
+                <circle cx="214" cy="148" r="46" fill="rgba(255, 245, 220, 0.08)" stroke="rgba(255, 245, 220, 0.32)" stroke-width="3"/>
+                <circle class="core-node" cx="214" cy="148" r="27"/>
+                <circle class="core-node inner" cx="214" cy="148" r="17"/>
+                <circle cx="214" cy="46" r="10" fill="#d8eef7" stroke="#fff5dc" stroke-width="2"/>
+                <circle cx="334" cy="68" r="11" fill="#7dd7e8" stroke="#fff5dc" stroke-width="2"/>
+                <circle cx="392" cy="148" r="11" fill="#b9a1ff" stroke="#fff5dc" stroke-width="2"/>
+                <circle cx="326" cy="236" r="11" fill="#7dd7e8" stroke="#fff5dc" stroke-width="2"/>
+                <circle cx="214" cy="272" r="11" fill="#b9a1ff" stroke="#fff5dc" stroke-width="2"/>
+                <circle cx="82" cy="236" r="11" fill="#ff9b73" stroke="#fff5dc" stroke-width="2"/>
+                <circle cx="36" cy="148" r="11" fill="#7dd7e8" stroke="#fff5dc" stroke-width="2"/>
+                <circle cx="88" cy="70" r="10" fill="#d8eef7" stroke="#fff5dc" stroke-width="2"/>
+                <g text-anchor="middle">
+                  <text class="star-label" x="214" y="88">Generate equivalent fractions</text>
+                  <text class="star-label" x="334" y="108">Equivalent scaling</text>
+                  <text class="star-label" x="392" y="188">Compare</text>
+                  <text class="star-label" x="326" y="276">Common denom.</text>
+                  <text class="star-label" x="214" y="304">Simplify fractions</text>
+                  <text class="star-label" x="82" y="276">Mixed numbers</text>
+                  <text class="star-label" x="36" y="188">Area models</text>
+                  <text class="star-label" x="88" y="110">Unit notation</text>
+                  <text class="star-label" x="214" y="188" fill="#fff5dc">Equivalent fractions</text>
+                </g>
+              </svg>
+            </div>
+            <div class="workbench-detail" aria-hidden="true">
+              <b>Node details</b>
+              <strong>Equivalent fractions</strong>
+              <span>Fractions that represent the same value with different numerators and denominators.</span>
+              <i>Evidence</i>
+              <span class="workbench-pill">Quiz 92%</span>
+              <span class="workbench-pill">Homework 85%</span>
+              <i>Review path</i>
+              <span>Unit notation -> equivalent scaling -> equivalent fractions</span>
+            </div>
+          </div>
+          <div class="workbench-stats" aria-label="Pondera graph scale">
+            <div><strong>2,600+</strong> nodes</div>
+            <div><strong>4,400+</strong> edges</div>
+            <div><strong>K-12</strong> graph</div>
           </div>
         </article>
       </div>
